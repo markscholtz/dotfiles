@@ -9,10 +9,8 @@
 set nocompatible " must be first line
 
 " Setup Bundle Support (pathogen plugin) {
-    " The next two lines ensure that the ~/.vim/bundle/ system works
-    filetype off
-    runtime! autoload/pathogen.vim
-    silent! call pathogen#runtime_append_all_bundles()
+    runtime bundle/pathogen/autoload/pathogen.vim
+    call pathogen#infect()
     silent! call pathogen#helptags()
 " }
 
