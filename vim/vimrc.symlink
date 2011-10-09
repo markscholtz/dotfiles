@@ -33,14 +33,14 @@ set nocompatible " must be first line
 
     " Setting up the directories {
         set backup                        " backups are nice ...
-        set backupdir=$HOME/.vim/backup// " but not when they clog
-        set directory=$HOME/.vim/swap//   " same for swap files
-        set viewdir=$HOME/.vim/view//     " same for view files
+        set backupdir=$HOME/.vim/tmp/backup// " but not when they clog
+        set directory=$HOME/.vim/tmp/swap//   " same for swap files
+        set viewdir=$HOME/.vim/tmp/view//     " same for view files
 
         " Creating directories if they don't exist
-        silent execute '!mkdir -p $HOME/.vim/backup'
-        silent execute '!mkdir -p $HOME/.vim/swap'
-        silent execute '!mkdir -p $HOME/.vim/view'
+        silent execute '!mkdir -p $HOME/.vim/tmp/backup'
+        silent execute '!mkdir -p $HOME/.vim/tmp/swap'
+        silent execute '!mkdir -p $HOME/.vim/tmp/view'
         if has('autocmd') "remain compatible with older versions of Vim that do not have the autocmd functions
           autocmd BufWinEnter * silent! loadview      "make vim load view (state) (folds, cursor, etc)
           autocmd BufWinLeave * silent! mkview        "make vim save view (state) (folds, cursor, etc)
