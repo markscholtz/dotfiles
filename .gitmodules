@@ -7,3 +7,18 @@
 [submodule "vim/vim.symlink/bundle/fugitive"]
 	path = vim/vim.symlink/bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "vim/vim.symlink/bundle/nerdtree"]
+	path = vim/vim.symlink/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vim/vim.symlink/bundle/ack"]
+	path = vim/vim.symlink/bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
+[submodule "vim/vim.symlink/bundle/command-t"]
+	path = vim/vim.symlink/bundle/command-t
+	url = git://github.com/wincent/Command-T.git
+[submodule "vim/vim.symlink/bundle/unimpaired"]
+	path = vim/vim.symlink/bundle/unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
+[submodule "vim/vim.symlink/bundle/ir_brown"]
+	path = vim/vim.symlink/bundle/ir_brown
+	url = git://github.com/lukerandall/ir_brown.vim.git
