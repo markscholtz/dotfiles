@@ -8,3 +8,19 @@ then
   alias ll="gls -l --color"
   alias la='gls -A --color'
 fi
+
+alias ..="cd .."
+alias cd..="cd .."
+
+alias h=history
+alias c=clear
+
+# Listing
+alias l="ls -alp"
+alias lp="ls -p"
+alias lm="ls -alp | more"
+
+# Prevent accidental deletion of files
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
