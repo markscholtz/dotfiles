@@ -1,0 +1,1 @@
+alias xcode="open *.xcodeproj"
