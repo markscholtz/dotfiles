@@ -1,0 +1,21 @@
+# ~/.tmuxinator/where_were_we.yml
+# you can make as many tabs as you wish...
+
+project_name: where-were-we
+project_root: ~/projects/wherewerewe/www/wherewerewe
+rvm: 1.9.2-p290@wherewerewe
+tabs:
+  - bash: #empty, will just run plain bash
+  - consoles:
+      layout: even-horizontal
+      panes:
+        - rails c
+        - rails db
+  - guard: bundle exec guard start
+  - server: rails s
+  - logs:
+      layout: even-vertical
+      panes:
+        - tail -f log/development.log
+        - tail -f log/test.log
+  - git: tig

@@ -1,0 +1,20 @@
+# ~/.tmuxinator/gc_cms.yml
+# you can make as many tabs as you wish...
+
+project_name: gc-cms
+project_root: ~/projects/unboxed/gareth_cliff/www/gc-cms
+rvm: 1.9.2-p136@garethcliff
+tabs:
+  - editor:
+      layout: main-vertical
+      panes:
+        - vim
+        - #empty, will just run plain bash
+  - consoles:
+      layout: even-horizontal
+      panes:
+        - rails c
+        - rails db
+  - server: rails s
+  - logs: tail -f log/development.log
+  - git: tig
