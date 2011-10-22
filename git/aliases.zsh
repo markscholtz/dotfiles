@@ -1,29 +1,31 @@
-# Use `hub` as our git wrapper:
-#   http://defunkt.github.com/hub/
-#
-# I use JRuby substantially, and we want to make sure hub is run using MRI
-# regardless of which Ruby you're using or else the `git status` in your prompt
-# will take seven thousand seconds to run `ls`.
-#
-# I'm hardcoding it to an installed rvm (using rvm's `rvm 1.8.7,ruby /hub/path`
-# syntax is way too slow). It should work fine for those without rvm, though.
-if [[ -s $HOME/.rvm/scripts/rvm ]]
-then
-  if $(which hub &> /dev/null) && [[ -s $HOME/.rvm/rubies/ruby-1.8.7-p334 ]]
-  then
-    alias git='$HOME/.rvm/rubies/ruby-1.8.7-p334/bin/ruby `which hub`'
-  else
-  fi
-fi
-
-# The rest of my fun git aliases
-alias gl='git pull --prune'
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gp='git push origin HEAD'
-alias gd='git diff'
-alias gc='git commit'
-alias gca='git commit -a'
-alias gco='git checkout'
+alias ga='git add'
 alias gb='git branch'
-alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
-alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+alias gba='git branch -a'
+alias gc='git commit -v'
+alias gci='git commit'
+alias gcia='git commit --amend -c HEAD'
+alias gco='git checkout'
+alias gcp='git cherry-pick'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gld='git log -p'
+alias glf='git log --stat'
+alias glg='git log --pretty=oneline --abbrev-commit --graph --decorate'
+alias gll='git log --pretty=format:"%x1b[33m%h %Cgreen%m%Creset %s %Cgreen(%an)%Creset" -n 10'
+alias gllnc='git log --pretty=format:"%h %m %s (%an)" -n 10'
+alias gllr='gll refs/remotes/origin/HEAD...HEAD;echo " ^ not yet pushed";gll refs/remotes/origin/HEAD'
+alias gllt='git log --pretty=format:"%x1b[33m%h %Cgreen%m %x1b[33m%ai %Creset %s %Cgreen(%an)%Creset" -n 10'
+alias gpl='git pull'
+alias gm='git merge'
+alias gps='git push'
+alias gsh='git stash'
+alias gs='git status -sb'
+alias gst='git status'
+alias gstis='git status --ignore-submodules'
+alias gsvn='git-svn'
+alias gsdc='git-svn dcommit'
+alias gsrb='git-svn rebase'
+alias gf='git fetch'
+alias grb='git rebase'
+alias gri='git rebase --interactive'
+alias giturl='git config --get remote.`git config --get branch.master.remote`.url'
