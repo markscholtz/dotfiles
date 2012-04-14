@@ -3,7 +3,7 @@
 
 project_name: gc-cms
 project_root: ~/projects/unboxed/gareth_cliff/www/gc-cms
-rvm: 1.9.2-p136@garethcliff
+rvm: 1.9.2-p290@garethcliff
 tabs:
   - editor:
       layout: main-vertical
