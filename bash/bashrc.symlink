@@ -93,6 +93,10 @@ export PATH="$HOME/Dropbox/shellscripts:$PATH"
 export LDFLAGS=-L/usr/local/Cellar/readline/6.2.1/lib
 export CPPFLAGS=-I/usr/local/Cellar/readline/6.2.1/include
 
+# -----------------------------------------------------------------------------
+# Set NODE_PATH environment variable for npm
+# -----------------------------------------------------------------------------
+export NODE_PATH=/usr/local/lib/node_modules
 
 # -----------------------------------------------------------------------------
 # General bash settings
