@@ -232,6 +232,10 @@ set nocompatible " must be first line
       let g:CommandTMatchWindowAtTop = 1
   " }
 
+  " NumberToggle {
+      let g:NumberToggleTrigger = "<Leader>r"
+  " }
+
 " }
 
 " GUI Settings {
