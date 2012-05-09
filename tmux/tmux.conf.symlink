@@ -30,7 +30,7 @@ set-window-option -g window-status-alert-attr bright,reverse
 set-window-option -g window-status-alert-bg magenta
 set-window-option -g window-status-alert-fg black
 set -g status-left-length 20
-set -g status-right-length 50
+set -g status-right-length 200
 set -g status-left '#[fg=cyan]#S'
 set -g status-right '#[fg=blue]#H #[fg=cyan]%A %d %b %R '
 
