@@ -108,6 +108,7 @@ set nocompatible " must be first line
 " }
 
 " Key Mappings {
+
     " Change mapleader key
     let mapleader = ","
 
@@ -150,6 +151,35 @@ set nocompatible " must be first line
 
     " Reload my .vimrc to apply any changes made
     nmap <silent> <leader>sv :so $MYVIMRC<cr>
+
+" }
+
+" Plugin Specific Key Mappings {
+
+  " Run the current file with rspec
+  map <Leader>rb :call RunVimTmuxCommand("clear; rspec " . bufname("%"))<CR>
+
+  " Run command without sending sending a return
+  map <Leader>rq :call RunVimTmuxCommand("clear; rspec " . bufname("%"), 0)<CR>
+
+  " Prompt for a command to run
+  map <Leader>rp :PromptVimTmuxCommand<CR>
+
+  " Run last command executed by RunVimTmuxCommand
+  map <Leader>rl :RunLastVimTmuxCommand<CR>
+
+  " Inspect runner pane
+  map <Leader>ri :InspectVimTmuxRunner<CR>
+
+  " Close vim tmux runner opened by RunVimTmuxCommand
+  map <Leader>rq :CloseVimTmuxRunner<CR>
+
+  " Close all other tmux panes in current window
+  map <Leader>rx :CloseVimTmuxPanes<CR>
+
+  " Interrupt any command running in the runner pane
+  map <Leader>rs :InterruptVimTmuxRunner<CR>
+
 " }
 
 " Functions {
@@ -218,7 +248,7 @@ set nocompatible " must be first line
     endfunction
 " }
 
-" Plugins {
+" Configure Plugins {
 
   " Taglist {
       let Tlist_Use_Right_Window = 1
