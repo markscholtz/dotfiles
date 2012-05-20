@@ -157,10 +157,7 @@ set nocompatible " must be first line
 " Plugin Specific Key Mappings {
 
   " Run the current file with rspec
-  map <Leader>rb :call RunVimTmuxCommand("clear; rspec " . bufname("%"))<CR>
-
-  " Run command without sending sending a return
-  map <Leader>rq :call RunVimTmuxCommand("clear; rspec " . bufname("%"), 0)<CR>
+  map <Leader>rr :call RunVimTmuxCommand("clear; bundle exec rspec " . bufname("%"))<CR>
 
   " Prompt for a command to run
   map <Leader>rp :PromptVimTmuxCommand<CR>
