@@ -6,6 +6,7 @@ project_root: ~/projects/wherewerewe/www/wherewerewe
 rvm: 1.9.2-p290@wherewerewe
 tabs:
   - bash: #empty, will just run plain bash
+  - vim: vim
   - consoles:
       layout: even-horizontal
       panes:
