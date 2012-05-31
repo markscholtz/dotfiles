@@ -32,3 +32,18 @@
   added = yellow
   changed = green
   untracked = cyan
+
+[alias]
+  a = add
+  b = branch
+  bl = branch -lvv
+  ba = branch -avv
+  br = branch -rvv
+  c = commit
+  co = checkout
+  d = diff
+  m = merge
+  pl = pull
+  ps = push
+  sh = stash
+  st = status
