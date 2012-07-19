@@ -175,3 +175,5 @@ else
   : # Only when it is NOT a login shell
   echo "nonlogin"
 fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
