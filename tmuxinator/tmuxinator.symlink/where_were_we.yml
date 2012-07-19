@@ -13,9 +13,10 @@ tabs:
         - rails c
         - rails db
   - server: rails s
-  - logs:
-      layout: even-vertical
+ - logs:
+      layout: main-vertical
       panes:
         - tail -f log/development.log
-        - tail -f log/test.log
+        - tail -f ~/Library/Logs/Pow/access.log
+        - tail -f ~/Library/Logs/Pow/apps/wherewerewe.log
   - git: tig
