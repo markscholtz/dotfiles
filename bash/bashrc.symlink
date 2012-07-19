@@ -32,9 +32,9 @@ nocolor='\e[0m'
 # -----------------------------------------------------------------------------
 # Source any other required files
 # -----------------------------------------------------------------------------
-source ~/.config/git-completion.sh
-source ~/.config/git-aliases.sh
-
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
 
 # -----------------------------------------------------------------------------
 # Set bash environment variables
