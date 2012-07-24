@@ -1,4 +1,0 @@
-export rvm_path="/Users/mark/.rvm"
-
-rvm_pretty_print_flag=1
-rvm_project_rvmrc=1

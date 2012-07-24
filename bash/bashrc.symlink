@@ -116,20 +116,9 @@ PS1='\$ \e[0;36m\
 \e[1;35m\
 $(__git_ps1 " (%s)") \
 \e[0;35m\
-$(~/.rvm/bin/rvm-prompt)\
+rvm was here (replace)
 \e[0m\
 \n'
-
-# Colour variables in this prompt are causing issues with the git_ps1 and rvm-prompt methods
-#PS1="# [\u@\h\
-#$cyan\
-#\w\
-#$magenta_bright \
-#$(__git_ps1 " (%s)") \
-#$magenta \
-#$(~/.rvm/bin/rvm-prompt)]\$\
-#$nocolor\
-#\n"
 
 # Add colours to ls output
 export CLICOLOR=1
@@ -138,13 +127,6 @@ export CLICOLOR=1
 # -----------------------------------------------------------------------------
 # Auto-generated settings
 # -----------------------------------------------------------------------------
-# MacPorts (commented out as I have switched over to Homebrew)
-#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
-
 # Tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
@@ -175,5 +157,3 @@ else
   : # Only when it is NOT a login shell
   echo "nonlogin"
 fi
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
