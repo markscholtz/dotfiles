@@ -13,9 +13,6 @@
 [submodule "vim/vim.symlink/bundle/ack"]
 	path = vim/vim.symlink/bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
-[submodule "vim/vim.symlink/bundle/command-t"]
-	path = vim/vim.symlink/bundle/command-t
-	url = git://github.com/wincent/Command-T.git
 [submodule "vim/vim.symlink/bundle/unimpaired"]
 	path = vim/vim.symlink/bundle/unimpaired
 	url = git://github.com/tpope/vim-unimpaired.git
@@ -49,3 +46,6 @@
 [submodule "vim/vim.symlink/bundle/endwise"]
 	path = vim/vim.symlink/bundle/endwise
 	url = git://github.com/tpope/vim-endwise.git
+[submodule "vim/vim.symlink/bundle/ctrlp"]
+	path = vim/vim.symlink/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
