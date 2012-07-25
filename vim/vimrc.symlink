@@ -255,11 +255,6 @@ set nocompatible " must be first line
       let NERDTreeChDirMode = 2
   " }
 
-  " Command-T {
-      let g:CommandTMaxHeight = 8
-      let g:CommandTMatchWindowAtTop = 1
-  " }
-
   " NumberToggle {
       let g:NumberToggleTrigger = "<Leader>r"
   " }
