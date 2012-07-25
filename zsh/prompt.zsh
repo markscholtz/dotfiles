@@ -43,14 +43,14 @@ need_push () {
 rb_prompt(){
   if $(which rbenv &> /dev/null)
   then
-    echo "%{$fg_bold[yellow]%}$(rbenv version-name)%{$reset_color%}"
+    echo "%{$fg_no_bold[green]%}$(rbenv version-name)%{$reset_color%}"
   else
     echo ""
   fi
 }
 
 directory_name(){
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  echo "%{$fg_no_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
 # If I am using vi keys, I want to know what mode I'm currently using.
