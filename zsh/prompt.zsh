@@ -40,6 +40,15 @@ need_push () {
   fi
 }
 
+rb_prompt(){
+  if $(which rbenv &> /dev/null)
+  then
+    echo "%{$fg_bold[yellow]%}$(rbenv version-name)%{$reset_color%}"
+  else
+    echo ""
+  fi
+}
+
 directory_name(){
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
@@ -55,7 +64,7 @@ function zle-keymap-select {
 
 zle -N zle-keymap-select
 
-export PROMPT=$'\n(rvm prompt was here) in $(directory_name) $(git_dirty)$(need_push)${VIMODE}\n› '
+export PROMPT=$'\n$(rb_prompt) in $(directory_name) $(git_dirty)$(need_push)${VIMODE}\n› '
 set_prompt () {
   export RPROMPT=":)"
 }
