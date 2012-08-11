@@ -281,7 +281,7 @@ set nocompatible " must be first line
 
     " Version specific settings {
         if has("gui_macvim")
-          set guifont=Menlo:h12                 " set font
+          set guifont=Inconsolata:h14           " set font
           set fuoptions=maxvert,maxhorz         " fullscreen options (MacVim only), resized window when changed to fullscreen (max lines and columns)
         endif
     " }
