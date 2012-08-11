@@ -53,6 +53,7 @@ set nocompatible " must be first line
     if has('autocmd')
       autocmd BufNewFile,BufRead *.json set filetype=json
       autocmd BufNewFile,BufRead *.less set filetype=css
+      autocmd BufNewFile,BufRead *.md set filetype=markdown
       autocmd BufNewFile,BufRead Guardfile set filetype=ruby
     endif
 " }
