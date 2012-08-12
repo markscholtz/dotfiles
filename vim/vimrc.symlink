@@ -122,7 +122,7 @@ set nocompatible " must be first line
 " Key Mappings {
 
     " Change mapleader key
-    let mapleader = ","
+    let maplocalleader = ","
 
     " Easier moving in tabs and windows
     map <C-J> <C-W>j
@@ -143,58 +143,55 @@ set nocompatible " must be first line
     "nnoremap Y y$ "TODO: this doesn't work ... fix.
 
     " Clear the search buffer (http://nvie.com/posts/how-i-boosted-my-vim/)
-    nmap <silent> <Leader><Space> :nohlsearch<CR>
+    nmap <silent> <LocalLeader><Space> :nohlsearch<CR>
 
     " Toggle settings
     nnoremap <Leader>c :set cursorline!<CR>
-    nmap <leader>l :set list!<CR>
-    nnoremap <leader>g :GundoToggle<CR>
+    nmap <Leader>l :set list!<CR>
+    nnoremap <LocalLeader>g :GundoToggle<CR>
 
     " Switch between the light and dark Solarized theme
     call togglebg#map("<F5>")
 
     " Shortcut for commands
-    nnoremap <silent> <Leader>fb :FufBuffer<CR>
-    nnoremap <silent> <Leader>ff :FufFile<CR>
-    nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
-    "nnoremap <silent> <Leader>t :TlistToggle<CR>
+    nnoremap <silent> <LocalLeader>n :NERDTreeToggle<CR>
 
     " Shortcut to edit my .vimrc
-    nmap <silent> <leader>ev :e $MYVIMRC<cr>
+    nmap <silent> <LocalLeader>ev :e $MYVIMRC<cr>
 
     " Reload my .vimrc to apply any changes made
-    nmap <silent> <leader>sv :so $MYVIMRC<cr>
+    nmap <silent> <LocalLeader>sv :so $MYVIMRC<cr>
 
 " }
 
 " Plugin Specific Key Mappings {
 
   " Run the current file with rspec
-  map <Leader>rr :call RunVimTmuxCommand("clear; bundle exec rspec " . bufname("%"))<CR>
+  map <LocalLeader>rr :call RunVimTmuxCommand("clear; bundle exec rspec " . bufname("%"))<CR>
 
   " Prompt for a command to run
-  map <Leader>rp :PromptVimTmuxCommand<CR>
+  map <LocalLeader>rp :PromptVimTmuxCommand<CR>
 
   " Run last command executed by RunVimTmuxCommand
-  map <Leader>rl :RunLastVimTmuxCommand<CR>
+  map <LocalLeader>rl :RunLastVimTmuxCommand<CR>
 
   " Inspect runner pane
-  map <Leader>ri :InspectVimTmuxRunner<CR>
+  map <LocalLeader>ri :InspectVimTmuxRunner<CR>
 
   " Close vim tmux runner opened by RunVimTmuxCommand
-  map <Leader>rq :CloseVimTmuxRunner<CR>
+  map <LocalLeader>rq :CloseVimTmuxRunner<CR>
 
   " Close all other tmux panes in current window
-  map <Leader>rx :CloseVimTmuxPanes<CR>
+  map <LocalLeader>rx :CloseVimTmuxPanes<CR>
 
   " Interrupt any command running in the runner pane
-  map <Leader>rs :InterruptVimTmuxRunner<CR>
+  map <LocalLeader>rs :InterruptVimTmuxRunner<CR>
 
 " }
 
 " Functions {
     " Strip trailing whitespaces (vimcasts.org: episode #4)
-    nnoremap <silent> <Leader>sw :call <SID>StripTrailingWhitespaces()<CR>
+    nnoremap <silent> <LocalLeader>sw :call <SID>StripTrailingWhitespaces()<CR>
     function! <SID>StripTrailingWhitespaces()
         " Preparation: save last search, and cursor position.
         let _s=@/
