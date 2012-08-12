@@ -47,3 +47,13 @@
   ps = push
   sh = stash
   st = status
+
+[credential]
+  helper = osxkeychain
+
+[merge]
+  tool = splice
+
+[mergetool "splice"]
+  cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+  trustExitCode = true
