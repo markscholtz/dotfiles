@@ -273,7 +273,7 @@ set nocompatible " must be first line
   " }
 
   " NumberToggle {
-      let g:NumberToggleTrigger = "<Leader>r"
+      let g:NumberToggleTrigger = "<LocalLeader>r"
   " }
 
 " }
