@@ -55,3 +55,18 @@
 [submodule "vim/vim.symlink/bundle/rails"]
 	path = vim/vim.symlink/bundle/rails
 	url = https://github.com/tpope/vim-rails.git
+[submodule "vim/vim.symlink/bundle/powerline"]
+	path = vim/vim.symlink/bundle/powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "vim/vim.symlink/bundle/syntastic"]
+	path = vim/vim.symlink/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/vim.symlink/bundle/repeat"]
+	path = vim/vim.symlink/bundle/repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim/vim.symlink/bundle/surround"]
+	path = vim/vim.symlink/bundle/surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/vim.symlink/bundle/gundo"]
+	path = vim/vim.symlink/bundle/gundo
+	url = https://github.com/sjl/gundo.vim.git
