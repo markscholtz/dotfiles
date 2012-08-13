@@ -76,3 +76,6 @@
 [submodule "vim/vim.symlink/bundle/splice"]
 	path = vim/vim.symlink/bundle/splice
 	url = https://github.com/sjl/splice.vim.git
+[submodule "vim/vim.symlink/bundle/taglist"]
+	path = vim/vim.symlink/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
