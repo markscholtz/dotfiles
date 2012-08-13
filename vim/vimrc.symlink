@@ -148,13 +148,9 @@ set nocompatible " must be first line
     " Toggle settings
     nnoremap <Leader>c :set cursorline!<CR>
     nmap <Leader>l :set list!<CR>
-    nnoremap <LocalLeader>g :GundoToggle<CR>
 
     " Switch between the light and dark Solarized theme
     call togglebg#map("<F5>")
-
-    " Shortcut for commands
-    nnoremap <silent> <LocalLeader>n :NERDTreeToggle<CR>
 
     " Shortcut to edit my .vimrc
     nmap <silent> <LocalLeader>ev :e $MYVIMRC<cr>
@@ -164,28 +160,43 @@ set nocompatible " must be first line
 
 " }
 
-" Plugin Specific Key Mappings {
+" Key Mappings - Plugin Specific {
 
-  " Run the current file with rspec
-  map <LocalLeader>rr :call RunVimTmuxCommand("clear; bundle exec rspec " . bufname("%"))<CR>
+  " Nerdtree {
+    " Shortcut for commands
+    nnoremap <silent> <LocalLeader>n :NERDTreeToggle<CR>
+  " }
 
-  " Prompt for a command to run
-  map <LocalLeader>rp :PromptVimTmuxCommand<CR>
+  " Powerline {
+    nnoremap <LocalLeader>g :GundoToggle<CR>
+  " }
 
-  " Run last command executed by RunVimTmuxCommand
-  map <LocalLeader>rl :RunLastVimTmuxCommand<CR>
+  " Taglist {
+    nnoremap <silent> <LocalLeader>t :TlistToggle<CR>
+  " }
 
-  " Inspect runner pane
-  map <LocalLeader>ri :InspectVimTmuxRunner<CR>
+  " Vimux {
+    " Run the current file with rspec
+    map <LocalLeader>rr :call RunVimTmuxCommand("clear; bundle exec rspec " . bufname("%"))<CR>
 
-  " Close vim tmux runner opened by RunVimTmuxCommand
-  map <LocalLeader>rq :CloseVimTmuxRunner<CR>
+    " Prompt for a command to run
+    map <LocalLeader>rp :PromptVimTmuxCommand<CR>
 
-  " Close all other tmux panes in current window
-  map <LocalLeader>rx :CloseVimTmuxPanes<CR>
+    " Run last command executed by RunVimTmuxCommand
+    map <LocalLeader>rl :RunLastVimTmuxCommand<CR>
 
-  " Interrupt any command running in the runner pane
-  map <LocalLeader>rs :InterruptVimTmuxRunner<CR>
+    " Inspect runner pane
+    map <LocalLeader>ri :InspectVimTmuxRunner<CR>
+
+    " Close vim tmux runner opened by RunVimTmuxCommand
+    map <LocalLeader>rq :CloseVimTmuxRunner<CR>
+
+    " Close all other tmux panes in current window
+    map <LocalLeader>rx :CloseVimTmuxPanes<CR>
+
+    " Interrupt any command running in the runner pane
+    map <LocalLeader>rs :InterruptVimTmuxRunner<CR>
+  " }
 
 " }
 
