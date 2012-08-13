@@ -11,6 +11,7 @@ fi
 
 alias ..="cd .."
 alias cd..="cd .."
+alias ...="cd ../.."
 
 alias h=history
 alias c=clear
