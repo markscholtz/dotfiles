@@ -18,6 +18,8 @@ set -g default-terminal "screen-256color"
 # Use zsh
 set-option -g default-command "reattach-to-user-namespace -l zsh"
 set -g default-shell /bin/zsh
+# Increase scrollback history size (default is 2000)
+set -g history-limit 10000
 
 
 # -----------------------------------------------------------------------------
