@@ -126,38 +126,38 @@ set nocompatible " must be first line
     let maplocalleader = ","
 
     " Easier moving in tabs and windows
-    map <C-J> <C-W>j
-    map <C-K> <C-W>k
-    map <C-L> <C-W>l
-    map <C-H> <C-W>h
-    map <S-H> gT
-    map <S-L> gt
+    noremap <C-J> <C-W>j
+    noremap <C-K> <C-W>k
+    noremap <C-L> <C-W>l
+    noremap <C-H> <C-W>h
+    noremap <S-H> gT
+    noremap <S-L> gt
 
     " Quickly jump between two most recent buffers
-    map <Space> <C-^>
+    noremap <Space> <C-^>
 
     " Easier moving between wrapped lines
-    nmap <silent> j gj
-    nmap <silent> k gk
+    nnoremap <silent> j gj
+    nnoremap <silent> k gk
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     "nnoremap Y y$ "TODO: this doesn't work ... fix.
 
     " Clear the search buffer (http://nvie.com/posts/how-i-boosted-my-vim/)
-    nmap <silent> <LocalLeader><Space> :nohlsearch<CR>
+    nnoremap <silent> <LocalLeader><Space> :nohlsearch<CR>
 
     " Toggle settings
     nnoremap <Leader>c :set cursorline!<CR>
-    nmap <Leader>l :set list!<CR>
+    nnoremap <Leader>l :set list!<CR>
 
     " Switch between the light and dark Solarized theme
     call togglebg#map("<F5>")
 
     " Shortcut to edit my .vimrc
-    nmap <silent> <LocalLeader>ev :e $MYVIMRC<cr>
+    nnoremap <silent> <LocalLeader>ev :e $MYVIMRC<cr>
 
     " Reload my .vimrc to apply any changes made
-    nmap <silent> <LocalLeader>sv :so $MYVIMRC<cr>
+    nnoremap <silent> <LocalLeader>sv :so $MYVIMRC<cr>
 
 " }
 
@@ -178,25 +178,25 @@ set nocompatible " must be first line
 
   " Vimux {
     " Run the current file with rspec
-    map <LocalLeader>rr :call RunVimTmuxCommand("clear; bundle exec rspec " . bufname("%"))<CR>
+    noremap <LocalLeader>rr :call RunVimTmuxCommand("clear; bundle exec rspec " . bufname("%"))<CR>
 
     " Prompt for a command to run
-    map <LocalLeader>rp :PromptVimTmuxCommand<CR>
+    noremap <LocalLeader>rp :PromptVimTmuxCommand<CR>
 
     " Run last command executed by RunVimTmuxCommand
-    map <LocalLeader>rl :RunLastVimTmuxCommand<CR>
+    noremap <LocalLeader>rl :RunLastVimTmuxCommand<CR>
 
     " Inspect runner pane
-    map <LocalLeader>ri :InspectVimTmuxRunner<CR>
+    noremap <LocalLeader>ri :InspectVimTmuxRunner<CR>
 
     " Close vim tmux runner opened by RunVimTmuxCommand
-    map <LocalLeader>rq :CloseVimTmuxRunner<CR>
+    noremap <LocalLeader>rq :CloseVimTmuxRunner<CR>
 
     " Close all other tmux panes in current window
-    map <LocalLeader>rx :CloseVimTmuxPanes<CR>
+    noremap <LocalLeader>rx :CloseVimTmuxPanes<CR>
 
     " Interrupt any command running in the runner pane
-    map <LocalLeader>rs :InterruptVimTmuxRunner<CR>
+    noremap <LocalLeader>rs :InterruptVimTmuxRunner<CR>
   " }
 
 " }
@@ -218,7 +218,7 @@ set nocompatible " must be first line
 
     " This is my attempt at making a distraction free writing zone
     " TODO: It could do with some work
-    map ,df :call DistractionFreeWriting ()<CR>
+    noremap ,df :call DistractionFreeWriting ()<CR>
     function! DistractionFreeWriting ()
         exec ':set fuoptions='
         exec ':set fullscreen'
@@ -230,7 +230,7 @@ set nocompatible " must be first line
     endfunction
 
     " Show syntax highlighting groups for word under cursor (vimcasts.org: episode #25)
-    nmap <C-S-P> :call <SID>SynStack()<CR>
+    nnoremap <C-S-S> :call <SID>SynStack()<CR>
     function! <SID>SynStack()
       if !exists("*synstack")
         return
