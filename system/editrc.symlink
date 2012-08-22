@@ -1,0 +1,2 @@
+# Enable vi keybindings in irb and pry when readline is not available
+# bind -v # comment this out to enable tab completion, but lose vim keybindings
