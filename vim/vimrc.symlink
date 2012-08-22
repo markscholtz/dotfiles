@@ -110,6 +110,7 @@ set nocompatible " must be first line
     set tabstop=2                     " an indentation every two columns
     set softtabstop=2                 " when backspacing treat spaces created by expandtab as tabs
     set shiftwidth=2                  " use indents of 2 spaces
+    set shiftround                    " round indentations to a multiple of shiftwidth
     set expandtab                     " tabs are expanded to spaces
     set matchpairs+=<:>               " match, to be used with %
 
