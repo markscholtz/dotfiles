@@ -287,6 +287,11 @@ set nocompatible " must be first line
       let g:NumberToggleTrigger = "<LocalLeader>r"
   " }
 
+  " Solarized {
+      let g:solarized_visibility = "high"
+      let g:solarized_contrast = "high"
+  " }
+
 " }
 
 " GUI Settings {
