@@ -43,10 +43,10 @@ set nocompatible " must be first line
         silent execute '!mkdir -p $HOME/.vim/tmp/backup'
         silent execute '!mkdir -p $HOME/.vim/tmp/swap'
         silent execute '!mkdir -p $HOME/.vim/tmp/view'
-        if has('autocmd') "remain compatible with older versions of Vim that do not have the autocmd functions
-          autocmd BufWinEnter * silent! loadview      "make vim load view (state) (folds, cursor, etc)
-          autocmd BufWinLeave * silent! mkview        "make vim save view (state) (folds, cursor, etc)
-        endif
+        " if has('autocmd') "remain compatible with older versions of Vim that do not have the autocmd functions
+        "   autocmd BufWinEnter * silent! loadview      "make vim load view (state) (folds, cursor, etc)
+        "   autocmd BufWinLeave * silent! mkview        "make vim save view (state) (folds, cursor, etc)
+        " endif
     " }
 " }
 
