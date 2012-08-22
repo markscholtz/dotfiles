@@ -9,8 +9,8 @@ tabs:
   - consoles:
       layout: even-horizontal
       panes:
-        - be rails c
-        - be rails db
+        - rails c
+        - rails db
   - server: be rails s
   - logs:
       layout: main-vertical
