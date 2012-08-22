@@ -125,6 +125,10 @@ set nocompatible " must be first line
     " Change mapleader key
     let maplocalleader = ","
 
+    " Make escaping from insert mode easier
+    inoremap jk <esc>
+    inoremap <esc> <nop>
+
     " Easier moving in tabs and windows
     noremap <C-J> <C-W>j
     noremap <C-K> <C-W>k
