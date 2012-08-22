@@ -79,3 +79,9 @@
 [submodule "vim/vim.symlink/bundle/taglist"]
 	path = vim/vim.symlink/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "vim/vim.symlink/bundle/rake"]
+	path = vim/vim.symlink/bundle/rake
+	url = https://github.com/tpope/vim-rake.git
+[submodule "vim/vim.symlink/bundle/bundler"]
+	path = vim/vim.symlink/bundle/bundler
+	url = https://github.com/tpope/vim-bundler.git
