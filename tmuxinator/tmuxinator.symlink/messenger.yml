@@ -6,12 +6,8 @@ project_root: ~/projects/wildfire/messenger
 tabs:
   - bash: #empty, will just run plain bash
   - vim: vim
-  - consoles:
-      layout: even-horizontal
-      panes:
-        - rails c
-        - rails db
-  - server: be foreman start
+  - console: rails c
+  - server: foreman start
   - logs:
       layout: even-vertical
       panes:
