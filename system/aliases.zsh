@@ -14,7 +14,6 @@ alias cd..="cd .."
 alias ...="cd ../.."
 
 alias h=history
-alias c=clear
 
 # Listing
 alias l="ls -alp"
