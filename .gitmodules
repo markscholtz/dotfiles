@@ -85,3 +85,6 @@
 [submodule "vim/vim.symlink/bundle/bundler"]
 	path = vim/vim.symlink/bundle/bundler
 	url = https://github.com/tpope/vim-bundler.git
+[submodule "vim/vim.symlink/bundle/instant-markdown"]
+	path = vim/vim.symlink/bundle/instant-markdown
+	url = https://github.com/suan/vim-instant-markdown.git
