@@ -11,7 +11,7 @@ tabs:
       panes:
         - rails c
         - rails db
-  - server: be rails s
+  - server: rails s
   - logs:
       layout: main-vertical
       panes:
