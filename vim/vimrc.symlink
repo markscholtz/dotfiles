@@ -55,10 +55,11 @@ set nocompatible " must be first line
     if has('autocmd')
       augroup set_filetypes
         autocmd!
-        autocmd BufNewFile,BufRead *.json set filetype=json
-        autocmd BufNewFile,BufRead *.less set filetype=css
-        autocmd BufNewFile,BufRead *.md set filetype=markdown
-        autocmd BufNewFile,BufRead Guardfile set filetype=ruby
+        autocmd BufNewFile,BufRead *.json    setl filetype=json
+        autocmd BufNewFile,BufRead *.less    setl filetype=css
+        autocmd BufNewFile,BufRead *.md      setl filetype=markdown
+        autocmd BufNewFile,BufRead Guardfile setl filetype=ruby
+        autocmd BufNewFile,BufRead *.coffee  setl foldmethod=indent nofoldenable
       augroup END
     endif
 " }
