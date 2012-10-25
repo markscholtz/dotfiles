@@ -320,7 +320,7 @@ set nocompatible " must be first line
       set lines=50                           " 50 lines of text instead of 24,
       set columns=200                       " 200 columns
     else
-      set background=light
+      set background=dark
       color solarized
     endif
 
