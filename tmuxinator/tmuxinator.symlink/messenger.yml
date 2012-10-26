@@ -2,7 +2,7 @@
 # you can make as many tabs as you wish...
 
 project_name: messenger
-project_root: ~/projects/wildfire/messenger
+project_root: ~/code/messenger
 tabs:
   - bash: #empty, will just run plain bash
   - vim: vim
