@@ -91,3 +91,6 @@
 [submodule "vim/vim.symlink/bundle/json"]
 	path = vim/vim.symlink/bundle/json
 	url = https://github.com/vim-scripts/JSON.vim.git
+[submodule "vim/vim.symlink/bundle/vroom"]
+	path = vim/vim.symlink/bundle/vroom
+	url = https://github.com/skalnik/vim-vroom.git
