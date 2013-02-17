@@ -3,7 +3,6 @@
 
 project_name: blog
 project_root: ~/projects/blog/www/jekyll_blog
-rvm: 1.9.2-p290@jekyll-blog
 tabs:
   - bash: #empty, will just run plain bash
   - vim: vim
