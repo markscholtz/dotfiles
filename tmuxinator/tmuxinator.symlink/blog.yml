@@ -2,7 +2,7 @@
 # you can make as many tabs as you wish...
 
 project_name: blog
-project_root: ~/code/blog/www/jekyll_blog
+project_root: ~/code/jekyll_blog
 tabs:
   - bash: #empty, will just run plain bash
   - vim: vim
