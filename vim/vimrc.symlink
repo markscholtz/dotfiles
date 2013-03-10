@@ -141,8 +141,8 @@ set nocompatible " must be first line
     noremap <S-H> gT
     noremap <S-L> gt
 
-    " Quickly jump between two most recent buffers
-    noremap <Space> <C-^>
+    " Toggle a fold
+    noremap <Space> za
 
     " Easier moving between wrapped lines
     nnoremap <silent> j gj
