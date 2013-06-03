@@ -1,0 +1,7 @@
+#!/bin/sh
+# Get a list of open X displays
+
+ps aux |
+grep X |
+ruby -ne 'm = $_.split(/\s+/)[10..-1].join(" ").match(/:\d+/);\
+  puts m if m'
