@@ -105,7 +105,7 @@ export NODE_PATH=/usr/local/lib/node_modules
 set -o vi
 
 # Increase Size of the bash history
-HISTSIZE=1000
+HISTSIZE=10000
 
 # GIT: Changed PS1 to also show the current branch:
 #PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ ' # original PS1 from Joerg to include the current branch being used by Git
@@ -157,3 +157,4 @@ else
   : # Only when it is NOT a login shell
   echo "nonlogin"
 fi
+
