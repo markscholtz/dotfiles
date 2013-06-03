@@ -94,3 +94,6 @@
 [submodule "vim/vim.symlink/bundle/vroom"]
 	path = vim/vim.symlink/bundle/vroom
 	url = https://github.com/skalnik/vim-vroom.git
+[submodule "vim/vim.symlink/bundle/snipmate"]
+	path = vim/vim.symlink/bundle/snipmate
+	url = https://github.com/msanders/snipmate.vim.git
