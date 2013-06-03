@@ -304,6 +304,10 @@ set nocompatible " must be first line
       let g:solarized_contrast = "high"
   " }
 
+    " Vroom {
+        let g:vroom_use_vimux = 1
+    " }
+
 " }
 
 " GUI Settings {
