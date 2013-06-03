@@ -1,0 +1,3 @@
+function config_check() {
+  for f in config/examples/*.yml; do diff $f config/$(basename $f); done
+}
