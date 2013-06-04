@@ -3,132 +3,132 @@
 # *****************************************************************************
 
 
-# -----------------------------------------------------------------------------
-# Script colour variables
-# -----------------------------------------------------------------------------
-black='\e[0;30m'
-black_bright='\e[1;30m'
-red='\e[0;31m'
-red_bright='\e[1;31m'
-green='\e[0;32m'
-green_bright='\e[1;32m'
-yellow='\e[0;33m'
-yellow_bright='\e[1;33m'
-blue='\e[0;34m'
-blue_bright='\e[1;34m'
-magenta='\e[0;35m'
-magenta_bright='\e[1;35m'
-cyan='\e[0;36m'
-cyan_bright='\e[1;36m'
-white='\e[0;37m'
-white_bright='\e[1;37m'
-nocolor='\e[0m'
+# # -----------------------------------------------------------------------------
+# # Script colour variables
+# # -----------------------------------------------------------------------------
+# black='\e[0;30m'
+# black_bright='\e[1;30m'
+# red='\e[0;31m'
+# red_bright='\e[1;31m'
+# green='\e[0;32m'
+# green_bright='\e[1;32m'
+# yellow='\e[0;33m'
+# yellow_bright='\e[1;33m'
+# blue='\e[0;34m'
+# blue_bright='\e[1;34m'
+# magenta='\e[0;35m'
+# magenta_bright='\e[1;35m'
+# cyan='\e[0;36m'
+# cyan_bright='\e[1;36m'
+# white='\e[0;37m'
+# white_bright='\e[1;37m'
+# nocolor='\e[0m'
 
 
 # *****************************************************************************
 # General configuration starts: stuff that you always want executed
 # *****************************************************************************
 
-# -----------------------------------------------------------------------------
-# Source any other required files
-# -----------------------------------------------------------------------------
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
-fi
+# # -----------------------------------------------------------------------------
+# # Source any other required files
+# # -----------------------------------------------------------------------------
+# if [ -f `brew --prefix`/etc/bash_completion ]; then
+#   . `brew --prefix`/etc/bash_completion
+# fi
 
-# -----------------------------------------------------------------------------
-# Set bash environment variables
-# -----------------------------------------------------------------------------
-export EDITOR=vim
-
-
-# -----------------------------------------------------------------------------
-# Aliases - shell
-# -----------------------------------------------------------------------------
-alias cd..="cd .."
-alias ..="cd .."
+# # -----------------------------------------------------------------------------
+# # Set bash environment variables
+# # -----------------------------------------------------------------------------
+# export EDITOR=vim
 
 
-# Prevent accidental deletion of files
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-# Listing
-alias l="ls -alp"
-alias lp="ls -p"
-alias lm="ls -alp | more"
-alias h=history
-alias c=clear
-# Shell scripts
-alias colours="~/Dropbox/shellscripts/print_shell_colours.sh"
-# Rails
-alias ss="script/server"
-alias sc="script/console"
-alias sdb="script/dbconsole"
-alias rr="rake routes"
-# RSpec
-alias bspec="bundle exec rspec"
-# Ruby gems
-alias annotate="annotate -p before"
-# XCode
-alias xcode="open *.xcodeproj"
-# todo.sh
-alias td="todo.sh"
-# mpd & ncmpc
-alias music="ncmpc -c"
+# # -----------------------------------------------------------------------------
+# # Aliases - shell
+# # -----------------------------------------------------------------------------
+# alias cd..="cd .."
+# alias ..="cd .."
 
 
-# -----------------------------------------------------------------------------
-# Set PATH environment variable
-# -----------------------------------------------------------------------------
-# Make sure mysql executable is available
-export PATH=$PATH:$HOME/bin:/usr/local/mysql/bin
-# Make sure git executable is available
-export PATH=$PATH:$HOME/bin:/usr/local/git/bin
-# Make sure exuberant Ctags executable is available
-export PATH="/usr/local/bin:$PATH"
-# Make sure the shell scripts in my Dropbox folder are available
-export PATH="$HOME/Dropbox/shellscripts:$PATH"
-# Make sure that the correct readline is used when installing new packages
-export LDFLAGS=-L/usr/local/Cellar/readline/6.2.1/lib
-export CPPFLAGS=-I/usr/local/Cellar/readline/6.2.1/include
+# # Prevent accidental deletion of files
+# alias rm='rm -i'
+# alias cp='cp -i'
+# alias mv='mv -i'
+# # Listing
+# alias l="ls -alp"
+# alias lp="ls -p"
+# alias lm="ls -alp | more"
+# alias h=history
+# alias c=clear
+# # Shell scripts
+# alias colours="~/Dropbox/shellscripts/print_shell_colours.sh"
+# # Rails
+# alias ss="script/server"
+# alias sc="script/console"
+# alias sdb="script/dbconsole"
+# alias rr="rake routes"
+# # RSpec
+# alias bspec="bundle exec rspec"
+# # Ruby gems
+# alias annotate="annotate -p before"
+# # XCode
+# alias xcode="open *.xcodeproj"
+# # todo.sh
+# alias td="todo.sh"
+# # mpd & ncmpc
+# alias music="ncmpc -c"
 
-# -----------------------------------------------------------------------------
-# Set NODE_PATH environment variable for npm
-# -----------------------------------------------------------------------------
-export NODE_PATH=/usr/local/lib/node_modules
+
+# # -----------------------------------------------------------------------------
+# # Set PATH environment variable
+# # -----------------------------------------------------------------------------
+# # Make sure mysql executable is available
+# export PATH=$PATH:$HOME/bin:/usr/local/mysql/bin
+# # Make sure git executable is available
+# export PATH=$PATH:$HOME/bin:/usr/local/git/bin
+# # Make sure exuberant Ctags executable is available
+# export PATH="/usr/local/bin:$PATH"
+# # Make sure the shell scripts in my Dropbox folder are available
+# export PATH="$HOME/Dropbox/shellscripts:$PATH"
+# # Make sure that the correct readline is used when installing new packages
+# export LDFLAGS=-L/usr/local/Cellar/readline/6.2.1/lib
+# export CPPFLAGS=-I/usr/local/Cellar/readline/6.2.1/include
+
+# # -----------------------------------------------------------------------------
+# # Set NODE_PATH environment variable for npm
+# # -----------------------------------------------------------------------------
+# export NODE_PATH=/usr/local/lib/node_modules
 
 # -----------------------------------------------------------------------------
 # General bash settings
 # -----------------------------------------------------------------------------
-# Set profile to open up in vi editing mode
-set -o vi
+# # Set profile to open up in vi editing mode
+# set -o vi
 
-# Increase Size of the bash history
-HISTSIZE=10000
+# # Increase Size of the bash history
+# HISTSIZE=10000
 
 # GIT: Changed PS1 to also show the current branch:
 #PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ ' # original PS1 from Joerg to include the current branch being used by Git
 #PS1='# [\u@\h \w$(__git_ps1 " (%s)")]\$\n'
 
-PS1='\$ \e[0;36m\
-\w\
-\e[1;35m\
-$(__git_ps1 " (%s)") \
-\e[0;35m\
-rvm was here (replace)
-\e[0m\
-\n'
+# PS1='\$ \e[0;36m\
+# \w\
+# \e[1;35m\
+# $(__git_ps1 " (%s)") \
+# \e[0;35m\
+# rvm was here (replace)
+# \e[0m\
+# \n'
 
-# Add colours to ls output
-export CLICOLOR=1
+# # Add colours to ls output
+# export CLICOLOR=1
 
 
-# -----------------------------------------------------------------------------
-# Auto-generated settings
-# -----------------------------------------------------------------------------
-# Tmuxinator
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+# # -----------------------------------------------------------------------------
+# # Auto-generated settings
+# # -----------------------------------------------------------------------------
+# # Tmuxinator
+# [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 
 # *****************************************************************************
@@ -139,22 +139,23 @@ export CLICOLOR=1
 
 
 
-# *****************************************************************************
-# Test shell type and perform any customisation based on this below
-# Idea taken from: http://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/
-# *****************************************************************************
-if [[ -n $PS1 ]]; then
-  : # These are executed only for interactive shells
-  echo "interactive"
-else
-  : # Only for NON-interactive shells
-fi
+# # *****************************************************************************
+# # Test shell type and perform any customisation based on this below
+# # Idea taken from: http://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/
+# # *****************************************************************************
+# if [[ -n $PS1 ]]; then
+#   : # These are executed only for interactive shells
+#   echo "interactive"
+# else
+#   : # Only for NON-interactive shells
+#   echo "NON-interactive"
+# fi
 
-if shopt -q login_shell ; then
-  : # These are executed only when it is a login shell
-  echo "login"
-else
-  : # Only when it is NOT a login shell
-  echo "nonlogin"
-fi
+# if shopt -q login_shell ; then
+#   : # These are executed only when it is a login shell
+#   echo "login"
+# else
+#   : # Only when it is NOT a login shell
+#   echo "nonlogin"
+# fi
 
