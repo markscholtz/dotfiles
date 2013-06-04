@@ -1,0 +1,9 @@
+# ~/.tmuxinator/dotfiles.yml
+# you can make as many tabs as you wish...
+
+project_name: dotfiles
+project_root: ~/code/dotfiles
+tabs:
+  - zsh: #empty, will just run plain bash
+  - vim: vim
+  - git: tig

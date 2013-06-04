@@ -6,11 +6,7 @@ project_root: ~/code/messenger
 tabs:
   - bash: #empty, will just run plain bash
   - vim: vim
-  - console: rails c
-  - server: foreman start
-  - logs:
-      layout: even-vertical
-      panes:
-        - tail -f log/test.log
-        - tail -f log/development.log
+  - console: be rails c
+  - server: be foreman start
+  - logs: tail -f log/development.log
   - git: tig

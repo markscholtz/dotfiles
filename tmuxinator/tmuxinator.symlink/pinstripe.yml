@@ -1,0 +1,9 @@
+# ~/.tmuxinator/pinstripe.yml
+# you can make as many tabs as you wish...
+
+project_name: pinstripe
+project_root: ~/code/pinstripe
+tabs:
+  - zsh: #empty, will just run plain bash
+  - vim: vim
+  - git: tig
