@@ -10,12 +10,12 @@ else
   echo "SHELL: NON-interactive"
 fi
 
-# Doens't work in zsh!
-# if shopt -q login_shell ; then
-#   : # These are executed only when it is a login shell
-#   echo "SHELL: login"
-# else
-#   : # Only when it is NOT a login shell
-#   echo "SHELL: nonlogin"
-# fi
+# if shopt -q login_shell ; then # bash specific
+if [[ -o login ]]; then # login is zsh specific.
+  : # These are executed only when it is a login shell
+  echo "SHELL: login"
+else
+  : # Only when it is NOT a login shell
+  echo "SHELL: nonlogin"
+fi
 
