@@ -1,9 +1,21 @@
+if [[ `uname` == 'Darwin' ]]; then
+  # Make sure that the correct readline is used when installing new packages (OS X)
+  export LDFLAGS=-L/usr/local/Cellar/readline/6.2.1/lib
+  export CPPFLAGS=-I/usr/local/Cellar/readline/6.2.1/include
+fi
+
 if [[ -n $SSH_CONNECTION ]]; then
   export PS1='%m:%3~$(git_info_for_prompt)%# '
 else
   export PS1='%3~$(git_info_for_prompt)%# '
 fi
 
+export EDITOR='vim'
+
+# your project folder so that we can `c [tab]` to
+export PROJECTS=~/code
+
+# Add colours to ls output (OS X)
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
@@ -50,3 +62,4 @@ bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
 bindkey '^R' history-incremental-search-backward
 bindkey '^F' history-incremental-search-forward
+
