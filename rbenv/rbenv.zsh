@@ -5,7 +5,7 @@ elif [[ -e "/usr/local/rbenv/bin/rbenv" ]]; then
 fi
 
 export RBENV_ROOT
-export PATH="${RBENV_ROOT}/bin:${PATH}"
+PATH="${RBENV_ROOT}/bin:${PATH}"
 
 if [[ -n "${RBENV_ROOT}" ]]; then
   eval "$($RBENV_ROOT/bin/rbenv init -)"

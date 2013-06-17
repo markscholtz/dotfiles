@@ -1,18 +1,18 @@
-export PATH=".:bin:/usr/local/bin:/usr/local/sbin:$HOME/.sfs:$ZSH/bin:$PATH"
+echo "paths ..."
 
-export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+# Prepend
+PATH=".:$PATH"
+PATH="bin:$PATH"
+PATH="/usr/local/bin:$PATH"
+PATH="/usr/local/sbin:$PATH"
+PATH="$HOME/.sfs:$PATH"
+PATH="$ZSH/bin:$PATH"
+PATH="/usr/local/heroku/bin:$PATH"
 
-export PATH=$PATH:$HOME/bin:/usr/local/mysql/bin
+# Append
+PATH="$PATH:$HOME/bin"
+PATH="$PATH:/usr/local/mysql/bin"
 
-# # Make sure mysql executable is available
-# export PATH=$PATH:$HOME/bin:/usr/local/mysql/bin
-
-# # Make sure git executable is available
-# export PATH=$PATH:$HOME/bin:/usr/local/git/bin
-
-# # Make sure exuberant Ctags executable is available
-# export PATH="/usr/local/bin:$PATH"
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# Man paths
+MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
