@@ -1,0 +1,8 @@
+# Add any setup to zshenv that needs to be global and applied to all
+# shells.
+echo "zshenv ..."
+
+# Ensure UTF-8 is set up correctly for mosh.
+# export LC_CTYPE=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8
+
