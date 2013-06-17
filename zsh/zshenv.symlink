@@ -2,6 +2,11 @@
 # shells.
 echo "zshenv ..."
 
+# shortcut to this dotfiles path is $ZSH
+export ZSH=$HOME/code/dotfiles
+
+source "$ZSH/mosh/mosh"
+
 # Ensure UTF-8 is set up correctly for mosh.
 # export LC_CTYPE=en_US.UTF-8
 # export LC_ALL=en_US.UTF-8
