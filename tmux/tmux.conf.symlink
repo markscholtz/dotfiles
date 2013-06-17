@@ -4,7 +4,7 @@
 
 
 # Temporary setting to prevent tmux from not finding it's windows correctly
-# (it attempts to do this in the tmux script, but this is not working for some 
+# (it attempts to do this in the tmux script, but this is not working for some
 # reason)
 set -g base-index 1
 
@@ -17,7 +17,7 @@ set-window-option -g window-status-current-bg magenta
 set -g default-terminal "screen-256color"
 # Use zsh
 set-option -g default-command "reattach-to-user-namespace -l zsh"
-set -g default-shell /bin/zsh
+set -g default-shell "" # Was /bin/zsh, but a more up to date zsh is installed via Homebrew. Also zsh is called as part of the default-command.
 # Increase scrollback history size (default is 2000)
 set -g history-limit 10000
 # Resize window to the largest attached screen
