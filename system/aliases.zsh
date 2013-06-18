@@ -27,6 +27,12 @@ alias mv='mv -i'
 # grc overides for ls
 #   Made possible through contributions from generous benefactors like
 #   `brew install coreutils`
+if $(grc &>/dev/null)
+then
+  alias netstat="grc netstat"
+  alias ping="grc ping"
+  alias traceroute="grc traceroute"
+fi
 if $(gls &>/dev/null)
 then
   # alias ls="gls -F --color"
@@ -34,7 +40,6 @@ then
   # alias ll="gls -l --color"
   # alias la='gls -A --color'
 fi
-alias l="ls -alp"
 alias lp="ls -p"
 alias lm="ls -alp | more"
 alias h=history
