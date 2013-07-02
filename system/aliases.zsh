@@ -12,7 +12,7 @@ fi
 # Linux specifics
 if [[ `uname` == 'Linux' ]]; then
   alias l="ls -alp --color"
-  # Access remote home directory
+  alias x=xvfb-run
 fi
 
 # Ascending directories
