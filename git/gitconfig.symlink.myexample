@@ -42,6 +42,7 @@
   c = commit
   co = checkout
   d = diff
+  f = fetch
   m = merge
   pl = pull
   ps = push
