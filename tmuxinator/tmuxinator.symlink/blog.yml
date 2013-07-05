@@ -6,5 +6,5 @@ project_root: ~/code/jekyll_blog
 tabs:
   - bash: #empty, will just run plain bash
   - vim: vim
-  - server: jekyll
+  - server: TZ="GMT-2" jekyll
   - git: tig
