@@ -85,15 +85,15 @@
 [submodule "vim/vim.symlink/bundle/bundler"]
 	path = vim/vim.symlink/bundle/bundler
 	url = https://github.com/tpope/vim-bundler.git
-[submodule "vim/vim.symlink/bundle/instant-markdown"]
-	path = vim/vim.symlink/bundle/instant-markdown
-	url = https://github.com/suan/vim-instant-markdown.git
 [submodule "vim/vim.symlink/bundle/json"]
 	path = vim/vim.symlink/bundle/json
 	url = https://github.com/vim-scripts/JSON.vim.git
 [submodule "vim/vim.symlink/bundle/vroom"]
 	path = vim/vim.symlink/bundle/vroom
 	url = https://github.com/skalnik/vim-vroom.git
+[submodule "vim-dispatch"]
+	path = vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
 [submodule "vim/vim.symlink/bundle/snipmate"]
 	path = vim/vim.symlink/bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
