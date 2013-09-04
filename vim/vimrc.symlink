@@ -34,6 +34,7 @@ set nocompatible " must be first line
     if $TMUX == ''
       set clipboard+=unnamed
     endif
+    source ~/.tripboard/tripboard.vim
 
     " Setting up the directories {
         set backup                        " backups are nice ...
@@ -144,12 +145,16 @@ set nocompatible " must be first line
     noremap <S-H> gT
     noremap <S-L> gt
 
-    " Toggle a fold
-    noremap <Space> za
-
     " Easier moving between wrapped lines
     nnoremap <silent> j gj
     nnoremap <silent> k gk
+
+    " Tripboard
+    map <LocalLeader>c "ay:call TripboardCopy()<CR>
+    map <LocalLeader>v :call TripboardPaste()<CR>"ap
+
+    " Toggle a fold
+    noremap <Space> za
 
     " Enable number incrementing in tmux
     noremap <C-b> <C-a>

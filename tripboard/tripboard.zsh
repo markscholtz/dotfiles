@@ -1,0 +1,1 @@
+source ~/.tripboard/zshrc-tripboard
