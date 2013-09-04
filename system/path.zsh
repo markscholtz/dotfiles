@@ -8,6 +8,7 @@ PATH="/usr/local/sbin:$PATH"
 PATH="$HOME/.sfs:$PATH"
 PATH="$ZSH/bin:$PATH"
 PATH="/usr/local/heroku/bin:$PATH"
+PATH="$HOME/local/bin:$PATH"
 
 # Append
 PATH="$PATH:$HOME/bin"
