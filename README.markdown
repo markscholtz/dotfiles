@@ -1,5 +1,27 @@
 # holman does dotfiles
 
+## personal notes
+
+### Ingoring tags files globally
+From tpope's vim-pathogen README:
+
+  >>Will you accept these 14 pull requests adding a .gitignore for tags so I don't see untracked changes in my dot files repository?
+
+  >No, but I'll teach you how to ignore tags globally:
+
+  ```
+  git config --global core.excludesfile '~/.cvsignore'
+  echo tags >> ~/.cvsignore
+  ```
+
+  >While any filename will work, I've chosen to follow the ancient tradition of .cvsignore because utilities like rsync use it, too. Clever, huh?
+
+## todo
+
+* Update the README below: this is from the original forked repo
+
+---
+
 ## dotfiles
 
 Your dotfiles are how you personalize your system. These are mine. The very
