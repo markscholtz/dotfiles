@@ -9,7 +9,7 @@
 # task.
 [core]
   editor = /usr/bin/vim
-  xcludesfile = ~/.cvsignore
+  excludesfile = ~/.cvsignore
 
 [user]
   name = Mark Scholtz
