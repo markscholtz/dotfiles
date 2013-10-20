@@ -103,3 +103,6 @@
 [submodule "vim/vim.symlink/bundle/folding-rspec"]
 	path = vim/vim.symlink/bundle/folding-rspec
 	url = https://github.com/markscholtz/vim-folding-rspec.git
+[submodule "vim/vim.symlink/bundle/markdown"]
+	path = vim/vim.symlink/bundle/markdown
+	url = https://github.com/tpope/vim-markdown.git
