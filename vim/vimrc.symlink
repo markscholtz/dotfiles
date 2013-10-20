@@ -97,6 +97,7 @@ set nocompatible " must be first line
 
     set backspace=indent,eol,start " backspace for dummys
     set linespace=0                " No extra spaces between rows
+    set relativenumber             " Relative line numbers on
     set showmatch                  " show matching brackets/parenthesis
     set incsearch                  " find as you type search
     set hlsearch                   " highlight search terms
