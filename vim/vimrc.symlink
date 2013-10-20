@@ -97,7 +97,6 @@ set nocompatible " must be first line
 
     set backspace=indent,eol,start " backspace for dummys
     set linespace=0                " No extra spaces between rows
-    set number                     " Line numbers on
     set showmatch                  " show matching brackets/parenthesis
     set incsearch                  " find as you type search
     set hlsearch                   " highlight search terms
@@ -301,10 +300,6 @@ set nocompatible " must be first line
 
   " NERDTree {
       let NERDTreeChDirMode = 2
-  " }
-
-  " NumberToggle {
-      let g:NumberToggleTrigger = "<LocalLeader>r"
   " }
 
   " Solarized {
