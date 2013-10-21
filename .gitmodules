@@ -91,9 +91,6 @@
 [submodule "vim-dispatch"]
 	path = vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
-[submodule "vim/vim.symlink/bundle/snipmate"]
-	path = vim/vim.symlink/bundle/snipmate
-	url = https://github.com/msanders/snipmate.vim.git
 [submodule "vim/vim.symlink/bundle/dispatch"]
 	path = vim/vim.symlink/bundle/dispatch
 	url = https://github.com/tpope/vim-dispatch.git
