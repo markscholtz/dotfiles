@@ -163,18 +163,8 @@ set nocompatible " must be first line
     " Enable number incrementing in tmux
     noremap <C-b> <C-a>
 
-    " Yank from the cursor to the end of the line, to be consistent with C and D.
-    "nnoremap Y y$ "TODO: this doesn't work ... fix.
-
     " Clear the search buffer (http://nvie.com/posts/how-i-boosted-my-vim/)
     nnoremap <silent> <LocalLeader><Space> :nohlsearch<CR>
-
-    " Toggle settings
-    nnoremap <Leader>c :set cursorline!<CR>
-    nnoremap <Leader>l :set list!<CR>
-
-    " Switch between the light and dark Solarized theme
-    call togglebg#map("<F5>")
 
     " Shortcut to edit my .vimrc
     nnoremap <silent> <LocalLeader>ev :e $MYVIMRC<cr>
