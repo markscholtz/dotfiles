@@ -49,6 +49,7 @@
   ps = push
   sh = stash
   st = status
+  s = status
 
 [credential]
   helper = osxkeychain           ###################  For OS X  ###################
