@@ -115,3 +115,6 @@
 [submodule "vim/vim.symlink/bundle/snippets"]
 	path = vim/vim.symlink/bundle/snippets
 	url = https://github.com/honza/vim-snippets.git
+[submodule "vim/vim.symlink/bundle/markdown-folding"]
+	path = vim/vim.symlink/bundle/markdown-folding
+	url = https://github.com/nelstrom/vim-markdown-folding.git
