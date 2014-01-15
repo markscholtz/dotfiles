@@ -2,7 +2,7 @@
 # you can make as many tabs as you wish...
 
 project_name: where-were-we
-project_root: ~/projects/wherewerewe/www/wherewerewe
+project_root: ~/code/wherewerewe/www/wherewerewe
 tabs:
   - bash: #empty, will just run plain bash
   - vim: vim
