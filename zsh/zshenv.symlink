@@ -5,9 +5,45 @@ echo "zshenv ..."
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/code/dotfiles
 
-source "$ZSH/mosh/mosh"
+# Specify search paths for functions.
+fpath=($ZSH/zsh/functions $fpath)
 
-# Ensure UTF-8 is set up correctly for mosh.
-# export LC_CTYPE=en_US.UTF-8
-# export LC_ALL=en_US.UTF-8
+autoload -U $ZSH/zsh/functions/*(:t)
+
+setopt NO_BG_NICE # Run background jobs at normal priority.
+# setopt NO_HUP # Don't kill background jobs when exiting zsh.
+setopt NO_LIST_BEEP
+setopt LOCAL_OPTIONS # Allow functions to have local options.
+setopt LOCAL_TRAPS # Allow functions to have local traps.
+setopt PROMPT_SUBST
+setopt CORRECT
+setopt COMPLETE_IN_WORD
+setopt IGNORE_EOF
+
+setopt INC_APPEND_HISTORY # Incrementally append to history file, rather than replace it.
+setopt HIST_VERIFY # Verify repeated command when using !!.
+setopt NO_SHARE_HISTORY # Do not share history between sessions.
+setopt EXTENDED_HISTORY # Add timestamps to history.
+setopt HIST_IGNORE_DUPS # Don't save duplicated commands.
+setopt HIST_FIND_NO_DUPS # Don't return duplicate entries when searching.
+setopt HIST_EXPIRE_DUPS_FIRST # Trim duplicate entries from the history first.
+setopt HIST_REDUCE_BLANKS
+
+# # don't expand aliases _before_ completion has finished
+# #   like: git comm-[tab]
+# setopt COMPLETE_ALIASES
+
+zle -N newtab
+
+bindkey -v # use vi key bindings
+
+bindkey '^[^[[D' backward-word
+bindkey '^[^[[C' forward-word
+bindkey '^[[5D' beginning-of-line
+bindkey '^[[5C' end-of-line
+bindkey '^[[3~' delete-char
+bindkey '^[^N' newtab
+bindkey '^?' backward-delete-char
+bindkey '^R' history-incremental-search-backward
+bindkey '^F' history-incremental-search-forward
 

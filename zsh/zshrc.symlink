@@ -17,3 +17,4 @@ compinit
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.sh(N)) source $config_file
 
+[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
