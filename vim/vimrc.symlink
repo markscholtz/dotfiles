@@ -149,10 +149,6 @@ set nocompatible " must be first line
     nnoremap <silent> j gj
     nnoremap <silent> k gk
 
-    " Saner regex when finding and replacing
-    nnoremap / /\v
-    cnoremap %s/ %s/\v
-
     " Tripboard
     map <LocalLeader>c "ay:call TripboardCopy()<CR>
     map <LocalLeader>v :call TripboardPaste()<CR>"ap
@@ -295,6 +291,7 @@ set nocompatible " must be first line
 
   " NERDTree {
       let NERDTreeChDirMode = 2
+      let NERDTreeShowLineNumbers = 1
   " }
 
   " Solarized {
