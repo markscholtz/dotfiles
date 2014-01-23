@@ -1,0 +1,6 @@
+#!/bin/bash
+
+grep rspec tmp/failing_specs.log | while read -r line ; do
+  echo $line | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" | sed -r "s/#.*//g" | xargs xvfb-run bundle exec
+done
+
