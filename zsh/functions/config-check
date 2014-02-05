@@ -1,0 +1,7 @@
+function config-check() {
+  # for f in config/examples/*.yml; do diff $f config/$(basename $f); done
+  echo "Testing the configs ..."
+  echo ""
+  diff -rq config/examples config | grep -v "Only in config:" | sort
+}
+
