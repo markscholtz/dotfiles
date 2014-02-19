@@ -48,3 +48,8 @@ alias xcode="open *.xcodeproj"
 # Access home directory
 alias rhome="cd /home/$USER"
 
+# Chef servers
+alias -g officelist="knife node list -c ~/.chef/knife.office.rb"
+alias -g staginglist="knife node list -c ~/.chef/knife.staging.rb"
+alias -g productionlist="knife node list -c ~/.chef/knife.production.rb"
+
