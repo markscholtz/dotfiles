@@ -37,19 +37,23 @@
 [alias]
   a = add
   b = branch
-  bl = branch -lvv
   ba = branch -avv
+  bc = !git current-branch
+  bl = branch -lvv
   br = branch -rvv
   c = commit
   co = checkout
+  current-branch = !git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
   d = diff
   f = fetch
+  l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
+  ll = log --pretty=oneline --abbrev-commit --graph --decorate
   m = merge
   pl = pull
+  pob = "!f() { git push -u ${1:-origin} `git symbolic-ref HEAD`; }; f"
   ps = push
-  sh = stash
-  st = status
   s = status
+  sh = stash
 
 [credential]
   helper = osxkeychain           ###################  For OS X  ###################
