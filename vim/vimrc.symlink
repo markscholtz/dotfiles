@@ -30,6 +30,9 @@ set nocompatible " must be first line
     set visualbell                                  " don't beep
     set noerrorbells                                " don't beep
     set mouse=a                                     " enable the mouse in vim
+    set splitbelow                                  " make window splitting feel more natural
+    set splitright                                  " make window splitting feel more natural
+
     " Set clipboard unless running in tmux: http://stackoverflow.com/questions/11404800/fix-vim-tmux-yank-paste-on-unnamed-register
     if $TMUX == ''
       set clipboard+=unnamed
