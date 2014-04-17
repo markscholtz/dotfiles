@@ -97,7 +97,8 @@ set nocompatible " must be first line
 
     set backspace=indent,eol,start " backspace for dummys
     set linespace=0                " No extra spaces between rows
-    set relativenumber             " Relative line numbers on
+    set number                     " Line numbers on
+    set relativenumber             " Relative line numbers on (as of Vim 7.4 both numbering styles can be set for a hybrid mode)
     set showmatch                  " show matching brackets/parenthesis
     set incsearch                  " find as you type search
     set hlsearch                   " highlight search terms
