@@ -1,13 +1,13 @@
-# ~/.tmuxinator/messenger.yml
+# ~/.tmuxinator/conversations.yml
 # you can make as many tabs as you wish...
 
-project_name: messenger
-project_root: ~/code/messenger
+project_name: conversations
+project_root: ~/code/conversations
 tabs:
   - shell: # Empty, will just run zsh.
   - vim: vim
   - console: be rails c
-  - server: be foreman start
+  - server: # Empty.
   - logs: tail -f log/development.log
   - git: tig
 
