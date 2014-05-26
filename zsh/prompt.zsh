@@ -53,18 +53,7 @@ directory_name(){
   echo "%{$fg_no_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
-# If I am using vi keys, I want to know what mode I'm currently using.
-# zle-keymap-select is executed every time KEYMAP changes.
-# Originally from http://zshwiki.org/home/examples/zlewidgets
-# I found this here http://pthree.org/2009/03/28/add-vim-editing-mode-to-your-zsh-prompt/
-function zle-keymap-select {
-    VIMODE="${${KEYMAP/vicmd/ M:command}/(main|viins)/}"
-    zle reset-prompt
-}
-
-zle -N zle-keymap-select
-
-export PROMPT=$'\n$(rb_prompt) in $(directory_name) $(git_dirty)$(need_push)${VIMODE}\n› '
+export PROMPT=$'\n$(rb_prompt) in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT=":)"
 }
