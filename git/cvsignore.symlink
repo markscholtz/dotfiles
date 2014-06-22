@@ -1,1 +1,14 @@
+.DS_Store
+.svn
+.tissues
+*.swp
+*.rbc
+
+# Ignore all tag files.
 tags
+
+# Ignore files including a ~.
+# These generally represent backup files (Ryan Bates:
+# https://github.com/robbyrussell/oh-my-zsh/issues/3#issuecomment-44502).
+*~
+
