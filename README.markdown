@@ -16,6 +16,16 @@ From tpope's vim-pathogen README:
 
   >While any filename will work, I've chosen to follow the ancient tradition of .cvsignore because utilities like rsync use it, too. Clever, huh?
 
+### Updating submodules
+To update the git submodules that I've used to organize vim plugins run the following command (
+[Stack Overflow question](http://stackoverflow.com/questions/5828324/update-git-submodule)):
+
+  ```
+  git submodule foreach git pull origin master
+  ```
+
+After updating the submodules make sure to check in the updated commit references.
+
 ## todo
 
 * Update the README below: this is from the original forked repo
