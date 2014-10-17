@@ -4,6 +4,7 @@ elif [[ -e "/usr/local/rbenv/bin/rbenv" ]]; then
   RBENV_ROOT=/usr/local/rbenv
 fi
 
+echo "paths ... rbenv"
 export RBENV_ROOT
 PATH="${RBENV_ROOT}/bin:${PATH}"
 

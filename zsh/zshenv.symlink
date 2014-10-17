@@ -2,12 +2,22 @@
 # shells.
 echo "zshenv ..."
 
+echo "before sourching all the .zsh files"
+echo path-show
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/code/dotfiles
+echo "after sourching all the .zsh files"
+echo path-show
+
+if [[ -a ~/.localzshenv ]]
+then
+  source ~/.localzshenv
+fi
 
 # Specify search paths for functions.
 fpath=($ZSH/zsh/functions $fpath)
 
+# Load custom zsh functions.
 autoload -U $ZSH/zsh/functions/*(:t)
 
 setopt NO_BG_NICE # Run background jobs at normal priority.

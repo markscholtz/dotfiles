@@ -1,5 +1,7 @@
 echo "zshrc ..."
 
+# setopt XTRACE VERBOSE
+
 # source every .zsh file in this rep
 for config_file ($ZSH/**/*.zsh) source $config_file
 

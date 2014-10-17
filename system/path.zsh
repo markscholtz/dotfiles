@@ -1,4 +1,5 @@
 echo "paths ..."
+path-show
 
 # Prepend
 PATH=".:$PATH"
