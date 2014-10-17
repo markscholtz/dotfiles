@@ -3,11 +3,11 @@
 
 project_name: acc-man
 project_root: ~/code/account_management
-tabs:
+windows:
   - bash: #empty, will just run plain bash
   - vim: vim
   - console: be rails c
-  - server: be foreman start
+  - server: #be foreman start
   - logs:
       layout: even-vertical
       panes:

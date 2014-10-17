@@ -3,7 +3,11 @@
 
 project_name: dotfiles
 project_root: ~/code/dotfiles
-tabs:
-  - zsh: #empty, will just run plain bash
+windows:
+  - zsh: # Empty, will just run zsh.
+  - zsh-scholtzie: cd ~/code/scholtzie-dotfiles # Empty, will just run zsh.
   - vim: vim
+  - vim-scholtzie: cd ~/code/scholtzie-dotfiles; vim
   - git: tig
+  - git-scholtzie: cd ~/code/scholtzie-dotfiles; tig
+

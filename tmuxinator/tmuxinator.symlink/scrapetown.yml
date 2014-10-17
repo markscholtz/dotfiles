@@ -3,7 +3,7 @@
 
 project_name: scrapetown
 project_root: ~/code/scrapetown
-tabs:
+windows:
   - shell: #empty, will just run plain zsh
   - vim: vim
   - git: tig

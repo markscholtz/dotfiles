@@ -3,7 +3,7 @@
 
 project_name: algorithms
 project_root: ~/code/algorithms
-tabs:
+windows:
   - shell: #empty, will just run plain bash
   - vim: vim
   - git: tig
