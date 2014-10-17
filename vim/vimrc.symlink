@@ -8,6 +8,8 @@
 
 set nocompatible " must be first line
 
+source ~/.localvimrc
+
 " Setup Bundle Support (pathogen plugin) {
     runtime bundle/pathogen/autoload/pathogen.vim
     call pathogen#infect()
@@ -296,6 +298,8 @@ set nocompatible " must be first line
   " NERDTree {
       let NERDTreeChDirMode = 2
       let NERDTreeShowLineNumbers = 1
+      " let NERDTreeHijackNetrw = 0
+      let NERDTreeWinSize = 40
   " }
 
   " Solarized {
@@ -305,6 +309,35 @@ set nocompatible " must be first line
 
     " Vroom {
         let g:vroom_use_vimux = 1
+    " }
+
+    " UltiSnips {
+        let g:UltiSnipsExpandTrigger = "<c-k>"
+        let g:UltiSnipsListSnippets = "<c-l>"
+        " let g:UltiSnipsJumpForwardTrigger = "<M-j>"
+        " let g:UltiSnipsJumpBackwardTrigger = "<M-k>"
+    " }
+
+    " Ack {
+        let g:ackprg = 'ag --nogroup --nocolor --column'
+    " }
+
+    " CtrlP {
+        let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+              \ --ignore .git
+              \ --ignore .svn
+              \ --ignore .hg
+              \ --ignore .DS_Store
+              \ --ignore "**/*.pyc"
+              \ --ignore .git5_specs
+              \ --ignore review
+              \ -g ""'
+    " }
+
+    " YouCompleteMe {
+        " let g:ycm_auto_trigger = 0
+        " let g:ycm_key_list_select_completion = []
+        " let g:ycm_key_list_previous_completion = []
     " }
 
 " }
@@ -333,3 +366,4 @@ set nocompatible " must be first line
         endif
     " }
 " }
+
