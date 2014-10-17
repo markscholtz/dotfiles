@@ -19,21 +19,23 @@ fi
 alias cd..="cd .."
 alias ..="cd .."
 alias ...="cd ../.."
+
 # Prevent accidental deletion of files
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
 # Listing
 # grc overides for ls
 #   Made possible through contributions from generous benefactors like
 #   `brew install coreutils`
-if $(grc &>/dev/null)
+if $(type grc &>/dev/null)
 then
   alias netstat="grc netstat"
   alias ping="grc ping"
   alias traceroute="grc traceroute"
 fi
-if $(gls &>/dev/null)
+if $(type gls &>/dev/null)
 then
   # alias ls="gls -F --color"
   # alias l="gls -lAh --color"
@@ -43,8 +45,10 @@ fi
 alias lp="ls -p"
 alias lm="ls -alp | more"
 alias h=history
+
 # XCode
 alias xcode="open *.xcodeproj"
+
 # Access home directory
 alias rhome="cd /home/$USER"
 
