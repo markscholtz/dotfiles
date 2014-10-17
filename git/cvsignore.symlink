@@ -1,3 +1,5 @@
+# The silver searcher (ag command) uses global .gitignore to limit files
+# searched. Keep this file in sync with .gitignore.
 .DS_Store
 .svn
 .tissues
