@@ -29,6 +29,7 @@ source ~/.localvimrc
     set viewoptions=cursor,folds,options,slash,unix " better unix / windows compatibility
     set history=1000                                " Store a ton of history (default is 20)
     set nospell                                     " spell checking off
+    set spellfile=~/.vim/spell/en.utf-8.add         " spell checking off
     set visualbell                                  " don't beep
     set noerrorbells                                " don't beep
     set mouse=a                                     " enable the mouse in vim
@@ -127,6 +128,11 @@ source ~/.localvimrc
     set shiftround                    " round indentations to a multiple of shiftwidth
     set expandtab                     " tabs are expanded to spaces
     set matchpairs+=<:>               " match, to be used with %
+
+    " Highlight the column just after the textwidth setting for a file.
+    if exists('+colorcolumn')
+      set colorcolumn=+1
+    endif
 
     " Show all whitespace (from http://stackoverflow.com/questions/1675688/make-vim-show-all-white-spaces-as-a-character)
     set list
