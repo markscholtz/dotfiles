@@ -55,9 +55,6 @@
 [submodule "vim/vim.symlink/bundle/rails"]
 	path = vim/vim.symlink/bundle/rails
 	url = https://github.com/tpope/vim-rails.git
-[submodule "vim/vim.symlink/bundle/powerline"]
-	path = vim/vim.symlink/bundle/powerline
-	url = https://github.com/powerline/powerline.git
 [submodule "vim/vim.symlink/bundle/syntastic"]
 	path = vim/vim.symlink/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
@@ -118,3 +115,6 @@
 [submodule "vim/vim.symlink/bundle/ultisnips"]
 	path = vim/vim.symlink/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+[submodule "vim/vim.symlink/bundle/airline"]
+	path = vim/vim.symlink/bundle/airline
+	url = https://github.com/bling/vim-airline
