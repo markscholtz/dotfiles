@@ -57,7 +57,7 @@
 	url = https://github.com/tpope/vim-rails.git
 [submodule "vim/vim.symlink/bundle/powerline"]
 	path = vim/vim.symlink/bundle/powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
+	url = https://github.com/powerline/powerline.git
 [submodule "vim/vim.symlink/bundle/syntastic"]
 	path = vim/vim.symlink/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
