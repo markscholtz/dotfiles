@@ -1,0 +1,6 @@
+# Use zsh configured by $SHELL and fix pb(copy|paste) issues by using the reattach-to-user-namespace wrapper.
+set-option -g default-command "reattach-to-user-namespace -l $SHELL"
+
+# Bindings to copy and paste to and from tmux buffers - taken from http://unix.stackexchange.com/a/32451
+# bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
+# bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"

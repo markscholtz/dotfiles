@@ -15,9 +15,8 @@ set -g base-index 1
 set-window-option -g window-status-current-bg magenta
 # Make tmux look good
 set -g default-terminal "screen-256color"
-# Use zsh
-set-option -g default-command "reattach-to-user-namespace -l zsh"
-set -g default-shell "" # Was /bin/zsh, but a more up to date zsh is installed via Homebrew. Also zsh is called as part of the default-command.
+# Specify zsh as the default shell via $SHELL.
+set -g default-shell "$SHELL"
 # Increase scrollback history size (default is 2000)
 set -g history-limit 10000
 # Resize window to the largest attached screen
@@ -40,29 +39,18 @@ set -g status-right '#[fg=blue]#H #[fg=cyan]%A %d %b %R '
 
 
 # -----------------------------------------------------------------------------
-# Enable the mouse Thanks to
-# http://tangledhelix.com/blog/2012/07/16/tmux-and-mouse-mode/ for the
-# inspiration
+# Enable mouse
 # -----------------------------------------------------------------------------
-set -g mode-mouse on
-set -g mouse-resize-pane on
-set -g mouse-select-pane on
-set -g mouse-select-window on
+set -g mouse on
 
 # Toggle mouse on with ^B m
 bind m \
-  set -g mode-mouse on \;\
-  set -g mouse-resize-pane on \;\
-  set -g mouse-select-pane on \;\
-  set -g mouse-select-window on \;\
+  set -g mouse on \;\
   display 'Mouse: ON'
 
 # Toggle mouse off with ^B M
 bind M \
-  set -g mode-mouse off \;\
-  set -g mouse-resize-pane off \;\
-  set -g mouse-select-pane off \;\
-  set -g mouse-select-window off \;\
+  set -g mouse off \;\
   display 'Mouse: OFF'
 
 # -----------------------------------------------------------------------------
@@ -71,10 +59,6 @@ bind M \
 # Unbind original key bindings
 unbind '"'
 unbind %
-
-# Bindings to copy and paste to and from tmux buffers - taken from http://unix.stackexchange.com/a/32451
-bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
-bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
 
 # Screen-like keybindings
 set-option -g prefix C-a
@@ -125,3 +109,8 @@ set-option -g pane-active-border-fg magenta
 # -----------------------------------------------------------------------------
 set-window-option -g monitor-activity on
 set -g visual-activity on
+
+# -----------------------------------------------------------------------------
+# Load OS X specific configuration
+# -----------------------------------------------------------------------------
+if-shell 'test "$(uname)" = "Darwin"' 'source ~/.tmux-osx.conf'
