@@ -7,6 +7,7 @@
 # (it attempts to do this in the tmux script, but this is not working for some
 # reason)
 set -g base-index 1
+set -g pane-base-index 1
 
 # -----------------------------------------------------------------------------
 # General Settings
