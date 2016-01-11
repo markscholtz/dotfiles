@@ -62,6 +62,8 @@ source ~/.localvimrc
 " Filetype Specifics {
 
     if has('autocmd')
+      autocmd FileType help set number relativenumber
+
       augroup set_filetypes
         autocmd!
         autocmd BufNewFile,BufRead *.json    setl filetype=json
