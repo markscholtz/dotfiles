@@ -1,6 +1,6 @@
+# gem-ctags must be at the top of the file so that all gems get indexed.
+gem-ctags
 bcat
 gem-browse
-gem-ctags
 rails
 tmuxinator
-
