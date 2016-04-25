@@ -1,4 +1,4 @@
-# holman does dotfiles
+# Dotfiles
 
 ## personal notes
 
@@ -16,7 +16,16 @@ From tpope's vim-pathogen README:
 
   >While any filename will work, I've chosen to follow the ancient tradition of .cvsignore because utilities like rsync use it, too. Clever, huh?
 
-### Updating submodules
+### Submodules
+
+#### Initializing submodules
+
+When first installing dotfiles on a new machine run the following to initialize submodules:
+
+    git submodule update --init --recursive
+
+#### Updating submodules
+
 To update the git submodules that I've used to organize vim plugins run the following command (
 [Stack Overflow question](http://stackoverflow.com/questions/5828324/update-git-submodule)):
 
@@ -48,11 +57,17 @@ If you're interested in the philosophy behind why projects like these are
 awesome, you might want to [read my post on the
 subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 
-## install
+## Installation
 
-- `git clone git://github.com/holman/dotfiles ~/.dotfiles`
-- `cd ~/.dotfiles`
-- `rake install`
+### General
+
+Run the following commands to clone and install dotfiles:
+
+    cd ~
+    mkdir code
+    git clone https://github.com/markscholtz/dotfiles.git
+    cd ~/code/dotfiles
+    rake install
 
 The install rake task will symlink the appropriate files in `.dotfiles` to your
 home directory. Everything is configured and tweaked within `~/.dotfiles`,
@@ -60,6 +75,30 @@ though.
 
 The main file you'll want to change right off the bat is `zsh/zshrc.symlink`,
 which sets up a few paths that'll be different on your particular machine.
+
+### Git
+
+The gitconfig file requires a bit of customization when changing and so
+currently is not automatically symlinked as part of the installation process.
+
+Run the following command to copy a gitconfig template:
+
+    cd ~/code/dotfiles
+    cp git/gitconfig.symlink.myexample git/gitconfig.symlink
+    rake install
+
+Then make the following changes:
+
+- Delete unnecessary comments.
+- Update user.email.
+- Set credential.helper based on operating system.
+
+### OS X
+
+Install all Homebrew CLI applications specified in the Brewfile by running:
+
+    brew update # Initialize empty git repository.
+    brew bundle
 
 ## topical
 
@@ -101,22 +140,7 @@ bubble bath.
 - If you install the excellent [rvm](http://rvm.beginrescueend.com) to manage
   multiple rubies, your current branch will show up in the prompt. Bonus.
 
-## bugs
-
-I want this to work for everyone; that means when you clone it down it should
-work for you even though you may not have `rvm` installed, for example. That
-said, I do use this as *my* dotfiles, so there's a good chance I may break
-something if I forget to make a check for a dependency.
-
-If you're brand-new to the project and run into any blockers, please
-[open an issue](https://github.com/holman/dotfiles/issues) on this repository
-and I'd love to get it fixed for you!
-
 ## thanks
 
-I forked [Ryan Bates](http://github.com/ryanb)' excellent
-[dotfiles](http://github.com/ryanb/dotfiles) for a couple years before the
-weight of my changes and tweaks inspired me to finally roll my own. But Ryan's
-dotfiles were an easy way to get into bash customization, and then to jump ship
-to zsh a bit later. A decent amount of the code in these dotfiles stem or are
-inspired from Ryan's original project.
+Originally forked from and inspired by [Zash Holman's
+dotfiles](https://github.com/holman/dotfiles).
