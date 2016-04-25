@@ -43,6 +43,7 @@
   br = branch -rvv
   c = commit
   ca = commit --amend
+  can = commit --amend --no-edit
   co = checkout
   current-branch = !git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
   d = diff
@@ -58,6 +59,7 @@
   st = stash
   stl = stash list
   stp = stash pop
+  sta = stash apply
 
 # [alias]
 #   head            = !git l -1
