@@ -1,6 +1,7 @@
 tap 'homebrew/bundle'
 brew 'ctags'
 brew 'git'
+brew 'mobile-shell'
 brew 'rbenv'
 brew 'rbenv-ctags'
 brew 'rbenv-default-gems'
