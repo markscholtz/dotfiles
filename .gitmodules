@@ -127,3 +127,6 @@
 [submodule "vim/vim.symlink/bundle/tsuquyomi"]
 	path = vim/vim.symlink/bundle/tsuquyomi
 	url = https://github.com/Quramy/tsuquyomi
+[submodule "vim/vim.symlink/bundle/obsession"]
+	path = vim/vim.symlink/bundle/obsession
+	url = https://github.com/tpope/vim-obsession
