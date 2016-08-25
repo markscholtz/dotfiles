@@ -187,8 +187,11 @@ source ~/.localvimrc
 " Key Mappings - Plugin Specific {
 
   " Nerdtree {
-    " Shortcut for commands
+    " Toggle NERDTree visibility
     nnoremap <silent> <LocalLeader>n :NERDTreeToggle<CR>
+
+    " Find the current file in NERDTree
+    nnoremap <silent> <LocalLeader>l :NERDTreeFind<CR>
   " }
 
   " Powerline {
