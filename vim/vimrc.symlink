@@ -318,38 +318,42 @@ source ~/.localvimrc
       let g:solarized_contrast = "high"
   " }
 
-    " Vroom {
-        let g:vroom_use_vimux = 1
-    " }
+  " Vroom {
+      let g:vroom_use_vimux = 1
+  " }
 
-    " UltiSnips {
-        let g:UltiSnipsExpandTrigger = "<c-k>"
-        let g:UltiSnipsListSnippets = "<c-l>"
-        " let g:UltiSnipsJumpForwardTrigger = "<M-j>"
-        " let g:UltiSnipsJumpBackwardTrigger = "<M-k>"
-    " }
+  " UltiSnips {
+      let g:UltiSnipsExpandTrigger = "<c-k>"
+      let g:UltiSnipsListSnippets = "<c-l>"
+      " let g:UltiSnipsJumpForwardTrigger = "<M-j>"
+      " let g:UltiSnipsJumpBackwardTrigger = "<M-k>"
+  " }
 
-    " Ack {
-        let g:ackprg = 'ag --nogroup --nocolor --column'
-    " }
+  " Ack {
+      let g:ackprg = 'ag --nogroup --nocolor --column'
+  " }
 
-    " CtrlP {
-        let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-              \ --ignore .git
-              \ --ignore .svn
-              \ --ignore .hg
-              \ --ignore .DS_Store
-              \ --ignore "**/*.pyc"
-              \ --ignore .git5_specs
-              \ --ignore review
-              \ -g ""'
-    " }
+  " CtrlP {
+      let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+            \ --ignore .git
+            \ --ignore .svn
+            \ --ignore .hg
+            \ --ignore .DS_Store
+            \ --ignore "**/*.pyc"
+            \ --ignore .git5_specs
+            \ --ignore review
+            \ -g ""'
+  " }
 
-    " YouCompleteMe {
-        " let g:ycm_auto_trigger = 0
-        " let g:ycm_key_list_select_completion = []
-        " let g:ycm_key_list_previous_completion = []
-    " }
+  " YouCompleteMe {
+      " let g:ycm_auto_trigger = 0
+      " let g:ycm_key_list_select_completion = []
+      " let g:ycm_key_list_previous_completion = []
+  " }
+
+  " Syntastic {
+      let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute", "is not recognized!","discarding unexpected"]
+  " }
 
 " }
 
