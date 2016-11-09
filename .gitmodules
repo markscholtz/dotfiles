@@ -130,3 +130,6 @@
 [submodule "vim/vim.symlink/bundle/obsession"]
 	path = vim/vim.symlink/bundle/obsession
 	url = https://github.com/tpope/vim-obsession
+[submodule "vim/vim.symlink/bundle/vim-javascript"]
+	path = vim/vim.symlink/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
