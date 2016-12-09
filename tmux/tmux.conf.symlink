@@ -19,7 +19,7 @@ set -g default-terminal "screen-256color"
 # Specify zsh as the default shell via $SHELL.
 set -g default-shell "$SHELL"
 # Increase scrollback history size (default is 2000)
-set -g history-limit 10000
+set -g history-limit 100000
 # Resize window to the largest attached screen
 set-window-option -g aggressive-resize on
 
