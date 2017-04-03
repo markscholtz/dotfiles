@@ -1,23 +1,23 @@
-echo "zshrc ..."
-
 # setopt XTRACE VERBOSE
 
-# source every .zsh file in this rep
+# Source every .zsh file in this repository.
+for config_file ($ZSH/**/*.zsh) echo $config_file
 for config_file ($ZSH/**/*.zsh) source $config_file
 
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
+# Use .localrc for private dotfile configs that are excluded from this public,
+# versioned repository.
 if [[ -a ~/.localrc ]]
 then
   source ~/.localrc
+  # Source every .zsh file in the local repository.
+  for config_file ($ZSHLOCAL/**/*.zsh) source $config_file
 fi
 
-# initialize autocomplete here, otherwise functions won't be loaded
+# Initialize autocomplete here, otherwise functions won't be loaded.
 autoload -U compinit
 compinit
 
-# load every completion after autocomplete loads
+# Load every completion after autocomplete loads.
 for config_file ($ZSH/**/completion.sh(N)) source $config_file
 
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
-
