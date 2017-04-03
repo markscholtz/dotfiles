@@ -1,7 +1,10 @@
 # setopt XTRACE VERBOSE
 
+# Source path file first so that any subsequent config files sourced below can
+# safely rely upon executables located in non-default locations.
+source $ZSH/system/path.zsh.explicit
+
 # Source every .zsh file in this repository.
-for config_file ($ZSH/**/*.zsh) echo $config_file
 for config_file ($ZSH/**/*.zsh) source $config_file
 
 # Use .localrc for private dotfile configs that are excluded from this public,
