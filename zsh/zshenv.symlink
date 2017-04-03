@@ -1,13 +1,7 @@
-# Add any setup to zshenv that needs to be global and applied to all
-# shells.
-echo "zshenv ..."
+# Add any setup to zshenv that needs to be global and applied to all shells.
 
-echo "before sourching all the .zsh files"
-echo path-show
-# shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/code/dotfiles
-echo "after sourching all the .zsh files"
-echo path-show
+# Shortcut to this dotfiles path is $ZSH.
+export ZSH=$HOME/code/github/dotfiles
 
 if [[ -a ~/.localzshenv ]]
 then
