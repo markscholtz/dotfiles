@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# bootstrap installs things.
+# Bootstrap dotfiles.
 
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
@@ -140,7 +140,7 @@ install_dotfiles () {
 setup_gitconfig
 install_dotfiles
 
-# If we're on a Mac, let's install and setup homebrew.
+# If on a Mac, install and setup Homebrew.
 if [ "$(uname -s)" == "Darwin" ]
 then
   info "installing dependencies"
