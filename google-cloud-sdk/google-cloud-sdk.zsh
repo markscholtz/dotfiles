@@ -1,8 +1,11 @@
-# The next line updates PATH for the Google Cloud SDK.
-source $HOME/code/google-cloud-sdk/path.zsh.inc
+export GOOGLE_CLOUD_SDK=$HOME/code/github/google-cloud-sdk
 
-# The next line enables zsh completion for gcloud.
-source $HOME/code/google-cloud-sdk/completion.zsh.inc
+if [ -d "$GOOGLE_CLOUD_SDK" ]; then
+  # Update PATH for the Google Cloud SDK.
+  source $GOOGLE_CLOUD_SDK/path.zsh.inc
 
-alias goapp=$HOME/code/google-cloud-sdk/platform/google_appengine/goapp
+  # Enable zsh completion for gcloud.
+  source $GOOGLE_CLOUD_SDK/completion.zsh.inc
 
+  alias goapp=$GOOGLE_CLOUD_SDK/platform/google_appengine/goapp
+fi
