@@ -1,0 +1,67 @@
+# Local/private config goes in the local include file.
+[include]
+  path = ~/.gitconfig.local
+
+[core]
+  editor = /usr/bin/vim
+  excludesfile = ~/.cvsignore
+
+[user]
+  name = Mark Scholtz
+  email = markscholtz@gmail.com
+
+[push]
+  default = current
+
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[alias]
+  a = add
+  b = branch
+  ba = branch -avv
+  bc = !git current-branch
+  bl = branch -lvv
+  br = branch -rvv
+  c = commit
+  ca = commit --amend
+  can = commit --amend --no-edit
+  co = checkout
+  current-branch = !git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
+  d = diff
+  f = fetch
+  l = log --pretty=oneline --abbrev-commit --graph --decorate
+  ll = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
+  m = merge
+  mom = merge origin/master
+  pl = pull
+  ps = push
+  pob = "!f() { git push -u ${1:-origin} `git symbolic-ref HEAD`; }; f"
+  s = status
+  st = stash
+  stl = stash list
+  stp = stash pop
+  sta = stash apply
+
+[credential]
+  helper = cache --timeout=86400
+
+[merge]
+  tool = splice
+
+[mergetool "splice"]
+  cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+  trustExitCode = true
