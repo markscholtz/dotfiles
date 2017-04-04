@@ -1,26 +1,41 @@
 # setopt XTRACE VERBOSE
 
-# Source path file first so that any subsequent config files sourced below can
-# safely rely upon executables located in non-default locations.
-source $ZSH/system/path.zsh.explicit
+# Your project folder that we can `c [tab]` to directories in this folder. This
+# is made possible by the _c function in zsh/functions.
+export PROJECTS=~/code
 
-# Source every .zsh file in this repository.
-for config_file ($ZSH/**/*.zsh) source $config_file
-
-# Use .localrc for private dotfile configs that are excluded from this public,
-# versioned repository.
+# Stash your environment variables in ~/.localrc. This means they'll stay out
+# of your main dotfiles repository (which may be public, like this one), but
+# you'll have access to them in your scripts.
 if [[ -a ~/.localrc ]]
 then
   source ~/.localrc
-  # Source every .zsh file in the local repository.
-  for config_file ($ZSHLOCAL/**/*.zsh) source $config_file
 fi
+
+# Find all zsh files in the repository.
+typeset -U config_files
+config_files=($ZSH/**/*.zsh)
+
+# Load the path files.
+for file in ${(M)config_files:#*/path.zsh}
+do
+  source $file
+done
+
+# Load everything but the path and completion files.
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+do
+  source $file
+done
 
 # Initialize autocomplete here, otherwise functions won't be loaded.
 autoload -U compinit
 compinit
 
-# Load every completion after autocomplete loads.
-for config_file ($ZSH/**/completion.sh(N)) source $config_file
+# load every completion after autocomplete loads.
+for file in ${(M)config_files:#*/completion.zsh}
+do
+  source $file
+done
 
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
+unset config_files
