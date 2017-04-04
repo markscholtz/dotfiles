@@ -19,6 +19,7 @@ brew 'youtube-dl'
 brew 'zsh'
 
 cask 'atom'
+cask 'caffeine'
 cask 'google-chrome'
 cask 'mosh'
 cask 'whatsapp'
