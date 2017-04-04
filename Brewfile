@@ -20,6 +20,7 @@ brew 'zsh'
 
 cask 'atom'
 cask 'caffeine'
+cask 'dropbox'
 cask 'google-chrome'
 cask 'mosh'
 cask 'whatsapp'
