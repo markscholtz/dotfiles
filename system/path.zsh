@@ -8,7 +8,6 @@ PATH="$HOME/bin:$PATH"
 PATH="$ZSH/bin:$PATH"
 PATH="/usr/local/heroku/bin:$PATH"
 PATH="$HOME/local/bin:$PATH"
-PATH="$HOME/homebrew/bin:$PATH"
 
 # Append
 PATH="$PATH:/usr/local/mysql/bin"
