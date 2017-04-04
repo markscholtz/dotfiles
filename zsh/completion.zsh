@@ -1,4 +1,4 @@
-fpath=(~/code/dotfiles/zsh/zsh-completions/src $fpath)
+fpath=($ZSH/zsh-completions/src $fpath)
 
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
