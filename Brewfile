@@ -1,4 +1,7 @@
+cask_args appdir: '/Applications'
+
 tap 'homebrew/bundle'
+
 brew 'ctags'
 brew 'git'
 brew 'mobile-shell'
@@ -14,3 +17,6 @@ brew 'tmux'
 brew 'vim'
 brew 'youtube-dl'
 brew 'zsh'
+
+cask 'atom'
+cask 'google-chrome'
