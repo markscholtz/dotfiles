@@ -20,3 +20,5 @@ brew 'zsh'
 
 cask 'atom'
 cask 'google-chrome'
+cask 'mosh'
+cask 'whatsapp'
