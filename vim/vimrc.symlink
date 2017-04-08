@@ -8,7 +8,9 @@
 
 set nocompatible " must be first line
 
-source ~/.localvimrc
+if filereadable(expand("~/.localvimrc"))
+  source ~/.localvimrc
+endif
 
 " Setup Bundle Support (pathogen plugin) {
     runtime bundle/pathogen/autoload/pathogen.vim
