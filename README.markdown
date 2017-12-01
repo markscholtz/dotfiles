@@ -18,6 +18,15 @@ From tpope's vim-pathogen README:
 
 ### Submodules
 
+#### Adding Vim plugins using Pathogen
+
+To add a new submodule, run the following command where the first argument to
+`add` is the url locating the submodule to install and the second argument is
+the location to install it.
+
+    # git submodule add <submodule_url> <destination>
+    git submodule add https://github.com/leafgarland/typescript-vim vim/vim.symlink/bundle/typescript-vim
+
 #### Initializing submodules
 
 When first installing dotfiles on a new machine run the following to initialize submodules:
