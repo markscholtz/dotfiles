@@ -133,3 +133,6 @@
 [submodule "vim/vim.symlink/bundle/vim-javascript"]
 	path = vim/vim.symlink/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
+[submodule "vim/vim.symlink/bundle/fzf"]
+	path = vim/vim.symlink/bundle/fzf
+	url = https://github.com/junegunn/fzf.vim.git

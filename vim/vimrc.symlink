@@ -384,3 +384,4 @@ endif
     " }
 " }
 
+set rtp+=~/.fzf
