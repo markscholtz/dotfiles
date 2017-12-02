@@ -29,7 +29,9 @@ the location to install it.
 
 #### Initializing submodules
 
-When first installing dotfiles on a new machine run the following to initialize submodules:
+When first installing dotfiles on a new machine — or if a new submodule was
+added to the remote from another machine —run the following to initialize
+submodules:
 
     git submodule update --init --recursive
 
