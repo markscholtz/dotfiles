@@ -34,7 +34,6 @@ endif
     set spellfile=~/.vim/spell/en.utf-8.add         " spell checking off
     set visualbell                                  " don't beep
     set noerrorbells                                " don't beep
-    set mouse=a                                     " enable the mouse in vim
     set splitbelow                                  " make window splitting feel more natural
     set splitright                                  " make window splitting feel more natural
 
