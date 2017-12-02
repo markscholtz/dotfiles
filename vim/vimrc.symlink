@@ -343,18 +343,6 @@ endif
       let g:ackprg = 'ag --nogroup --nocolor --column'
   " }
 
-  " CtrlP {
-      let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-            \ --ignore .git
-            \ --ignore .svn
-            \ --ignore .hg
-            \ --ignore .DS_Store
-            \ --ignore "**/*.pyc"
-            \ --ignore .git5_specs
-            \ --ignore review
-            \ -g ""'
-  " }
-
   " YouCompleteMe {
       " let g:ycm_auto_trigger = 0
       " let g:ycm_key_list_select_completion = []
