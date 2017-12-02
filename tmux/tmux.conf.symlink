@@ -14,8 +14,10 @@ set -g pane-base-index 1
 # -----------------------------------------------------------------------------
 # Highlight active window
 set-window-option -g window-status-current-bg magenta
-# Make tmux look good
-set -g default-terminal "screen-256color"
+# Set default terminal to xterm and enable its "terminal capability" with "Tc".
+# See https://sunaku.github.io/tmux-24bit-color.html#__usage__ for more info.
+set -g default-terminal "xterm"
+set-option -ga terminal-overrides ",xterm:Tc"
 # Specify zsh as the default shell via $SHELL.
 set -g default-shell "$SHELL"
 # Increase scrollback history size (default is 2000)

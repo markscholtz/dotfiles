@@ -136,3 +136,6 @@
 [submodule "vim/vim.symlink/bundle/fzf"]
 	path = vim/vim.symlink/bundle/fzf
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "vim/vim.symlink/bundle/vim-solarized8"]
+	path = vim/vim.symlink/bundle/vim-solarized8
+	url = https://github.com/lifepillar/vim-solarized8.git

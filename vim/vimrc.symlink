@@ -77,7 +77,16 @@ endif
 " }
 
 " Vim UI {
-    set t_Co=256    " enable 256 colours in the terminal
+
+    " Set up dark solarized color scheme using true-color (24-bit color).
+    " This will only work if using a terminal supporting true-color.
+    " See https://github.com/lifepillar/vim-solarized8 for details.
+    set termguicolors
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set background=dark
+    color solarized8
+
     set showmode    " display the current mode
 
     set cursorline  " highlight current line
@@ -319,11 +328,6 @@ endif
       let NERDTreeWinSize = 40
   " }
 
-  " Solarized {
-      let g:solarized_visibility = "high"
-      let g:solarized_contrast = "high"
-  " }
-
   " Vroom {
       let g:vroom_use_vimux = 1
   " }
@@ -377,8 +381,6 @@ endif
 " GUI Settings {
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
-      set background=dark
-      color solarized
       set anti                              " antialias font
       set guioptions-=T                     " remove the toolbar
       set guioptions-=L                     " turn off left scrollbar
@@ -386,9 +388,6 @@ endif
       "set guioptions+=rb                    " turn on right and horizontal scrollbars
       set lines=50                           " 50 lines of text instead of 24,
       set columns=200                       " 200 columns
-    else
-      set background=dark
-      color solarized
     endif
 
     " Version specific settings {
