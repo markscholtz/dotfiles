@@ -4,6 +4,7 @@ tap 'homebrew/bundle'
 tap 'caskroom/versions'
 
 brew 'ctags'
+brew 'fzf'
 brew 'git'
 brew 'mobile-shell'
 brew 'mosh'

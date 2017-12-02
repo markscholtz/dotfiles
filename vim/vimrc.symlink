@@ -365,7 +365,12 @@ endif
 
   " FZF — https://github.com/junegunn/fzf {
       " This is required to load the basic vim plugin that comes with fzf.
-      set runtimepath+=~/.fzf
+      if isdirectory(expand("~/.fzf")) " Installed locally using git
+        set runtimepath+=~/.fzf
+      endif
+      if isdirectory(expand("/usr/local/opt/fzf")) " Installed with Homebrew.
+        set runtimepath+=/usr/local/opt/fzf
+      endif
   " }
 
 " }
