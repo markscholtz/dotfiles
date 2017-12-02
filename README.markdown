@@ -44,6 +44,17 @@ To update the git submodules that I've used to organize vim plugins run the foll
 
 After updating the submodules make sure to check in the updated commit references.
 
+#### Updating submodules — after fetching remote changes
+
+When performing a fetch of the remote repository results in updated submodules
+— where each submodule's directory is marked as "modified" with a "(new
+commits)" annotation after the directory name — run the following command to
+update submodules to their remote states:
+
+  ```
+  git submodule update
+  ```
+
 ## todo
 
 * Update the README below: this is from the original forked repo
