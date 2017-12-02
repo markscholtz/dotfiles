@@ -56,6 +56,15 @@ update submodules to their remote states:
   ```
   git submodule update
   ```
+#### Removing submodules
+
+To remove a submodule run the following commands — as outlined in [this
+answer](https://stackoverflow.com/a/29850245) on Stack Overflow:
+
+  ```
+  git submodule deinit <submodule_path_without_trailing_slash>
+  git rm <submodule_path_without_trailing_slash>
+  ```
 
 ## todo
 
