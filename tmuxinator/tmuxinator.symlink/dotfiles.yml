@@ -2,7 +2,7 @@
 # you can make as many tabs as you wish...
 
 project_name: dotfiles
-project_root: ~/code/dotfiles
+project_root: ~/code/github/dotfiles
 windows:
   - zsh: # Empty, will just run zsh.
   - zsh-scholtzie: cd ~/code/scholtzie-dotfiles # Empty, will just run zsh.
