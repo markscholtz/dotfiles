@@ -79,9 +79,6 @@
 [submodule "vim/vim.symlink/bundle/vroom"]
 	path = vim/vim.symlink/bundle/vroom
 	url = https://github.com/skalnik/vim-vroom.git
-[submodule "vim-dispatch"]
-	path = vim-dispatch
-	url = https://github.com/tpope/vim-dispatch.git
 [submodule "vim/vim.symlink/bundle/dispatch"]
 	path = vim/vim.symlink/bundle/dispatch
 	url = https://github.com/tpope/vim-dispatch.git
