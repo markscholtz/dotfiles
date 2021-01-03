@@ -5,6 +5,6 @@ project_name: dotfiles
 project_root: ~/code/github/dotfiles
 windows:
   - zsh: # Empty, will just run zsh.
-  - vim: vim
+  - vim: vim -S Session.vim
   - git: tig
 
