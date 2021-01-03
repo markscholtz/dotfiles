@@ -5,6 +5,7 @@
 .tissues
 *.swp
 *.rbc
+*Session.vim
 
 # Ignore all tag files.
 tags
