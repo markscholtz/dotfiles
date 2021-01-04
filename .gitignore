@@ -1,4 +1,4 @@
 .DS_Store
-git/gitconfig.local.symlink
+git/gitconfig.local
 vim/vim.symlink/.netrwhist
 vim/vim.symlink/tmp

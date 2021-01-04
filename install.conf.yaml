@@ -5,29 +5,29 @@
 - clean: ['~', '~/.config']
 
 - link:
-    ~/.bash_profile: bash/bash_profile.symlink
-    ~/.bashrc: bash/bashrc.symlink
-    ~/.colordiffrc: colordiff/colordiffrc.symlink
+    ~/.bash_profile: bash/bash_profile
+    ~/.bashrc: bash/bashrc
+    ~/.colordiffrc: colordiff/colordiffrc
     ~/.config/nvim: nvim
-    ~/.cvsignore: git/cvsignore.symlink
-    ~/.editrc: system/editrc.symlink
-    ~/.gemrc: ruby/gemrc.symlink
-    ~/.gitconfig.local: git/gitconfig.local.symlink
-    ~/.gitconfig: git/gitconfig.symlink
-    ~/.inputrc: system/inputrc.symlink
-    ~/.irbrc: ruby/irbrc.symlink
-    ~/.mpdconf: mpd/mpdconf.symlink
-    ~/.my.cnf: mysql/my.cnf.symlink
-    ~/.pryrc: pry/pryrc.symlink
-    ~/.tigrc: tig/tigrc.symlink
-    ~/.tmux-osx.conf: tmux/tmux-osx.conf.symlink
-    ~/.tmux.conf: tmux/tmux.conf.symlink
-    ~/.tmuxinator: tmuxinator/tmuxinator.symlink
-    ~/.toprc: top/toprc.symlink
-    ~/.vim: vim/vim.symlink
-    ~/.vimrc: vim/vimrc.symlink
-    ~/.zshenv: zsh/zshenv.symlink
-    ~/.zshrc: zsh/zshrc.symlink
+    ~/.cvsignore: git/cvsignore
+    ~/.editrc: system/editrc
+    ~/.gemrc: ruby/gemrc
+    ~/.gitconfig.local: git/gitconfig.local
+    ~/.gitconfig: git/gitconfig
+    ~/.inputrc: system/inputrc
+    ~/.irbrc: ruby/irbrc
+    ~/.mpdconf: mpd/mpdconf
+    ~/.my.cnf: mysql/my.cnf
+    ~/.pryrc: pry/pryrc
+    ~/.tigrc: tig/tigrc
+    ~/.tmux-osx.conf: tmux/tmux-osx.conf
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmuxinator: tmuxinator/tmuxinator
+    ~/.toprc: top/toprc
+    ~/.vim: vim/vim
+    ~/.vimrc: vim/vimrc
+    ~/.zshenv: zsh/zshenv
+    ~/.zshrc: zsh/zshrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
