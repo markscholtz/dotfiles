@@ -1,0 +1,33 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~', '~/.config']
+
+- link:
+    ~/.bash_profile: bash/bash_profile.symlink
+    ~/.bashrc: bash/bashrc.symlink
+    ~/.colordiffrc: colordiff/colordiffrc.symlink
+    ~/.config/nvim: nvim
+    ~/.cvsignore: git/cvsignore.symlink
+    ~/.editrc: system/editrc.symlink
+    ~/.gemrc: ruby/gemrc.symlink
+    ~/.gitconfig.local: git/gitconfig.local.symlink
+    ~/.gitconfig: git/gitconfig.symlink
+    ~/.inputrc: system/inputrc.symlink
+    ~/.irbrc: ruby/irbrc.symlink
+    ~/.mpdconf: mpd/mpdconf.symlink
+    ~/.my.cnf: mysql/my.cnf.symlink
+    ~/.pryrc: pry/pryrc.symlink
+    ~/.tigrc: tig/tigrc.symlink
+    ~/.tmux-osx.conf: tmux/tmux-osx.conf.symlink
+    ~/.tmux.conf: tmux/tmux.conf.symlink
+    ~/.tmuxinator: tmuxinator/tmuxinator.symlink
+    ~/.toprc: top/toprc.symlink
+    ~/.vim: vim/vim.symlink
+    ~/.vimrc: vim/vimrc.symlink
+    ~/.zshenv: zsh/zshenv.symlink
+    ~/.zshrc: zsh/zshrc.symlink
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
