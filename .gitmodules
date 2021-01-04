@@ -127,3 +127,7 @@
 [submodule "vim/vim.symlink/bundle/vim-solarized8"]
 	path = vim/vim.symlink/bundle/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8.git
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+	ignore = dirty
