@@ -32,3 +32,8 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [./macos/macos, Set macOS defaults]
+  - description: Install homebrew formulas
+    command: bash -c "cd macos && brew bundle --no-upgrade"
+    stdin: true
+    stdout: true
+    stderr: true
