@@ -1,4 +1,5 @@
 .DS_Store
 git/gitconfig.local
-vim/vim.symlink/.netrwhist
-vim/vim.symlink/tmp
+vim/vim/.netrwhist
+vim/vim/tmp
+vim/vim/pack/minpac
