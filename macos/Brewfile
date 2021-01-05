@@ -23,7 +23,6 @@ brew 'vim'
 brew 'youtube-dl'
 brew 'zsh'
 
-cask 'atom'
 cask 'caffeine'
 cask 'dash'
 cask 'dropbox'
