@@ -3,11 +3,6 @@
 # Shortcut to this dotfiles path is $ZSH.
 export ZSH=$HOME/code/github/dotfiles
 
-if [[ -a ~/.localzshenv ]]
-then
-  source ~/.localzshenv
-fi
-
 # Specify search paths for functions.
 fpath=($ZSH/zsh/functions $fpath)
 
@@ -60,3 +55,8 @@ bindkey '^F' history-incremental-search-forward
 # http://askubuntu.com/questions/441744/pressing-enter-produces-m-instead-of-a-newline
 # for more information.
 stty icrnl
+
+# Local overrides.
+if [ -f ~/.zshenv_local ]; then
+  source ~/.zshenv_local
+fi
