@@ -1,2 +1,20 @@
+# The libedit library is similar to readline—a library used to make interactive
+# editing work in many command line tools like bash—and is configured via
+# ~/.editrc.
+
 # Enable vi keybindings in irb and pry when readline is not available
-# bind -v # comment this out to enable tab completion, but lose vim keybindings
+
+# Use vi mode.
+bind -v
+
+# Tab to complete.
+bind \\t rl_complete
+
+# Reverse search through history.
+bind "^R" em-inc-search-prev
+
+# Alternative to ESC.
+bind "jk" vi-command-mode
+
+# Clear the screen.
+bind "^L" ed-clear-screen
