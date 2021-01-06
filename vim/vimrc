@@ -444,7 +444,7 @@ set nocompatible " must be first line
     " }
 " }
 
-" Local overrides
+" Local overrides.
   let $LOCALFILE=expand("~/.vimrc_local")
   if filereadable($LOCALFILE)
       source $LOCALFILE
