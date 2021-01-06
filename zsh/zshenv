@@ -56,3 +56,7 @@ bindkey '^?' backward-delete-char
 bindkey '^R' history-incremental-search-backward
 bindkey '^F' history-incremental-search-forward
 
+# Make sure enter key behaves when interacting with interactive programs. See
+# http://askubuntu.com/questions/441744/pressing-enter-produces-m-instead-of-a-newline
+# for more information.
+stty icrnl
