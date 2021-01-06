@@ -1,8 +1,107 @@
-require "rubygems"
-require "awesome_print"
+# Pry Config
+#----------------------------------------------------------------------------
+Pry.config.editor = "vim"
 
-Pry.print = proc { |output, value| output.puts value.ai }
+# If in bundler, break out, so awesome print doesn't have to be in Gemfile
+#----------------------------------------------------------------------------
+if defined?(::Bundler) and File.exist?(ENV['GEM_HOME'])
+  $LOAD_PATH.concat Dir.glob("#{ENV['GEM_HOME']}/gems/*/lib")
+end
 
-Pry.commands.alias_command 'c', 'continue'
-Pry.commands.alias_command 's', 'step'
-Pry.commands.alias_command 'n', 'next'
+# Pry Default Logger
+#----------------------------------------------------------------------------
+
+# Use awesome_print with Pry
+# Taken from: https://github.com/pry/pry/wiki/FAQ#wiki-awesome_print
+begin
+  require 'awesome_print'
+  Pry.config.print = proc { |output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output) }
+rescue LoadError => err
+  puts "no awesome_print :("
+end
+
+if defined?(Rails)
+  if defined?(ActiveRecord)
+    ActiveRecord::Base.logger = Logger.new(STDOUT)
+    ActiveRecord::Base.clear_active_connections!
+    ActiveSupport::Cache::Store.logger = Logger.new(STDOUT)
+  end
+end
+
+command_set = Pry::CommandSet.new do
+
+  command "clear" do
+    system 'clear'
+    if defined?(Rails)
+      output.puts "Rails Environment: " + Rails.env
+    end
+  end
+
+  # command "sql", "Send sql over AR." do |query|
+  #   if ENV['RAILS_ENV'] || defined?(Rails)
+  #     ap ActiveRecord::Base.connection.select_all(query)
+  #   else
+  #     ap "Pry did not require the environment, try `pconsole`"
+  #   end
+  # end
+
+  # command "reload", "Reload specified source file or previously reloaded file by default." do |file|
+  #   unless file
+  #     if $wl__reload_file
+  #       load($wl__reload_file)
+  #       next
+  #     end
+
+  #     files = Dir["*.rb"]
+  #     case files.size
+  #     when 0
+  #       output.puts "No Ruby files in #{Dir.pwd}"
+  #       next
+  #     when 1
+  #       file = files.first
+  #     else
+  #       output.puts "Many Ruby files in #{Dir.pwd}:"
+  #       output.puts files.map{|f| "\t#{f}"}
+  #       next
+  #     end
+  #   end
+
+  #   file = file.sub(/(\.rb)?$/, '.rb')
+  #   $wl__reload_file = file
+  #   load(file)
+  # end
+
+  # alias_command "r", "reload"
+
+end
+
+Pry.config.commands.import command_set
+
+
+# If in bundler, break out, so awesome print and other gems don't have to be in Gemfile
+#----------------------------------------------------------------------------
+# if defined?(Bundler)
+#   Gem.post_reset_hooks.reject! { |hook| hook.source_location.first =~ %r{/bundler/} }
+#   Gem::Specification.reset
+#   load 'rubygems/custom_require.rb'
+# end
+
+
+# # Load Pry Gems (awesome_print, pry-doc, pry-nav)
+# #----------------------------------------------------------------------------
+# %w[awesome_print pry-doc pry-nav pry-remote].each  do |gem|
+#   begin
+#     puts "requiring #{gem}"
+#     require gem
+#     if gem == 'pry-nav'
+#       Pry.commands.alias_command 'c', 'continue'
+#       Pry.commands.alias_command 's', 'step'
+#       Pry.commands.alias_command 'n', 'next'
+#     end
+#     if gem == 'awesome_print'
+#       Pry.config.print = proc { |output, value| output.puts "=> #{ap value}" }
+#     end
+#   rescue LoadError
+#     warn "Unable to load #{gem}"
+#   end
+# end
