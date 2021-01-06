@@ -19,6 +19,7 @@
     ~/.mpdconf: mpd/mpdconf
     ~/.my.cnf: mysql/my.cnf
     ~/.pryrc: pry/pryrc
+    ~/.rspec: ruby/rspec
     ~/.tigrc: tig/tigrc
     ~/.tmux-osx.conf: tmux/tmux-osx.conf
     ~/.tmux.conf: tmux/tmux.conf
