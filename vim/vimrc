@@ -401,12 +401,16 @@ set nocompatible " must be first line
       " let g:ycm_auto_trigger = 0
       " let g:ycm_key_list_select_completion = []
       " let g:ycm_key_list_previous_completion = []
+      nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+      if !exists("g:ycm_semantic_triggers")
+        let g:ycm_semantic_triggers = {}
+      endif
+      let g:ycm_semantic_triggers['typescript'] = ['.']
   " }
 
   " Syntastic {
       let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute", "is not recognized!","discarding unexpected"]
   " }
-
 
   " FZF — https://github.com/junegunn/fzf {
       " This is required to load the basic vim plugin that comes with fzf.
