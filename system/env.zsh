@@ -14,9 +14,6 @@ export EDITOR='vim'
 
 export DISPLAY=:16.0
 
-# your project folder so that we can `c [tab]` to
-export PROJECTS=~/code
-
 # Add colours to ls output (OS X)
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
