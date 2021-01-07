@@ -12,7 +12,6 @@
     ~/.cvsignore: git/cvsignore
     ~/.editrc: system/editrc
     ~/.gemrc: ruby/gemrc
-    ~/.gitconfig.local: git/gitconfig.local
     ~/.gitconfig: git/gitconfig
     ~/.inputrc: system/inputrc
     ~/.irbrc: ruby/irbrc
@@ -21,9 +20,7 @@
     ~/.pryrc: pry/pryrc
     ~/.rspec: ruby/rspec
     ~/.tigrc: tig/tigrc
-    ~/.tmux-osx.conf: tmux/tmux-osx.conf
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.tmuxinator: tmuxinator/tmuxinator
     ~/.toprc: top/toprc
     ~/.vim: vim/vim
     ~/.vimrc: vim/vimrc
@@ -32,9 +29,3 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [./macos/macos, Set macOS defaults]
-  - description: Install homebrew formulas
-    command: bash -c "cd macos && brew bundle --no-upgrade"
-    stdin: true
-    stdout: true
-    stderr: true
