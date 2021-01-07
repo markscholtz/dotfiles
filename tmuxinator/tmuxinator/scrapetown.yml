@@ -1,9 +1,0 @@
-# ~/.tmuxinator/scrapetown.yml
-# you can make as many tabs as you wish...
-
-project_name: scrapetown
-project_root: ~/code/scrapetown
-windows:
-  - shell: #empty, will just run plain zsh
-  - vim: vim
-  - git: tig
