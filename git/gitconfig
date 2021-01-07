@@ -1,13 +1,5 @@
-# Local/private config goes in the local include file.
-[include]
-  path = ~/.gitconfig.local
-
 [core]
   excludesfile = ~/.cvsignore
-
-[user]
-  name = Mark Scholtz
-  email = markscholtz@hey.com
 
 [push]
   default = current
@@ -69,3 +61,7 @@
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
+
+# Local overrides.
+[include]
+  path = ~/.gitconfig_local
