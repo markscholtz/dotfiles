@@ -23,6 +23,7 @@ set nocompatible " must be first line
     call minpac#add('MarcWeber/vim-addon-mw-utils')
     call minpac#add('Quramy/tsuquyomi')
     call minpac#add('SirVer/ultisnips')
+    call minpac#add('altercation/vim-colors-solarized')
     call minpac#add('bling/vim-airline')
     call minpac#add('godlygeek/tabular')
     call minpac#add('honza/vim-snippets')
