@@ -41,11 +41,11 @@
   pl = pull
   ps = push
   pob = "!f() { git push -u ${1:-origin} `git symbolic-ref HEAD`; }; f"
-  s = status
-  st = stash
-  stl = stash list
-  stp = stash pop
-  sta = stash apply
+  st = status
+  sh = stash
+  shl = stash list
+  shp = stash pop
+  sha = stash apply
 
 [credential]
   helper = cache --timeout=86400
