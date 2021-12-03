@@ -288,6 +288,7 @@ set nocompatible " must be first line
 
   " fzf.vim — https://github.com/junegunn/fzf.vim {
     nnoremap <silent> <LocalLeader>ff :Files<CR>
+    nnoremap <silent> <LocalLeader>fb :Buffers<CR>
     nnoremap <silent> <LocalLeader>fs :Snippets<CR>
     nnoremap <silent> <LocalLeader>fw :Windows<CR>
     nnoremap <silent> <LocalLeader>fl :Lines<CR>
