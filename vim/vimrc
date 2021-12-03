@@ -377,9 +377,10 @@ set nocompatible " must be first line
   " }
 
   " NERDTree {
-      let NERDTreeChDirMode = 2
+      let NERDTreeBookmarksSort = 0
+      let NERDTreeChDirMode = 0
+      let NERDTreeShowBookmarks = 1
       let NERDTreeShowLineNumbers = 1
-      " let NERDTreeHijackNetrw = 0
       let NERDTreeWinSize = 40
   " }
 
