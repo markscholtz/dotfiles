@@ -22,7 +22,7 @@
     ~/.tigrc: tig/tigrc
     ~/.tmux.conf: tmux/tmux.conf
     ~/.toprc: top/toprc
-    ~/.tripboard: tripboard-repo
+    ~/.tripboard: bin/tripboard
     ~/.vim: vim/vim
     ~/.vimrc: vim/vimrc
     ~/.zshenv: zsh/zshenv

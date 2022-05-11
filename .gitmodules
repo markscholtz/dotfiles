@@ -9,5 +9,5 @@
 	path = vim/vim/pack/minpac/opt/minpac
 	url = https://github.com/k-takata/minpac.git
 [submodule "tripboard-repo"]
-	path = tripboard-repo
+	path = bin/tripboard
 	url = https://github.com/rjungemann/tripboard.git
