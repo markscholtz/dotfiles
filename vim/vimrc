@@ -46,7 +46,7 @@ set nocompatible " must be first line
     call minpac#add('tpope/vim-commentary')
     call minpac#add('tpope/vim-dispatch')
     call minpac#add('tpope/vim-endwise')
-    call minpac#add('tpope/vim-fugitive', {'rev': 'v3.2'})
+    call minpac#add('tpope/vim-fugitive', {'rev': 'v3.6'})
     call minpac#add('tpope/vim-markdown')
     call minpac#add('tpope/vim-obsession')
     call minpac#add('tpope/vim-rails')
