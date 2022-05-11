@@ -1,6 +1,9 @@
 # gem-ctags must be at the top of the file so that all gems get indexed.
 gem-ctags
+
+# Other gems
 bcat
 gem-browse
+neovim
 rails
 tmuxinator
