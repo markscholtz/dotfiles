@@ -11,6 +11,7 @@
     ~/.config/nvim: nvim
     ~/.cvsignore: git/cvsignore
     ~/.editrc: system/editrc
+    ~/.fzf: bin/fzf
     ~/.gemrc: ruby/gemrc
     ~/.gitconfig: git/gitconfig
     ~/.inputrc: system/inputrc
@@ -30,6 +31,10 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+
+  # Install fzf, but skip config file updates as fzf is already configured (see
+  # https://github.com/junegunn/fzf#using-git for more details).
+  - [bin/fzf/install --no-update-rc, Installing fzf]
 
   # Install rbenv using the "Basic GitHub Checkout" approach (but automated
   # with rbenv-installer) rather than using a package manager. See

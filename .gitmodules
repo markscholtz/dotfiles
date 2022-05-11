@@ -11,3 +11,6 @@
 [submodule "tripboard-repo"]
 	path = bin/tripboard
 	url = https://github.com/rjungemann/tripboard.git
+[submodule "bin/fzf"]
+	path = bin/fzf
+	url = https://github.com/junegunn/fzf.git
