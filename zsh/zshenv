@@ -1,7 +1,7 @@
 # Add any setup to zshenv that needs to be global and applied to all shells.
 
 # Shortcut to this dotfiles path is $ZSH.
-export ZSH=$HOME/code/github/dotfiles
+export ZSH=$HOME/code/personal/dotfiles
 
 # Specify search paths for functions.
 fpath=($ZSH/zsh/functions $fpath)
