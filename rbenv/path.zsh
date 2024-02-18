@@ -8,4 +8,4 @@ fi
 
 export RBENV_ROOT
 
-PATH="${RBENV_ROOT}/bin:${PATH}"
+path=("${RBENV_ROOT}/bin" $path)

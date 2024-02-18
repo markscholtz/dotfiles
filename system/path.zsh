@@ -1,16 +1,9 @@
-# Prepend
-PATH=".:$PATH"
-PATH="bin:$PATH"
-PATH="/usr/local/bin:$PATH"
-PATH="/usr/local/sbin:$PATH"
-PATH="$HOME/.sfs:$PATH"
-PATH="$HOME/bin:$PATH"
-PATH="$ZSH/bin:$PATH"
-PATH="/usr/local/heroku/bin:$PATH"
-PATH="$HOME/local/bin:$PATH"
+# Prevent ZSH from adding duplicates to $PATH. See
+# https://stackoverflow.com/a/13060475 for details.
+typeset -aU path
 
-# Append
-PATH="$PATH:/usr/local/mysql/bin"
+# Prepend
+path=("$ZSH/bin" $path)
 
 # Man paths
 MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"

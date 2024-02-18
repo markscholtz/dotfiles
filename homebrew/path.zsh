@@ -1,1 +1,1 @@
-PATH="$HOME/homebrew/bin:$PATH"
+path=("$HOME/homebrew/bin" $path)
