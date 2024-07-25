@@ -36,7 +36,6 @@ set nocompatible " must be first line
     call minpac#add('mileszs/ack.vim')
     call minpac#add('nelstrom/vim-markdown-folding')
     call minpac#add('pangloss/vim-javascript')
-    call minpac#add('preservim/nerdtree', {'rev': '6.9.11'})
     call minpac#add('scrooloose/syntastic')
     call minpac#add('sjl/gundo.vim')
     call minpac#add('sjl/splice.vim')
@@ -55,6 +54,7 @@ set nocompatible " must be first line
     call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
     call minpac#add('tpope/vim-surround')
     call minpac#add('tpope/vim-unimpaired')
+    call minpac#add('tpope/vim-vinegar')
     call minpac#add('vim-scripts/JSON.vim')
     call minpac#add('vim-scripts/matchit.zip')
     call minpac#add('vim-scripts/taglist.vim')
@@ -247,14 +247,6 @@ set nocompatible " must be first line
 
 " Key Mappings - Plugin Specific {
 
-  " Nerdtree {
-    " Toggle NERDTree visibility
-    nnoremap <silent> <LocalLeader>n :NERDTreeToggle<CR>
-
-    " Find the current file in NERDTree
-    nnoremap <silent> <LocalLeader>l :NERDTreeFind<CR>
-  " }
-
   " Powerline {
     nnoremap <LocalLeader>g :GundoToggle<CR>
   " }
@@ -376,14 +368,6 @@ set nocompatible " must be first line
 
   " Taglist {
       let Tlist_Use_Right_Window = 1
-  " }
-
-  " NERDTree {
-      let NERDTreeBookmarksSort = 0
-      let NERDTreeChDirMode = 0
-      let NERDTreeShowBookmarks = 1
-      let NERDTreeShowLineNumbers = 1
-      let NERDTreeWinSize = 40
   " }
 
   " Vroom {
