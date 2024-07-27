@@ -284,8 +284,8 @@ set nocompatible " must be first line
     nnoremap <silent> <LocalLeader>fs :Snippets<CR>
     nnoremap <silent> <LocalLeader>fw :Windows<CR>
     nnoremap <silent> <LocalLeader>fl :Lines<CR>
-    nnoremap <silent> <LocalLeader>fa :Ag<CR>
-    nnoremap <silent> <LocalLeader>fh :History<CR>
+    nnoremap <silent> <LocalLeader>fr :Rg<CR>
+    nnoremap <silent> <LocalLeader>fh :History:<CR>
   " }
 
 " }
