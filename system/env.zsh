@@ -1,7 +1,7 @@
 if [[ `uname` == 'Darwin' ]]; then
   # Make sure that the correct readline is used when installing new packages (OS X)
-  export LDFLAGS=-L/usr/local/Cellar/readline/6.2.1/lib
-  export CPPFLAGS=-I/usr/local/Cellar/readline/6.2.1/include
+  export LDFLAGS=-L/opt/homebrew/Cellar/readline/8.2.7/lib
+  export CPPFLAGS=-I/opt/homebrew/Cellar/readline/8.2.7/include
 fi
 
 if [[ -n $SSH_CONNECTION ]]; then

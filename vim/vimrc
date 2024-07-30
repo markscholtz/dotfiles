@@ -399,12 +399,20 @@ set nocompatible " must be first line
   " }
 
   " FZF — https://github.com/junegunn/fzf {
-      " This is required to load the basic vim plugin that comes with fzf.
-      if isdirectory(expand("~/.fzf")) " Installed locally using git
+      " Setting `runtimepath` is required to load the basic vim plugin that
+      " comes with fzf.
+
+      " fzf installed locally using git.
+      if isdirectory(expand("~/.fzf"))
         set runtimepath+=~/.fzf
       endif
-      if isdirectory(expand("/usr/local/opt/fzf")) " Installed with Homebrew.
+      " fzf installed with Homebrew (Intel).
+      if isdirectory(expand("/usr/local/opt/fzf"))
         set runtimepath+=/usr/local/opt/fzf
+      endif
+      " fzf installed with Homebrew (Apple Silicon).
+      if isdirectory(expand("/opt/homebrew/opt/fzf"))
+        set runtimepath+=/opt/homebrew/opt/fzf
       endif
   " }
 
