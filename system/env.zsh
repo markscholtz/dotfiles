@@ -10,7 +10,9 @@ else
   export PS1='%3~$(git_info_for_prompt)%# '
 fi
 
-export EDITOR='vim'
+# Use Neovim as "preferred editor"
+export VISUAL='nvim'
+export EDITOR='nvim'
 
 export DISPLAY=:16.0
 
