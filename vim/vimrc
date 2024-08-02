@@ -113,7 +113,19 @@ set nocompatible " must be first line
 " Filetype Specifics {
 
     if has('autocmd')
-      autocmd FileType help set number relativenumber
+
+      augroup set_relativenumber
+        autocmd!
+        autocmd FileType help set number relativenumber
+        autocmd FileType netrw set number relativenumber
+      augroup END
+
+      augroup netrw_mappings
+        " netrw has it's own mapping for <C-L> (mapped to <Plug>NetrwRefresh)
+        " that conflicts with my often used mapping for this to enable easy
+        " switching between windows.
+        autocmd filetype netrw nnoremap <buffer> <C-L> <C-W>l
+      augroup END
 
       augroup set_filetypes
         autocmd!
