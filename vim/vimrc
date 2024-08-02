@@ -53,6 +53,7 @@ set nocompatible " must be first line
     call minpac#add('vim-scripts/matchit.zip')
     call minpac#add('vim-scripts/taglist.vim')
     call minpac#add('zsh-users/zsh-completions')
+    call minpac#add('tpope/vim-rhubarb')
 
     " Plugins that are only loaded on demand by calling `:packadd {package}`
     call minpac#add('SirVer/ultisnips', {'type': 'opt'})
