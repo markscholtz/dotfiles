@@ -3,6 +3,7 @@
 typeset -aU path
 
 # Prepend
+path=("$HOME/.local/bin" $path)
 path=("$ZSH/bin" $path)
 
 # Man paths
