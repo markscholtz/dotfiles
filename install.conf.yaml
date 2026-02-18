@@ -36,11 +36,16 @@
   # https://github.com/junegunn/fzf#using-git for more details).
   - [bin/fzf/install --no-update-rc, Installing fzf]
 
-  # Install rbenv using the "Basic GitHub Checkout" approach (but automated
-  # with rbenv-installer) rather than using a package manager. See
-  # https://github.com/rbenv/rbenv#basic-github-checkout. and
-  # https://github.com/rbenv/rbenv-installer for details.
-  - [curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash, Installing rbenv]
+  # # Install rbenv using the "Basic GitHub Checkout" approach (but automated
+  # # with rbenv-installer) rather than using a package manager. See
+  # # https://github.com/rbenv/rbenv#basic-github-checkout. and
+  # # https://github.com/rbenv/rbenv-installer for details.
+  # # - [curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash, Installing rbenv]
+  # -
+  #   command: curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+  #   description: Installing rbenv
+  #   stdout: true
+  #   stderr: true
 
   # Check rbenv's health to ensure installation was good.
   -
@@ -50,20 +55,20 @@
     stdout: true
     stderr: true
 
-  # Install a modern version of ruby to use by default.
-  -
-    command: rbenv install --skip-existing 3.1.2; rbenv global 3.1.2
-    description: Install most recent stable version of Ruby (run `rbenv install list` for available versions)
-    stdin: true
-    stdout: true
-    stderr: true
+  # # Install additional rbenv plugins (ruby-build installed by rbenv-installer).
+  # -
+  #   command: echo $RBENV_ROOT
+  #   description: echo $RBENV_ROOT
+  #   stdin: true
+  #   stdout: true
+  #   stderr: true
+  # - [git clone https://github.com/tpope/rbenv-ctags.git $(rbenv root)/plugins/rbenv-ctags, Installing rbenv plugin: rbenv-ctags]
+  # - [git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems, Installing rbenv plugin: rbenv-default-gems]
 
-  # Install additional rbenv plugins (ruby-build installed by rbenv-installer).
-  -
-    command: echo $RBENV_ROOT
-    description: echo $RBENV_ROOT
-    stdin: true
-    stdout: true
-    stderr: true
-  - [git clone https://github.com/tpope/rbenv-ctags.git $(rbenv root)/plugins/rbenv-ctags, Installing rbenv plugin: rbenv-ctags]
-  - [git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems, Installing rbenv plugin: rbenv-default-gems]
+  # # Install a modern version of ruby to use by default.
+  # -
+  #   command: rbenv install --skip-existing 3.3.0; rbenv global 3.3.0
+  #   description: Install most recent stable version of Ruby (run `rbenv install --list` for available versions)
+  #   stdin: true
+  #   stdout: true
+  #   stderr: true

@@ -1,5 +1,7 @@
 # RBENV_ROOT is exported in ./path.zsh
 
+eval "$(rbenv init - zsh)"
+
 if [[ -n "${RBENV_ROOT}" ]]; then
   eval "$($RBENV_ROOT/bin/rbenv init -)"
 
@@ -11,4 +13,3 @@ fi
 
 # If you want sources to be kept after builds, also add (useful on OSX for gdb):
 export RBENV_BUILD_ROOT=${RBENV_ROOT}/sources
-
