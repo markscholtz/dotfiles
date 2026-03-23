@@ -5,8 +5,6 @@
 - clean: ['~', '~/.config']
 
 - link:
-    ~/.bash_profile: bash/bash_profile
-    ~/.bashrc: bash/bashrc
     ~/.colordiffrc: colordiff/colordiffrc
     ~/.config/nvim: nvim
     ~/.cvsignore: git/cvsignore
