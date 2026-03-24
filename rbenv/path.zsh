@@ -1,3 +1,4 @@
+# Detect rbenv installation location and add it to PATH.
 if [[ -e "${HOME}/.rbenv/bin/rbenv" ]]; then
   RBENV_ROOT=$HOME/.rbenv
 elif [[ -e "/opt/homebrew/bin/rbenv" ]]; then
