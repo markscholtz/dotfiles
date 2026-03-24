@@ -14,8 +14,6 @@
     ~/.gitconfig: git/gitconfig
     ~/.inputrc: system/inputrc
     ~/.irbrc: ruby/irbrc
-    ~/.mpdconf: mpd/mpdconf
-    ~/.my.cnf: mysql/my.cnf
     ~/.pryrc: pry/pryrc
     ~/.rspec: ruby/rspec
     ~/.tigrc: tig/tigrc
