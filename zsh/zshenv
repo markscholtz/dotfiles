@@ -19,6 +19,9 @@ setopt CORRECT
 setopt COMPLETE_IN_WORD
 setopt IGNORE_EOF
 
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=7000 # Different from HISTSIZE due to ZSH HIST_EXPIRE_DUPS_FIRST option.
 setopt INC_APPEND_HISTORY # Incrementally append to history file, rather than replace it.
 setopt HIST_VERIFY # Verify repeated command when using !!.
 setopt NO_SHARE_HISTORY # Do not share history between sessions.

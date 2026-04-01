@@ -57,9 +57,5 @@ LS_COLORS+="or=${green}:"                             # Symbolic Link pointing t
 LS_COLORS+="pi=${orange};${black_background}:"        # Fifo file
 LS_COLORS+="so=${green};${black_background}:"         # Socket file
 
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=7000 # Different from HISTSIZE due to ZSH HIST_EXPIRE_DUPS_FIRST option.
-
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
 
