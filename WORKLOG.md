@@ -1,0 +1,118 @@
+# Vim/Neovim Configuration Worklog
+
+## Overview
+
+The current setup is "vim-first": `nvim/init.vim` sources `~/.vimrc` and adds two
+nvim-specific settings. Both `vim` and `vi` are aliased to Neovim 0.10.0. The config
+is entirely Vimscript with minpac as the plugin manager.
+
+---
+
+## 1. Remove dead plugins
+
+These are installed but unused, redundant, or broken:
+
+- [ ] `altercation/vim-colors-solarized` — not used; config uses `color solarized8` (lifepillar)
+- [ ] `vim-scripts/matchit.zip` — bundled with Vim 8+ and Neovim natively
+- [ ] `tlib_vim` + `vim-addon-mw-utils` — dependencies for vim-snipmate, which isn't installed; UltiSnips doesn't need them
+- [ ] `kana/vim-vspec` — Vim plugin testing framework; not needed unless actively developing Vim plugins
+- [ ] `zsh-users/zsh-completions` — ZSH plugin, not a Vim plugin; does nothing in vim/pack
+- [ ] `vim-scripts/JSON.vim` — Vim and Neovim have built-in JSON syntax highlighting
+- [ ] `sjl/gundo.vim` — requires Python 2 (EOL); maintained fork is mundo.vim, or use nvim's built-in `:earlier`/`:later`
+- [ ] `vim-scripts/taglist.vim` — unmaintained since ~2007
+
+After removing from `PackInit()`, run `:PackClean` to delete the plugin directories.
+
+## 2. Remove stale/orphaned configuration from vimrc
+
+- [ ] **Vimux mappings (~lines 189-211):** 7 keybindings for a plugin that isn't installed
+- [ ] **YouCompleteMe config (~lines 261-269):** YCM isn't installed; `<leader>jd` mapping and `g:ycm_semantic_triggers` are dead
+- [ ] **Ack config (~line 257):** `let g:ackprg = 'ag ...'` — neither ack.vim nor ag.vim is installed
+- [ ] **Powerline config (~lines 244-248):** commented-out Powerline settings
+- [ ] **Powerline section header (line 185):** says "Powerline" but actually configures Gundo — rename to "Gundo"
+- [ ] **DistractionFreeWriting function (~lines 225-234):** uses MacVim-specific GUI commands (`fullscreen`, `fuoptions`) that have no effect in terminal Neovim
+
+## 3. Clean up tracked files that shouldn't be in git
+
+- [ ] Delete `vim/vim/.netrwhist` (auto-generated netrw history from 2013 with stale Ruby 1.9.3 paths)
+- [ ] Add `vim/vim/.netrwhist` to `.gitignore`
+- [ ] Add `vim/vim/tmp/` to `.gitignore` (contains 356 backup files and 151 swap files — runtime artifacts, not config)
+- [ ] Delete `vim/vim/ftplugin/nerdtree.vim` (NERDTree is not installed)
+
+## 4. Remove redundant settings (already Neovim defaults)
+
+These can be removed from vimrc since nvim always has them enabled:
+
+- [ ] `set nocompatible`
+- [ ] `set encoding=utf-8`
+- [ ] `set hidden` (also, the comment says "Not sure what this does")
+- [ ] `set incsearch`
+- [ ] `set hlsearch`
+- [ ] `set wildmenu`
+- [ ] `set backspace=indent,eol,start`
+- [ ] `set autoindent`
+- [ ] `set history=1000` (nvim default is 10000)
+- [ ] `set laststatus=2` (overridden to 3 in init.vim)
+- [ ] `filetype plugin indent on`
+- [ ] `syntax enable`
+- [ ] `t_8f`/`t_8b` terminal escape sequences (Vim-specific, ignored by Neovim)
+- [ ] Tmux cursor shape sequences (nvim handles cursor shape natively via `guicursor`)
+
+If you want to keep Vim compatibility, guard these with `if !has('nvim')` instead of removing them.
+
+## 5. Review Tripboard
+
+`tripboard.vim` uses Ruby to shuttle text between Vim and a file for cross-pane clipboard sharing. Modern alternatives exist:
+
+- [ ] Evaluate replacing with `set clipboard=unnamedplus` (pbcopy works out of the box on macOS)
+- [ ] Consider nvim 0.10's built-in OSC 52 clipboard support
+- [ ] Consider tmux's `set -g set-clipboard on`
+- [ ] Resolve confusing duplicate clipboard mappings: tripboard maps `<Leader>C`/`<Leader>V`, vimrc maps `<LocalLeader>c`/`<LocalLeader>v`
+
+## 6. Modernize plugins (larger effort)
+
+Plugins that have much better modern alternatives in the Neovim ecosystem:
+
+| Current | Replacement | Benefit |
+|---|---|---|
+| `syntastic` | nvim built-in LSP + diagnostics | Async diagnostics, go-to-definition, rename, etc. |
+| `vim-airline` | `lualine.nvim` or `mini.statusline` | Faster, better nvim integration |
+| `tsuquyomi` + `typescript-vim` | `nvim-lspconfig` + tsserver | Native LSP client, no Vimscript wrapper |
+| `pangloss/vim-javascript` | `nvim-treesitter` | Better highlighting, indentation, text objects for all languages |
+| `tpope/vim-markdown` | `nvim-treesitter` | Same |
+| `junegunn/fzf.vim` | `telescope.nvim` | LSP integration, extensibility (lower priority — fzf still works fine) |
+| `minpac` | `lazy.nvim` | Lazy-loading, lockfile, UI, de facto standard |
+
+### Plugins worth keeping
+
+- `tpope/vim-fugitive` + `vim-rhubarb` — still excellent
+- `tpope/vim-surround` — classic (or switch to `mini.surround`)
+- `tpope/vim-repeat`
+- `tpope/vim-unimpaired`
+- `tpope/vim-vinegar`
+- `tpope/vim-endwise`
+- `tpope/vim-dispatch`
+- `tpope/vim-obsession`
+- `godlygeek/tabular`
+
+### Ruby/Rails plugins to evaluate
+
+Drop if no longer doing Rails work:
+
+- [ ] `tpope/vim-rails`
+- [ ] `tpope/vim-rake`
+- [ ] `tpope/vim-bundler`
+- [ ] `skalnik/vim-vroom`
+- [ ] `markscholtz/vim-folding-rspec`
+
+## 7. Migrate to Lua-based nvim config (largest effort)
+
+If pursuing a full modernization:
+
+1. Switch to `lazy.nvim` as plugin manager
+2. Add `nvim-lspconfig` for language server support
+3. Add `nvim-treesitter` for syntax highlighting and text objects
+4. Migrate vimrc settings to `init.lua`
+5. Keep tpope essentials (they work fine from Lua configs)
+
+This can be done incrementally — start with items 1-4 above, then layer in LSP and Treesitter.
