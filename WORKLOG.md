@@ -12,14 +12,14 @@ is entirely Vimscript with minpac as the plugin manager.
 
 These are installed but unused, redundant, or broken:
 
-- [ ] `altercation/vim-colors-solarized` — not used; config uses `color solarized8` (lifepillar)
-- [ ] `vim-scripts/matchit.zip` — bundled with Vim 8+ and Neovim natively
-- [ ] `tlib_vim` + `vim-addon-mw-utils` — dependencies for vim-snipmate, which isn't installed; UltiSnips doesn't need them
-- [ ] `kana/vim-vspec` — Vim plugin testing framework; not needed unless actively developing Vim plugins
-- [ ] `zsh-users/zsh-completions` — ZSH plugin, not a Vim plugin; does nothing in vim/pack
-- [ ] `vim-scripts/JSON.vim` — Vim and Neovim have built-in JSON syntax highlighting
-- [ ] `sjl/gundo.vim` — requires Python 2 (EOL); maintained fork is mundo.vim, or use nvim's built-in `:earlier`/`:later`
-- [ ] `vim-scripts/taglist.vim` — unmaintained since ~2007
+- [x] `altercation/vim-colors-solarized` — not used; config uses `color solarized8` (lifepillar)
+- [x] `vim-scripts/matchit.zip` — bundled with Vim 8+ and Neovim natively
+- [x] `tlib_vim` + `vim-addon-mw-utils` — dependencies for vim-snipmate, which isn't installed; UltiSnips doesn't need them
+- [x] `kana/vim-vspec` — Vim plugin testing framework; not needed unless actively developing Vim plugins
+- [x] `zsh-users/zsh-completions` — ZSH plugin, not a Vim plugin; does nothing in vim/pack
+- [x] `vim-scripts/JSON.vim` — Vim and Neovim have built-in JSON syntax highlighting
+- [x] `sjl/gundo.vim` — requires Python 2 (EOL); maintained fork is mundo.vim, or use nvim's built-in `:earlier`/`:later`
+- [x] `vim-scripts/taglist.vim` — unmaintained since ~2007
 
 After removing from `PackInit()`, run `:PackClean` to delete the plugin directories.
 
@@ -116,3 +116,20 @@ If pursuing a full modernization:
 5. Keep tpope essentials (they work fine from Lua configs)
 
 This can be done incrementally — start with items 1-4 above, then layer in LSP and Treesitter.
+
+---
+
+## Log
+
+### 2026-04-01
+
+Completed step 1: removed 9 dead plugins from `PackInit()` in vimrc and ran
+`:PackClean` to delete the plugin directories. The removed plugins were:
+altercation/vim-colors-solarized, vim-scripts/matchit.zip, tlib_vim,
+vim-addon-mw-utils, kana/vim-vspec, zsh-users/zsh-completions,
+vim-scripts/JSON.vim, sjl/gundo.vim, and vim-scripts/taglist.vim.
+
+Notably, zsh-users/zsh-completions was never intentionally a Vim plugin — it got
+swept into the bundle directory and carried over during the Pathogen-to-minpac
+migration in 2021. It's properly managed as a git submodule under
+`zsh/zsh-completions/` and loaded via `zsh/completion.zsh`.
