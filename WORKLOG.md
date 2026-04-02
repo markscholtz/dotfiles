@@ -34,10 +34,10 @@ After removing from `PackInit()`, run `:PackClean` to delete the plugin director
 
 ## 3. Clean up tracked files that shouldn't be in git
 
-- [ ] Delete `vim/vim/.netrwhist` (auto-generated netrw history from 2013 with stale Ruby 1.9.3 paths)
-- [ ] Add `vim/vim/.netrwhist` to `.gitignore`
-- [ ] Add `vim/vim/tmp/` to `.gitignore` (contains 356 backup files and 151 swap files — runtime artifacts, not config)
-- [ ] Delete `vim/vim/ftplugin/nerdtree.vim` (NERDTree is not installed)
+- [x] Delete `vim/vim/.netrwhist` (auto-generated netrw history from 2013 with stale Ruby 1.9.3 paths)
+- [x] Add `vim/vim/.netrwhist` to `.gitignore`
+- [x] Add `vim/vim/tmp/` to `.gitignore` (contains 356 backup files and 151 swap files — runtime artifacts, not config)
+- [x] Delete `vim/vim/ftplugin/nerdtree.vim` (NERDTree is not installed)
 
 ## 4. Remove redundant settings (already Neovim defaults)
 
@@ -143,3 +143,9 @@ Completed step 2: removed stale/orphaned configuration from vimrc. Removed:
 - Taglist mapping and config (Taglist removed in step 1)
 - Vroom's `g:vroom_use_vimux = 1` setting (Vimux not installed, so this was dead)
 - DistractionFreeWriting function (used MacVim GUI commands — `fuoptions`, `fullscreen` — that are no-ops in terminal Neovim; had a TODO saying it needed work)
+
+Completed step 3: clean up tracked files that shouldn't be in git. Found that
+`.netrwhist` and `vim/vim/tmp/` were already gitignored and untracked (likely
+from a previous cleanup), so those items needed no action. Deleted
+`vim/vim/ftplugin/nerdtree.vim` — a one-line ftplugin (`setlocal relativenumber`)
+for NERDTree, which isn't installed.
