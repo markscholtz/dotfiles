@@ -25,12 +25,12 @@ After removing from `PackInit()`, run `:PackClean` to delete the plugin director
 
 ## 2. Remove stale/orphaned configuration from vimrc
 
-- [ ] **Vimux mappings (~lines 189-211):** 7 keybindings for a plugin that isn't installed
-- [ ] **YouCompleteMe config (~lines 261-269):** YCM isn't installed; `<leader>jd` mapping and `g:ycm_semantic_triggers` are dead
-- [ ] **Ack config (~line 257):** `let g:ackprg = 'ag ...'` — neither ack.vim nor ag.vim is installed
-- [ ] **Powerline config (~lines 244-248):** commented-out Powerline settings
-- [ ] **Powerline section header (line 185):** says "Powerline" but actually configures Gundo — rename to "Gundo"
-- [ ] **DistractionFreeWriting function (~lines 225-234):** uses MacVim-specific GUI commands (`fullscreen`, `fuoptions`) that have no effect in terminal Neovim
+- [x] **Vimux mappings (~lines 189-211):** 7 keybindings for a plugin that isn't installed
+- [x] **YouCompleteMe config (~lines 261-269):** YCM isn't installed; `<leader>jd` mapping and `g:ycm_semantic_triggers` are dead
+- [x] **Ack config (~line 257):** `let g:ackprg = 'ag ...'` — neither ack.vim nor ag.vim is installed
+- [x] **Powerline config (~lines 244-248):** commented-out Powerline settings
+- [x] **Powerline section header (line 185):** says "Powerline" but actually configures Gundo — rename to "Gundo"
+- [x] **DistractionFreeWriting function (~lines 225-234):** uses MacVim-specific GUI commands (`fullscreen`, `fuoptions`) that have no effect in terminal Neovim
 
 ## 3. Clean up tracked files that shouldn't be in git
 
@@ -133,3 +133,13 @@ Notably, zsh-users/zsh-completions was never intentionally a Vim plugin — it g
 swept into the bundle directory and carried over during the Pathogen-to-minpac
 migration in 2021. It's properly managed as a git submodule under
 `zsh/zsh-completions/` and loaded via `zsh/completion.zsh`.
+
+Completed step 2: removed stale/orphaned configuration from vimrc. Removed:
+- Vimux mappings (7 keybindings for a plugin that was never installed)
+- YouCompleteMe config (GoToDefinition mapping + semantic triggers — YCM not installed)
+- Ack config (`g:ackprg` pointing at `ag` — neither ack.vim nor ag.vim installed, using fzf `:Rg` instead)
+- Commented-out Powerline config (using vim-airline, not Powerline)
+- "Powerline" section that actually contained a Gundo mapping (Gundo removed in step 1)
+- Taglist mapping and config (Taglist removed in step 1)
+- Vroom's `g:vroom_use_vimux = 1` setting (Vimux not installed, so this was dead)
+- DistractionFreeWriting function (used MacVim GUI commands — `fuoptions`, `fullscreen` — that are no-ops in terminal Neovim; had a TODO saying it needed work)

@@ -251,37 +251,6 @@ set nocompatible " must be first line
 
 " Key Mappings - Plugin Specific {
 
-  " Powerline {
-    nnoremap <LocalLeader>g :GundoToggle<CR>
-  " }
-
-  " Taglist {
-    nnoremap <silent> <LocalLeader>t :TlistToggle<CR>
-  " }
-
-  " Vimux {
-    " Run the current file with rspec
-    noremap <LocalLeader>rr :call RunVimTmuxCommand("clear; bundle exec rspec " . bufname("%"))<CR>
-
-    " Prompt for a command to run
-    noremap <LocalLeader>rp :PromptVimTmuxCommand<CR>
-
-    " Run last command executed by RunVimTmuxCommand
-    noremap <LocalLeader>rl :RunLastVimTmuxCommand<CR>
-
-    " Inspect runner pane
-    noremap <LocalLeader>ri :InspectVimTmuxRunner<CR>
-
-    " Close vim tmux runner opened by RunVimTmuxCommand
-    noremap <LocalLeader>rq :CloseVimTmuxRunner<CR>
-
-    " Close all other tmux panes in current window
-    noremap <LocalLeader>rx :CloseVimTmuxPanes<CR>
-
-    " Interrupt any command running in the runner pane
-    noremap <LocalLeader>rs :InterruptVimTmuxRunner<CR>
-  " }
-
   " fzf.vim — https://github.com/junegunn/fzf.vim {
     nnoremap <silent> <LocalLeader>ff :Files<CR>
     nnoremap <silent> <LocalLeader>fb :Buffers<CR>
@@ -307,19 +276,6 @@ set nocompatible " must be first line
         " Clean up: restore previous search history, and cursor position
         let @/=_s
         call cursor(l, c)
-    endfunction
-
-    " This is my attempt at making a distraction free writing zone
-    " TODO: It could do with some work
-    noremap ,df :call DistractionFreeWriting ()<CR>
-    function! DistractionFreeWriting ()
-        exec ':set fuoptions='
-        exec ':set fullscreen'
-        exec ':set columns=80'
-        exec ':set guioptions-=r'
-        exec ':set textwidth=76'
-        exec ':set nonumber'
-        exec ':set norelativenumber'
     endfunction
 
     " Show syntax highlighting groups for word under cursor (vimcasts.org: episode #25)
@@ -362,41 +318,11 @@ set nocompatible " must be first line
 
 " Configure Plugins {
 
-  " Powerline {
-      " let g:Powerline_symbols = 'fancy'
-      " let g:Powerline_theme = 'skwp'
-      " let g:Powerline_colorscheme = 'skwp'
-      " call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo') "Add trailing whitespace indicator
-  " }
-
-  " Taglist {
-      let Tlist_Use_Right_Window = 1
-  " }
-
-  " Vroom {
-      let g:vroom_use_vimux = 1
-  " }
-
   " UltiSnips {
       let g:UltiSnipsExpandTrigger = "<c-k>"
       let g:UltiSnipsListSnippets = "<c-l>"
       " let g:UltiSnipsJumpForwardTrigger = "<M-j>"
       " let g:UltiSnipsJumpBackwardTrigger = "<M-k>"
-  " }
-
-  " Ack {
-      let g:ackprg = 'ag --nogroup --nocolor --column'
-  " }
-
-  " YouCompleteMe {
-      " let g:ycm_auto_trigger = 0
-      " let g:ycm_key_list_select_completion = []
-      " let g:ycm_key_list_previous_completion = []
-      nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-      if !exists("g:ycm_semantic_triggers")
-        let g:ycm_semantic_triggers = {}
-      endif
-      let g:ycm_semantic_triggers['typescript'] = ['.']
   " }
 
   " Syntastic {
