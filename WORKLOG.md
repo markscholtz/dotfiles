@@ -39,83 +39,34 @@ After removing from `PackInit()`, run `:PackClean` to delete the plugin director
 - [x] Add `vim/vim/tmp/` to `.gitignore` (contains 356 backup files and 151 swap files — runtime artifacts, not config)
 - [x] Delete `vim/vim/ftplugin/nerdtree.vim` (NERDTree is not installed)
 
-## 4. Remove redundant settings (already Neovim defaults)
+## ~~4. Remove redundant settings (already Neovim defaults)~~ — SKIPPED
 
-These can be removed from vimrc since nvim always has them enabled:
+Skipped — these settings are needed for vim compatibility. The vimrc is being kept
+as-is as a fallback for when vim (not neovim) is needed.
 
-- [ ] `set nocompatible`
-- [ ] `set encoding=utf-8`
-- [ ] `set hidden` (also, the comment says "Not sure what this does")
-- [ ] `set incsearch`
-- [ ] `set hlsearch`
-- [ ] `set wildmenu`
-- [ ] `set backspace=indent,eol,start`
-- [ ] `set autoindent`
-- [ ] `set history=1000` (nvim default is 10000)
-- [ ] `set laststatus=2` (overridden to 3 in init.vim)
-- [ ] `filetype plugin indent on`
-- [ ] `syntax enable`
-- [ ] `t_8f`/`t_8b` terminal escape sequences (Vim-specific, ignored by Neovim)
-- [ ] Tmux cursor shape sequences (nvim handles cursor shape natively via `guicursor`)
+## ~~5. Review Tripboard~~ — DEFERRED
 
-If you want to keep Vim compatibility, guard these with `if !has('nvim')` instead of removing them.
+Deferred — clipboard handling will be addressed as part of the new nvim config.
 
-## 5. Review Tripboard
+## ~~6. Modernize plugins~~ — DEFERRED
 
-`tripboard.vim` uses Ruby to shuttle text between Vim and a file for cross-pane clipboard sharing. Modern alternatives exist:
+Deferred — plugin modernization is absorbed into the full nvim migration below.
 
-- [ ] Evaluate replacing with `set clipboard=unnamedplus` (pbcopy works out of the box on macOS)
-- [ ] Consider nvim 0.10's built-in OSC 52 clipboard support
-- [ ] Consider tmux's `set -g set-clipboard on`
-- [ ] Resolve confusing duplicate clipboard mappings: tripboard maps `<Leader>C`/`<Leader>V`, vimrc maps `<LocalLeader>c`/`<LocalLeader>v`
+## 7. Build new Lua-based nvim config
 
-## 6. Modernize plugins (larger effort)
+The vimrc (cleaned up in steps 1-3) stays as the vim fallback. Neovim gets a fresh
+`init.lua` that no longer sources vimrc.
 
-Plugins that have much better modern alternatives in the Neovim ecosystem:
-
-| Current | Replacement | Benefit |
-|---|---|---|
-| `syntastic` | nvim built-in LSP + diagnostics | Async diagnostics, go-to-definition, rename, etc. |
-| `vim-airline` | `lualine.nvim` or `mini.statusline` | Faster, better nvim integration |
-| `tsuquyomi` + `typescript-vim` | `nvim-lspconfig` + tsserver | Native LSP client, no Vimscript wrapper |
-| `pangloss/vim-javascript` | `nvim-treesitter` | Better highlighting, indentation, text objects for all languages |
-| `tpope/vim-markdown` | `nvim-treesitter` | Same |
-| `junegunn/fzf.vim` | `telescope.nvim` | LSP integration, extensibility (lower priority — fzf still works fine) |
-| `minpac` | `lazy.nvim` | Lazy-loading, lockfile, UI, de facto standard |
-
-### Plugins worth keeping
-
-- `tpope/vim-fugitive` + `vim-rhubarb` — still excellent
-- `tpope/vim-surround` — classic (or switch to `mini.surround`)
-- `tpope/vim-repeat`
-- `tpope/vim-unimpaired`
-- `tpope/vim-vinegar`
-- `tpope/vim-endwise`
-- `tpope/vim-dispatch`
-- `tpope/vim-obsession`
-- `godlygeek/tabular`
-
-### Ruby/Rails plugins to evaluate
-
-Drop if no longer doing Rails work:
-
-- [ ] `tpope/vim-rails`
-- [ ] `tpope/vim-rake`
-- [ ] `tpope/vim-bundler`
-- [ ] `skalnik/vim-vroom`
-- [ ] `markscholtz/vim-folding-rspec`
-
-## 7. Migrate to Lua-based nvim config (largest effort)
-
-If pursuing a full modernization:
-
-1. Switch to `lazy.nvim` as plugin manager
-2. Add `nvim-lspconfig` for language server support
-3. Add `nvim-treesitter` for syntax highlighting and text objects
-4. Migrate vimrc settings to `init.lua`
-5. Keep tpope essentials (they work fine from Lua configs)
-
-This can be done incrementally — start with items 1-4 above, then layer in LSP and Treesitter.
+- [ ] Plan the new config structure
+- [ ] Set up `lazy.nvim` as plugin manager
+- [ ] Migrate core settings (options, keymaps, autocmds) to Lua
+- [ ] Add `nvim-treesitter` for syntax highlighting
+- [ ] Add `nvim-lspconfig` for language server support
+- [ ] Add a modern statusline (`lualine.nvim` or `mini.statusline`)
+- [ ] Set up clipboard (replace tripboard with native nvim clipboard support)
+- [ ] Carry over tpope essentials (fugitive, surround, repeat, unimpaired, etc.)
+- [ ] Evaluate which remaining plugins to keep, replace, or drop
+- [ ] Remove `nvim/init.vim` once `init.lua` is ready
 
 ---
 
@@ -149,3 +100,18 @@ Completed step 3: clean up tracked files that shouldn't be in git. Found that
 from a previous cleanup), so those items needed no action. Deleted
 `vim/vim/ftplugin/nerdtree.vim` — a one-line ftplugin (`setlocal relativenumber`)
 for NERDTree, which isn't installed.
+
+### 2026-04-02
+
+Decision: skip steps 4-6 and jump straight to a full Lua-based nvim modernization
+(step 7). The reasoning:
+
+- Step 4 (remove nvim defaults from vimrc) is counterproductive if the vimrc is
+  being kept as a vim fallback — vim actually *needs* those settings.
+- Step 5 (tripboard) will be solved differently in the new nvim config (native
+  clipboard support).
+- Step 6 (modernize plugins) is absorbed into the new config entirely.
+
+The vimrc is in good shape after steps 1-3 cleaned out dead plugins, stale config,
+and orphaned files. It stays as-is for the rare case vim (not neovim) is needed.
+The new `init.lua` will be built from scratch rather than evolving the vimrc.
