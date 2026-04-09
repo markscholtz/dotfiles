@@ -67,23 +67,13 @@ The vimrc (cleaned up in steps 1-3) stays as the vim fallback. Neovim gets a fre
 nvim/
   aliases.zsh                    # keep as-is
   init.lua                       # entry point (replaces init.vim)
-  lazy-lock.json                 # auto-generated, commit for reproducibility
+  nvim-pack-lock.json            # auto-generated, commit for reproducibility
   lua/
     config/
       options.lua                # vim.opt settings (ported from vimrc)
       keymaps.lua                # non-plugin keymaps
       autocmds.lua               # autocommand groups
-      lazy.lua                   # lazy.nvim bootstrap + setup()
-    plugins/
-      colorscheme.lua            # maxmx03/solarized.nvim
-      treesitter.lua             # nvim-treesitter
-      lsp.lua                    # nvim-lspconfig + mason
-      telescope.lua              # telescope.nvim (replaces fzf.vim)
-      lualine.lua                # lualine.nvim (replaces vim-airline)
-      fugitive.lua               # fugitive + rhubarb
-      editor.lua                 # repeat, unimpaired, vinegar, dispatch, obsession, tabular
-      coding.lua                 # nvim-surround, Comment.nvim, endwise
-      rspec-folding.lua          # markscholtz/vim-folding-rspec
+      plugins.lua                # vim.pack.add() + plugin configuration
 ```
 
 #### Plugin decisions
@@ -113,6 +103,7 @@ vim-scriptease.
 - **Backup/swap/view:** use nvim defaults (`~/.local/state/nvim/`, `~/.local/share/nvim/`) — drop mkdir pattern
 - **Local overrides:** load `~/.config/nvim-local/init.lua` if it exists (matches `~/.vimrc_local` pattern)
 - **Folding:** treesitter foldexpr globally; test interaction with vim-folding-rspec for `_spec.rb` files
+- **Plugin manager:** `vim.pack` (built-in, nvim 0.12+) — no bootstrap needed, replaces lazy.nvim
 
 #### Tasks
 
@@ -120,25 +111,24 @@ vim-scriptease.
 - [x] `config/options.lua` — port vim.opt settings from vimrc
 - [x] `config/keymaps.lua` — port non-plugin keymaps + utility functions
 - [x] `config/autocmds.lua` — port autocommand groups
-- [x] `config/lazy.lua` — bootstrap lazy.nvim
 - [x] `init.lua` — entry point + local override loading
 
-**Phase 2 — Essential plugins (low-config):**
-- [ ] `plugins/colorscheme.lua` — solarized (lazy=false, priority=1000)
-- [ ] `plugins/editor.lua` — repeat, unimpaired, vinegar, dispatch, obsession, tabular
-- [ ] `plugins/fugitive.lua` — fugitive + rhubarb
-- [ ] `plugins/coding.lua` — nvim-surround, Comment.nvim, endwise
+**Phase 2 — Plugins (via `vim.pack`):**
+- [ ] Upgrade Neovim to 0.12+ (`brew upgrade neovim`)
+- [ ] `config/plugins.lua` — vim.pack.add() for all plugins + configuration:
+  - solarized.nvim (colorscheme)
+  - repeat, unimpaired, vinegar, dispatch, obsession, tabular
+  - fugitive + rhubarb
+  - nvim-surround, Comment.nvim, endwise
+  - nvim-treesitter (ensure_installed for used languages)
+  - telescope.nvim + fzf-native (migrated keymaps)
+  - lualine.nvim (solarized theme, minimal sections)
+  - nvim-lspconfig + mason
+  - vim-folding-rspec
 
-**Phase 3 — Plugins with substantial config:**
-- [ ] `plugins/treesitter.lua` — ensure_installed for used languages
-- [ ] `plugins/telescope.lua` — fzf-native extension, migrated keymaps
-- [ ] `plugins/lualine.lua` — solarized theme, minimal sections
-- [ ] `plugins/lsp.lua` — mason + mason-lspconfig + lspconfig
-- [ ] `plugins/rspec-folding.lua`
-
-**Phase 4 — Cutover:**
+**Phase 3 — Cutover:**
 - [ ] Delete `nvim/init.vim.bak`
-- [ ] Commit `lazy-lock.json`
+- [ ] Commit `nvim-pack-lock.json`
 - [ ] Verify end-to-end (colorscheme, keymaps, treesitter, LSP, clipboard, statusline, checkhealth)
 
 ## Move `homebrew/path.zsh` to `dotfiles-local`
@@ -205,7 +195,7 @@ Planned the new Lua-based nvim config structure (step 7). Key decisions:
 
 - **Directory layout:** `nvim/lua/config/` for core settings (options, keymaps, autocmds,
   lazy bootstrap), `nvim/lua/plugins/` for lazy.nvim plugin specs grouped by function.
-- **Plugin manager:** lazy.nvim (replaces minpac for nvim).
+- **Plugin manager:** ~~lazy.nvim~~ → `vim.pack` (built-in, nvim 0.12+; replaces minpac for nvim).
 - **Modern replacements:** treesitter (syntax), nvim-lspconfig + mason (LSP), telescope
   (fuzzy finding), lualine (statusline), nvim-surround, Comment.nvim, solarized.nvim.
 - **Kept as-is:** tpope essentials (fugitive, rhubarb, repeat, unimpaired, vinegar,
@@ -257,6 +247,16 @@ Created the following files:
 
 - **`nvim/lua/plugins/.gitkeep`** — empty placeholder so lazy.nvim doesn't warn about
   a missing plugins directory. Will be replaced by actual plugin specs in Phase 2.
+
+Switched from lazy.nvim to `vim.pack` (Neovim 0.12's built-in package manager).
+Neovim 0.12.1 is available via Homebrew; current install is 0.10.0. The switch
+simplifies the config: no bootstrap code needed, no third-party plugin manager
+dependency. Deleted `config/lazy.lua` and `lua/plugins/` entirely. The `vim.pack.add()`
+calls will go in a new `config/plugins.lua` when we add plugins in Phase 2.
+
+This also collapses the old Phase 2 (low-config plugins) and Phase 3 (substantial
+config plugins) into a single Phase 2, since vim.pack doesn't impose a spec-file-per-
+group convention. All plugins and their configuration will live in `config/plugins.lua`.
 
 ### 2026-04-13
 
