@@ -59,18 +59,87 @@ Deferred — plugin modernization is absorbed into the full nvim migration below
 ### 7. Build new Lua-based nvim config
 
 The vimrc (cleaned up in steps 1-3) stays as the vim fallback. Neovim gets a fresh
-`init.lua` that no longer sources vimrc.
+`init.lua` that no longer sources vimrc. Working branch: `nvim-lua-config`.
 
-- [ ] Plan the new config structure
-- [ ] Set up `lazy.nvim` as plugin manager
-- [ ] Migrate core settings (options, keymaps, autocmds) to Lua
-- [ ] Add `nvim-treesitter` for syntax highlighting
-- [ ] Add `nvim-lspconfig` for language server support
-- [ ] Add a modern statusline (`lualine.nvim` or `mini.statusline`)
-- [ ] Set up clipboard (replace tripboard with native nvim clipboard support)
-- [ ] Carry over tpope essentials (fugitive, surround, repeat, unimpaired, etc.)
-- [ ] Evaluate which remaining plugins to keep, replace, or drop
-- [ ] Remove `nvim/init.vim` once `init.lua` is ready
+#### Directory structure
+
+```
+nvim/
+  aliases.zsh                    # keep as-is
+  init.lua                       # entry point (replaces init.vim)
+  lazy-lock.json                 # auto-generated, commit for reproducibility
+  lua/
+    config/
+      options.lua                # vim.opt settings (ported from vimrc)
+      keymaps.lua                # non-plugin keymaps
+      autocmds.lua               # autocommand groups
+      lazy.lua                   # lazy.nvim bootstrap + setup()
+    plugins/
+      colorscheme.lua            # maxmx03/solarized.nvim
+      treesitter.lua             # nvim-treesitter
+      lsp.lua                    # nvim-lspconfig + mason
+      telescope.lua              # telescope.nvim (replaces fzf.vim)
+      lualine.lua                # lualine.nvim (replaces vim-airline)
+      fugitive.lua               # fugitive + rhubarb
+      editor.lua                 # repeat, unimpaired, vinegar, dispatch, obsession, tabular
+      coding.lua                 # nvim-surround, Comment.nvim, endwise
+      rspec-folding.lua          # markscholtz/vim-folding-rspec
+```
+
+#### Plugin decisions
+
+**Keep (Vimscript, still best-in-class):**
+fugitive, rhubarb, repeat, unimpaired, vinegar, endwise, dispatch, obsession,
+tabular, vim-folding-rspec.
+
+**Replace with Lua equivalents:**
+- vim-solarized8 → `maxmx03/solarized.nvim` (treesitter highlight support)
+- vim-airline → `lualine.nvim` (lighter, solarized theme)
+- syntastic + tsuquyomi → `nvim-lspconfig` + `mason.nvim` (native LSP)
+- vim-javascript, typescript-vim, vim-markdown → `nvim-treesitter`
+- fzf.vim → `telescope.nvim` (Lua ecosystem integration, same keymaps)
+- vim-surround → `nvim-surround` (same cs/ds/ys muscle memory, treesitter-aware)
+- vim-commentary → `Comment.nvim` (treesitter-aware, handles embedded languages)
+
+**Drop:**
+vim-vroom, vim-rails, vim-rake, vim-bundler (add back on demand), ultisnips +
+vim-snippets (nvim 0.10 native snippets + LSP), vim-markdown-folding (treesitter),
+vim-scriptease.
+
+#### Key design decisions
+
+- **Leader:** set both `mapleader` and `maplocalleader` to `","` (vimrc only set localleader)
+- **Clipboard:** `clipboard = "unnamedplus"` unconditionally — nvim 0.10 OSC 52 works through tmux. Drop tripboard keymaps.
+- **Backup/swap/view:** use nvim defaults (`~/.local/state/nvim/`, `~/.local/share/nvim/`) — drop mkdir pattern
+- **Local overrides:** load `~/.config/nvim-local/init.lua` if it exists (matches `~/.vimrc_local` pattern)
+- **Folding:** treesitter foldexpr globally; test interaction with vim-folding-rspec for `_spec.rb` files
+
+#### Tasks
+
+**Phase 1 — Core foundation:**
+- [x] `config/options.lua` — port vim.opt settings from vimrc
+- [x] `config/keymaps.lua` — port non-plugin keymaps + utility functions
+- [x] `config/autocmds.lua` — port autocommand groups
+- [x] `config/lazy.lua` — bootstrap lazy.nvim
+- [x] `init.lua` — entry point + local override loading
+
+**Phase 2 — Essential plugins (low-config):**
+- [ ] `plugins/colorscheme.lua` — solarized (lazy=false, priority=1000)
+- [ ] `plugins/editor.lua` — repeat, unimpaired, vinegar, dispatch, obsession, tabular
+- [ ] `plugins/fugitive.lua` — fugitive + rhubarb
+- [ ] `plugins/coding.lua` — nvim-surround, Comment.nvim, endwise
+
+**Phase 3 — Plugins with substantial config:**
+- [ ] `plugins/treesitter.lua` — ensure_installed for used languages
+- [ ] `plugins/telescope.lua` — fzf-native extension, migrated keymaps
+- [ ] `plugins/lualine.lua` — solarized theme, minimal sections
+- [ ] `plugins/lsp.lua` — mason + mason-lspconfig + lspconfig
+- [ ] `plugins/rspec-folding.lua`
+
+**Phase 4 — Cutover:**
+- [ ] Delete `nvim/init.vim.bak`
+- [ ] Commit `lazy-lock.json`
+- [ ] Verify end-to-end (colorscheme, keymaps, treesitter, LSP, clipboard, statusline, checkhealth)
 
 ## Move `homebrew/path.zsh` to `dotfiles-local`
 
@@ -131,6 +200,63 @@ Decision: skip steps 4-6 and jump straight to a full Lua-based nvim modernizatio
 The vimrc is in good shape after steps 1-3 cleaned out dead plugins, stale config,
 and orphaned files. It stays as-is for the rare case vim (not neovim) is needed.
 The new `init.lua` will be built from scratch rather than evolving the vimrc.
+
+Planned the new Lua-based nvim config structure (step 7). Key decisions:
+
+- **Directory layout:** `nvim/lua/config/` for core settings (options, keymaps, autocmds,
+  lazy bootstrap), `nvim/lua/plugins/` for lazy.nvim plugin specs grouped by function.
+- **Plugin manager:** lazy.nvim (replaces minpac for nvim).
+- **Modern replacements:** treesitter (syntax), nvim-lspconfig + mason (LSP), telescope
+  (fuzzy finding), lualine (statusline), nvim-surround, Comment.nvim, solarized.nvim.
+- **Kept as-is:** tpope essentials (fugitive, rhubarb, repeat, unimpaired, vinegar,
+  endwise, dispatch, obsession), tabular, vim-folding-rspec.
+- **Dropped:** vim-vroom, rails/rake/bundler (add back on demand), ultisnips (nvim 0.10
+  native snippets), vim-markdown-folding (treesitter), vim-scriptease.
+- **Clipboard:** `unnamedplus` unconditionally — nvim 0.10 OSC 52 works through tmux
+  natively, replacing tripboard.
+- **Local overrides:** `~/.config/nvim-local/init.lua` pattern (matches vimrc_local).
+- **Leader key:** set both `mapleader` and `maplocalleader` to `","` — the vimrc only
+  set localleader, but Lua plugins expect `<leader>`.
+
+### 2026-04-08
+
+Completed Phase 1 of step 7: created the Lua-based nvim config foundation.
+
+Renamed `nvim/init.vim` to `nvim/init.vim.bak` — nvim errors if both `init.vim` and
+`init.lua` exist in the same config directory. The backup stays until Phase 4 cutover.
+
+Created the following files:
+
+- **`nvim/init.lua`** — entry point. Sets both leader keys to `,` before any requires
+  (lazy.nvim reads `mapleader` during setup). Loads options, keymaps, autocmds, and
+  lazy.nvim bootstrap in that order. Loads `~/.config/nvim-local/init.lua` via
+  `dofile()` if it exists.
+
+- **`nvim/lua/config/options.lua`** — `vim.opt` settings ported from vimrc. Dropped
+  settings that are nvim defaults (backspace, hlsearch, incsearch, wildmenu, ruler,
+  showcmd, etc.) to keep the file focused on non-default values. Key changes from
+  vimrc: `clipboard=unnamedplus` is now unconditional (no tmux check, no tripboard),
+  and backup/swap/view dirs use nvim defaults instead of custom `~/.vim/tmp/` paths.
+
+- **`nvim/lua/config/keymaps.lua`** — non-plugin keymaps using `vim.keymap.set` with
+  `<cmd>` syntax. Ported: jk escape, window/tab navigation, wrapped-line j/k, fold
+  toggle, C-b increment (tmux workaround), search clear, config edit/source, and
+  trailing whitespace strip. Dropped: tripboard keymaps (clipboard replaces them),
+  C-S-S synstack mapping (treesitter inspect replaces it in Phase 3), fzf keymaps
+  (telescope in Phase 3). Added `:Stab` and `:SynStack` as user commands.
+
+- **`nvim/lua/config/autocmds.lua`** — three augroups ported: `set_relativenumber`
+  (help/netrw get line numbers), `netrw_mappings` (override C-L for window nav),
+  `set_filetypes` (json, less, md, Guardfile, coffee). Fixed a bug in the original
+  vimrc where the `netrw_mappings` group was missing `autocmd!` — the Lua version
+  uses `clear = true` on all groups.
+
+- **`nvim/lua/config/lazy.lua`** — standard lazy.nvim bootstrap. Clones from the
+  stable branch on first launch, prepends to rtp, and calls `setup()` importing
+  from the `plugins/` directory with silent change detection.
+
+- **`nvim/lua/plugins/.gitkeep`** — empty placeholder so lazy.nvim doesn't warn about
+  a missing plugins directory. Will be replaced by actual plugin specs in Phase 2.
 
 ### 2026-04-13
 
