@@ -114,16 +114,16 @@ vim-scriptease.
 - [x] `init.lua` — entry point + local override loading
 
 **Phase 2 — Plugins (via `vim.pack`):**
-- [ ] Upgrade Neovim to 0.12+ (`brew upgrade neovim`)
-- [ ] `config/plugins.lua` — vim.pack.add() for all plugins + configuration:
+- [x] Upgrade Neovim to 0.12+ (`brew upgrade neovim`)
+- [x] `config/plugins.lua` — vim.pack.add() for all plugins + configuration:
   - solarized.nvim (colorscheme)
   - repeat, unimpaired, vinegar, dispatch, obsession, tabular
   - fugitive + rhubarb
   - nvim-surround, Comment.nvim, endwise
-  - nvim-treesitter (ensure_installed for used languages)
+  - nvim-treesitter (install for used languages)
   - telescope.nvim + fzf-native (migrated keymaps)
-  - lualine.nvim (solarized theme, minimal sections)
-  - nvim-lspconfig + mason
+  - lualine.nvim (auto theme, minimal sections)
+  - ~~nvim-lspconfig~~ vim.lsp.config + mason
   - vim-folding-rspec
 
 **Phase 3 — Cutover:**
@@ -257,6 +257,49 @@ calls will go in a new `config/plugins.lua` when we add plugins in Phase 2.
 This also collapses the old Phase 2 (low-config plugins) and Phase 3 (substantial
 config plugins) into a single Phase 2, since vim.pack doesn't impose a spec-file-per-
 group convention. All plugins and their configuration will live in `config/plugins.lua`.
+
+### 2026-04-09
+
+Completed Phase 2 of step 7: created `config/plugins.lua` with all plugin installation
+and configuration. Added `require("config.plugins")` to `init.lua`.
+
+21 plugins installed via a single `vim.pack.add()` call with PackChanged build hooks
+for telescope-fzf-native (`make`) and nvim-treesitter (`TSUpdate`).
+
+Key discoveries during implementation:
+
+- **nvim-treesitter API changed:** the old `require("nvim-treesitter.configs").setup()`
+  module no longer exists. The new API is `require("nvim-treesitter").install({...})`
+  for parser installation. Treesitter highlighting is not enabled globally by default
+  in nvim 0.12 — only lua, markdown, and vimdoc get it via bundled ftplugins. Added a
+  FileType autocmd with `pcall(vim.treesitter.start)` to enable it for all filetypes
+  with an available parser.
+
+- **nvim-lspconfig deprecated:** `require('lspconfig')` framework is deprecated in
+  nvim 0.11+ in favor of the built-in `vim.lsp.config()` + `vim.lsp.enable()`. Switched
+  to the native API. nvim-lspconfig is still needed for its `lsp/` directory which
+  provides default server configurations.
+
+- **tree-sitter CLI required:** nvim-treesitter now shells out to `tree-sitter build`
+  to compile parsers (older versions used cc/gcc directly). The Homebrew `tree-sitter`
+  package is just the C library — the CLI is a separate `tree-sitter-cli` formula.
+  Nvim 0.12 ships bundled parsers for c, lua, markdown, markdown_inline, query, vim,
+  and vimdoc, so those work without the CLI.
+
+Plugin configuration summary:
+- **Colorscheme:** solarized.nvim with `vim.cmd.colorscheme("solarized")`
+- **Telescope:** 5 keymaps migrated from fzf.vim (`,ff` find_files, `,fb` buffers,
+  `,fl` buffer lines, `,fr` live_grep, `,fh` command history). Dropped `,fs` (snippets)
+  and `,fw` (windows).
+- **Lualine:** auto theme detection (picks up solarized), `showmode = false` to avoid
+  duplicate mode indicator
+- **LSP:** mason + mason-lspconfig for server installation (ensure_installed: lua_ls,
+  ts_ls, ruby_lsp). `vim.lsp.config()` for lua_ls settings (vim global). LspAttach
+  autocmd for `gd` → definition; other keymaps are nvim 0.11+ defaults (grn, gra, grr, K).
+- **Editing:** nvim-surround and Comment.nvim with defaults (same muscle memory as
+  vim-surround and vim-commentary)
+- **No config needed:** repeat, unimpaired, vinegar, dispatch, obsession, endwise,
+  fugitive, rhubarb, tabular, vim-folding-rspec
 
 ### 2026-04-13
 
