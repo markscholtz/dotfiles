@@ -127,9 +127,9 @@ vim-scriptease.
   - vim-folding-rspec
 
 **Phase 3 — Cutover:**
-- [ ] Delete `nvim/init.vim.bak`
-- [ ] Commit `nvim-pack-lock.json`
-- [ ] Verify end-to-end (colorscheme, keymaps, treesitter, LSP, clipboard, statusline, checkhealth)
+- [x] Delete `nvim/init.vim.bak`
+- [x] Commit `nvim-pack-lock.json`
+- [x] Verify end-to-end (colorscheme, keymaps, treesitter, LSP, clipboard, statusline, checkhealth)
 
 ## Move `homebrew/path.zsh` to `dotfiles-local`
 
@@ -300,6 +300,28 @@ Plugin configuration summary:
   vim-surround and vim-commentary)
 - **No config needed:** repeat, unimpaired, vinegar, dispatch, obsession, endwise,
   fugitive, rhubarb, tabular, vim-folding-rspec
+
+### 2026-04-10
+
+Completed Phase 3 (cutover) of step 7. Deleted `nvim/init.vim.bak` — the old
+init.vim that sourced vimrc is no longer needed. The lockfile was already committed
+in the Phase 2 commit.
+
+End-to-end verification passed:
+- Colorscheme: solarized active
+- Keymaps: all 5 telescope mappings (`,ff`, `,fb`, `,fl`, `,fr`, `,fh`) registered
+- Treesitter: all 14 parsers compiled and queries valid (checkhealth all green)
+- LSP: `vim.lsp.enable` configured for lua_ls, ts_ls, ruby_lsp; mason available
+- Clipboard: `unnamedplus` set unconditionally
+- Statusline: lualine loaded with auto theme, `showmode` disabled
+- All plugin modules load without error (nvim-surround, Comment, lualine, telescope,
+  mason, solarized)
+- Telescope checkhealth: fzf extension working, ripgrep found (one cosmetic warning
+  about optional `fd` — not needed, telescope falls back to `find`)
+- Vim fallback: `/usr/bin/vim` still loads `~/.vimrc` correctly (aliased `vim`/`vi`
+  commands go through nvim, but the raw binary + vimrc remain functional)
+
+Step 7 is complete. The new Lua-based nvim config is fully operational.
 
 ### 2026-04-13
 
