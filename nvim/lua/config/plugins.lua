@@ -91,6 +91,56 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
 vim.keymap.set("n", "<leader>fl", builtin.current_buffer_fuzzy_find, { desc = "Buffer lines" })
 vim.keymap.set("n", "<leader>fr", builtin.live_grep, { desc = "Live grep" })
 vim.keymap.set("n", "<leader>fh", builtin.command_history, { desc = "Command history" })
+vim.keymap.set("n", "<leader>fw", function()
+  local pickers = require("telescope.pickers")
+  local finders = require("telescope.finders")
+  local conf = require("telescope.config").values
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+
+  local wins = vim.api.nvim_list_wins()
+  local entries = {}
+  for _, win in ipairs(wins) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    local name = vim.api.nvim_buf_get_name(buf)
+    if name == "" then name = "[No Name]" end
+    local tab = vim.api.nvim_win_get_tabpage(win)
+    table.insert(entries, {
+      win = win,
+      bufnr = buf,
+      filename = name,
+      display = string.format("Tab %d: %s", vim.api.nvim_tabpage_get_number(tab), vim.fn.fnamemodify(name, ":~:.")),
+    })
+  end
+
+  pickers.new({}, {
+    prompt_title = "Windows",
+    finder = finders.new_table({
+      results = entries,
+      entry_maker = function(entry)
+        return {
+          value = entry.win,
+          display = entry.display,
+          ordinal = entry.display,
+          bufnr = entry.bufnr,
+          filename = entry.filename,
+        }
+      end,
+    }),
+    previewer = conf.grep_previewer({}),
+    sorter = conf.generic_sorter({}),
+    attach_mappings = function(prompt_bufnr)
+      actions.select_default:replace(function()
+        actions.close(prompt_bufnr)
+        local selection = action_state.get_selected_entry()
+        if selection then
+          vim.api.nvim_set_current_win(selection.value)
+        end
+      end)
+      return true
+    end,
+  }):find()
+end, { desc = "Windows" })
 
 -- Lualine (showmode disabled since lualine shows mode in section_a).
 require("lualine").setup({
