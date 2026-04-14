@@ -289,8 +289,8 @@ Key discoveries during implementation:
 Plugin configuration summary:
 - **Colorscheme:** solarized.nvim with `vim.cmd.colorscheme("solarized")`
 - **Telescope:** 5 keymaps migrated from fzf.vim (`,ff` find_files, `,fb` buffers,
-  `,fl` buffer lines, `,fr` live_grep, `,fh` command history). Dropped `,fs` (snippets)
-  and `,fw` (windows).
+  `,fl` buffer lines, `,fr` live_grep, `,fh` command history). Dropped `,fs` (snippets);
+  `,fw` (windows) added later as a custom Telescope picker.
 - **Lualine:** auto theme detection (picks up solarized), `showmode = false` to avoid
   duplicate mode indicator
 - **LSP:** mason + mason-lspconfig for server installation (ensure_installed: lua_ls,
@@ -322,6 +322,13 @@ End-to-end verification passed:
   commands go through nvim, but the raw binary + vimrc remain functional)
 
 Step 7 is complete. The new Lua-based nvim config is fully operational.
+
+Added `,fw` (windows picker) to Telescope keymaps in `config/plugins.lua`. The old
+vimrc mapped this to fzf.vim's `:Windows` command, which was skipped during the Phase 2
+migration because Telescope has no built-in windows picker. Implemented a custom
+Telescope picker that lists all open windows (with tab number and relative file path),
+includes a buffer content preview (matching `,fb` style), and jumps to the selected
+window on `<CR>`.
 
 ### 2026-04-13
 
