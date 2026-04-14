@@ -115,3 +115,10 @@ Decision: skip steps 4-6 and jump straight to a full Lua-based nvim modernizatio
 The vimrc is in good shape after steps 1-3 cleaned out dead plugins, stale config,
 and orphaned files. It stays as-is for the rare case vim (not neovim) is needed.
 The new `init.lua` will be built from scratch rather than evolving the vimrc.
+
+### 2026-04-13
+
+Created `claude/CLAUDE.md` in the dotfiles repo to hold global Claude Code instructions
+(symlinked to `~/.claude/CLAUDE.md` via dotbot). First entry is the WORKLOG convention —
+previously stored as a per-project auto-memory, now promoted to a global instruction so
+it applies across all projects.

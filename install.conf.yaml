@@ -5,6 +5,7 @@
 - clean: ['~', '~/.config']
 
 - link:
+    ~/.claude/CLAUDE.md: claude/CLAUDE.md
     ~/.colordiffrc: colordiff/colordiffrc
     ~/.config/nvim: nvim
     ~/.cvsignore: git/cvsignore
