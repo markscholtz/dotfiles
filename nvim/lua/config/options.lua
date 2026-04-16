@@ -32,6 +32,9 @@ opt.wildmode = "list:longest,full"
 opt.whichwrap = "b,s,h,l,<,>,[,]"
 opt.scrolloff = 3
 opt.foldenable = true
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldlevelstart = 99  -- Start with all folds open.
 opt.gdefault = true
 
 -- Formatting

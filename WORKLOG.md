@@ -360,3 +360,11 @@ submodule table. Kept the `.cvsignore` tip as a footnote under Notes.
 Also updated inline code comments in both `README.md` and `CLAUDE.md` to use sentence
 case with trailing periods, and added that as a style convention in the global
 `~/.claude/CLAUDE.md`.
+
+### 2026-04-16
+
+Added treesitter-based markdown folding to `nvim/lua/config/options.lua`. `foldmethod=syntax`
+doesn't work for markdown because Vim's built-in markdown syntax file doesn't define fold
+regions. The fix is `foldmethod=expr` with `foldexpr=v:lua.vim.treesitter.foldexpr()`, which
+works because the markdown treesitter parser is already installed. Added `foldlevelstart=99`
+so buffers open with all folds expanded by default.
