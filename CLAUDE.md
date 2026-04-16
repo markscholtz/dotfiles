@@ -9,7 +9,7 @@ A personal dotfiles repository for macOS, managing configuration for Zsh, Vim/Ne
 ## Installation
 
 ```sh
-./install                    # runs Dotbot with install.conf.yaml
+./install                    # Runs Dotbot with install.conf.yaml.
 ```
 
 This creates symlinks (e.g. `~/.zshrc` → `zsh/zshrc`, `~/.vimrc` → `vim/vimrc`), initializes git submodules, and installs fzf, rbenv, and Ruby.
@@ -46,9 +46,9 @@ Custom shell functions live in `zsh/functions/` and are autoloaded via `fpath`.
 **Plugin manager**: [minpac](https://github.com/k-takata/minpac) (Vim 8+ native packages). Plugins are declared in `PackInit()` in `vim/vimrc`. Useful commands:
 
 ```vim
-:PackUpdateAll    " update all plugins
-:PackClean        " remove plugins no longer in PackInit()
-:PackStatus       " show plugin status
+:PackUpdateAll    " Update all plugins.
+:PackClean        " Remove plugins no longer in PackInit().
+:PackStatus       " Show plugin status.
 ```
 
 **Current structure**: `nvim/init.vim` sources `~/.vimrc` and adds two nvim-specific settings. Both `vim` and `vi` are aliased to `nvim` (in `nvim/aliases.zsh`).
@@ -69,8 +69,8 @@ Four submodules managed in this repo:
 minpac itself is also a submodule at `vim/vim/pack/minpac/opt/minpac`, but plugins it manages are gitignored (`vim/vim/pack/minpac/` is in `.gitignore`).
 
 ```sh
-git submodule update --init --recursive   # initialize all
-git submodule foreach git pull origin master  # update all
+git submodule update --init --recursive   # Initialize all.
+git submodule foreach git pull origin master  # Update all.
 ```
 
 ## Key Conventions

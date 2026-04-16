@@ -1,71 +1,94 @@
 # Dotfiles
 
-## personal notes
+Personal dotfiles for macOS, managing configuration for Zsh, Neovim/Vim, Tmux, Git, and supporting tools. Installed via [Dotbot](https://github.com/anishathalye/dotbot) which symlinks config files into `~`.
 
-### Ingoring tags files globally
-From tpope's vim-pathogen README:
+## Install
 
-  >>Will you accept these 14 pull requests adding a .gitignore for tags so I don't see untracked changes in my dot files repository?
+```sh
+./install
+```
 
-  >No, but I'll teach you how to ignore tags globally:
+This runs Dotbot with `install.conf.yaml`, which:
+- Symlinks config files into `~` (ex: `~/.zshrc` -> `zsh/zshrc`, `~/.vimrc` -> `vim/vimrc`)
+- Initializes git submodules
+- Installs [fzf](https://github.com/junegunn/fzf), [rbenv](https://github.com/rbenv/rbenv), and Ruby
 
-  ```
-  git config --global core.excludesfile '~/.cvsignore'
-  echo tags >> ~/.cvsignore
-  ```
+## Two-repo architecture
 
-  >While any filename will work, I've chosen to follow the ancient tradition of .cvsignore because utilities like rsync use it, too. Clever, huh?
+- **`dotfiles`** (this repo): Universal configs shared across machines.
+- **`dotfiles-local`** (separate private repo): Machine-specific overrides with its own Dotbot `install.conf.yaml`.
 
-### Submodules
+Almost every major config sources a local override file at the end:
 
-#### Adding Vim plugins using Pathogen
+| Config | Local override |
+|--------|---------------|
+| `~/.zshrc` | `~/.zshrc_local` |
+| `~/.zshenv` | `~/.zshenv_local` |
+| `~/.vimrc` | `~/.vimrc_local` |
+| `~/.gitconfig` | `~/.gitconfig_local` |
+| `~/.tmux.conf` | `~/.tmux_local.conf` |
 
-To add a new submodule, run the following command where the first argument to
-`add` is the url locating the submodule to install and the second argument is
-the location to install it.
+These local files are managed by `dotfiles-local`, not this repo.
 
-    # git submodule add <submodule_url> <destination>
-    git submodule add https://github.com/leafgarland/typescript-vim vim/vim.symlink/bundle/typescript-vim
+## Zsh
 
-#### Initializing submodules
+`$ZSH` points to this repo root. The `zshrc` auto-discovers and sources all `**/*.zsh` files under `$ZSH` in this order:
 
-When first installing dotfiles on a new machine — or if a new submodule was
-added to the remote from another machine —run the following to initialize
-submodules:
+1. `path.zsh` -- PATH additions
+2. `*.zsh` -- everything else
+3. `completion.zsh` -- completion setup (loaded last)
 
-    git submodule update --init --recursive
+To add config for a new tool, create a directory with `.zsh` files following this naming convention. No registration needed.
 
-#### Updating submodules
+Custom shell functions live in `zsh/functions/` and are autoloaded via `fpath`.
 
-To update the git submodules that I've used to organize vim plugins run the following command (
-[Stack Overflow question](http://stackoverflow.com/questions/5828324/update-git-submodule)):
+## Vim / Neovim
 
-  ```
-  git submodule foreach git pull origin master
-  ```
+Plugins are managed by [minpac](https://github.com/k-takata/minpac) (Vim 8+ native packages), declared in `PackInit()` in `vim/vimrc`.
 
-After updating the submodules make sure to check in the updated commit references.
+```vim
+:PackUpdateAll    " Update all plugins.
+:PackClean        " Remove plugins no longer in PackInit().
+:PackStatus       " Show plugin status.
+```
 
-#### Updating submodules — after fetching remote changes
+`nvim/init.vim` sources `~/.vimrc` and adds nvim-specific settings. Both `vim` and `vi` are aliased to `nvim`.
 
-When performing a fetch of the remote repository results in updated submodules
-— where each submodule's directory is marked as "modified" with a "(new
-commits)" annotation after the directory name — run the following command to
-update submodules to their remote states:
+## Submodules
 
-  ```
-  git submodule update
-  ```
-#### Removing submodules
+| Submodule | Purpose |
+|-----------|---------|
+| `dotbot/` | Install framework |
+| `bin/fzf/` | Fuzzy finder |
+| `bin/tripboard/` | Clipboard bridge for tmux + vim |
+| `zsh/zsh-completions/` | Additional zsh completions |
+| `vim/vim/pack/minpac/opt/minpac` | Plugin manager (plugins it manages are gitignored) |
 
-To remove a submodule run the following commands — as outlined in [this
-answer](https://stackoverflow.com/a/29850245) on Stack Overflow:
+```sh
+git submodule update --init --recursive   # Initialize all.
+git submodule foreach git pull origin master  # Update all.
+```
 
-  ```
-  git submodule deinit <submodule_path_without_trailing_slash>
-  git rm <submodule_path_without_trailing_slash>
-  ```
+To remove a submodule:
 
-## todo
+```sh
+git submodule deinit <path>
+git rm <path>
+```
 
-* Update the README below: this is from the original forked repo
+## Notes
+
+### Ignoring tags files globally
+
+From tpope's vim-pathogen README -- still useful general advice:
+
+```sh
+git config --global core.excludesfile '~/.cvsignore'
+echo tags >> ~/.cvsignore
+```
+
+## Key conventions
+
+- **Solarized Dark** color scheme everywhere (vim, tmux, terminal)
+- **Vi keybindings** in Zsh (`bindkey -v`) and Tmux (`mode-keys vi`)
+- **Tmux prefix** is `C-a` (Screen-style)

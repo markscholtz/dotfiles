@@ -122,3 +122,16 @@ Created `claude/CLAUDE.md` in the dotfiles repo to hold global Claude Code instr
 (symlinked to `~/.claude/CLAUDE.md` via dotbot). First entry is the WORKLOG convention —
 previously stored as a per-project auto-memory, now promoted to a global instruction so
 it applies across all projects.
+
+### 2026-04-15
+
+Rewrote `README.md` from scratch on `master`. The old README was largely inherited from
+the original forked repo — it referenced Pathogen (replaced by minpac years ago), had an
+incomplete submodule list, and lacked any description of the actual repo structure. The
+new README covers: Dotbot install, two-repo architecture with `dotfiles-local`, the
+`*_local` override convention, Zsh module auto-discovery, minpac commands, and a complete
+submodule table. Kept the `.cvsignore` tip as a footnote under Notes.
+
+Also updated inline code comments in both `README.md` and `CLAUDE.md` to use sentence
+case with trailing periods, and added that as a style convention in the global
+`~/.claude/CLAUDE.md`.
