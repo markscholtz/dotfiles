@@ -131,6 +131,17 @@ vim-scriptease.
 - [x] Commit `nvim-pack-lock.json`
 - [x] Verify end-to-end (colorscheme, keymaps, treesitter, LSP, clipboard, statusline, checkhealth)
 
+### 8. Set up markdown auto formatter for Neovim
+
+Configure automatic formatting for markdown files in the Lua-based nvim config.
+
+#### Tasks
+
+- [ ] Research formatter options (conform.nvim + prettier/prettierd, or similar)
+- [ ] Add formatter plugin and configuration to `config/plugins.lua`
+- [ ] Configure format-on-save for markdown filetypes
+- [ ] Test with markdown files (prose, code blocks, tables, frontmatter)
+
 ## Move `homebrew/path.zsh` to `dotfiles-local`
 
 The Homebrew PATH setup (`path=("/opt/homebrew/bin" $path)`) is Apple Silicon-specific
