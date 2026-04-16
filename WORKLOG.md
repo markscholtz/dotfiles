@@ -1,14 +1,18 @@
-# Vim/Neovim Configuration Worklog
+# Worklog
 
-## Overview
+## Nvim migration
 
-The current setup is "vim-first": `nvim/init.vim` sources `~/.vimrc` and adds two
-nvim-specific settings. Both `vim` and `vi` are aliased to Neovim 0.10.0. The config
-is entirely Vimscript with minpac as the plugin manager.
+The original setup was "vim-first": `nvim/init.vim` sourced `~/.vimrc` and added two
+nvim-specific settings. Both `vim` and `vi` are aliased to Neovim. The config was
+entirely Vimscript with minpac as the plugin manager.
 
----
+Steps 1-3 cleaned up dead plugins, stale config, and orphaned files. Steps 4-6 were
+skipped/deferred (absorbed into step 7). Step 7 built a new Lua-based nvim config from
+scratch. The vimrc stays as a vim-only fallback.
 
-## 1. Remove dead plugins
+Working branch: `nvim-lua-config`.
+
+### 1. Remove dead plugins
 
 These are installed but unused, redundant, or broken:
 
@@ -23,7 +27,7 @@ These are installed but unused, redundant, or broken:
 
 After removing from `PackInit()`, run `:PackClean` to delete the plugin directories.
 
-## 2. Remove stale/orphaned configuration from vimrc
+### 2. Remove stale/orphaned configuration from vimrc
 
 - [x] **Vimux mappings (~lines 189-211):** 7 keybindings for a plugin that isn't installed
 - [x] **YouCompleteMe config (~lines 261-269):** YCM isn't installed; `<leader>jd` mapping and `g:ycm_semantic_triggers` are dead
@@ -32,27 +36,27 @@ After removing from `PackInit()`, run `:PackClean` to delete the plugin director
 - [x] **Powerline section header (line 185):** says "Powerline" but actually configures Gundo — rename to "Gundo"
 - [x] **DistractionFreeWriting function (~lines 225-234):** uses MacVim-specific GUI commands (`fullscreen`, `fuoptions`) that have no effect in terminal Neovim
 
-## 3. Clean up tracked files that shouldn't be in git
+### 3. Clean up tracked files that shouldn't be in git
 
 - [x] Delete `vim/vim/.netrwhist` (auto-generated netrw history from 2013 with stale Ruby 1.9.3 paths)
 - [x] Add `vim/vim/.netrwhist` to `.gitignore`
 - [x] Add `vim/vim/tmp/` to `.gitignore` (contains 356 backup files and 151 swap files — runtime artifacts, not config)
 - [x] Delete `vim/vim/ftplugin/nerdtree.vim` (NERDTree is not installed)
 
-## ~~4. Remove redundant settings (already Neovim defaults)~~ — SKIPPED
+### ~~4. Remove redundant settings (already Neovim defaults)~~ — SKIPPED
 
 Skipped — these settings are needed for vim compatibility. The vimrc is being kept
 as-is as a fallback for when vim (not neovim) is needed.
 
-## ~~5. Review Tripboard~~ — DEFERRED
+### ~~5. Review Tripboard~~ — DEFERRED
 
 Deferred — clipboard handling will be addressed as part of the new nvim config.
 
-## ~~6. Modernize plugins~~ — DEFERRED
+### ~~6. Modernize plugins~~ — DEFERRED
 
 Deferred — plugin modernization is absorbed into the full nvim migration below.
 
-## 7. Build new Lua-based nvim config
+### 7. Build new Lua-based nvim config
 
 The vimrc (cleaned up in steps 1-3) stays as the vim fallback. Neovim gets a fresh
 `init.lua` that no longer sources vimrc.
@@ -67,6 +71,18 @@ The vimrc (cleaned up in steps 1-3) stays as the vim fallback. Neovim gets a fre
 - [ ] Carry over tpope essentials (fugitive, surround, repeat, unimpaired, etc.)
 - [ ] Evaluate which remaining plugins to keep, replace, or drop
 - [ ] Remove `nvim/init.vim` once `init.lua` is ready
+
+## Move `homebrew/path.zsh` to `dotfiles-local`
+
+The Homebrew PATH setup (`path=("/opt/homebrew/bin" $path)`) is Apple Silicon-specific
+and belongs in the machine-local repo, not the universal dotfiles. Intel Macs use
+`/usr/local` and Linux machines don't have Homebrew at all.
+
+### Tasks
+
+- [ ] Add `homebrew/path.zsh` (or equivalent) to `dotfiles-local`
+- [ ] Remove `homebrew/path.zsh` from this repo
+- [ ] Verify Homebrew is still on PATH after a fresh shell
 
 ---
 
