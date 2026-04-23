@@ -60,6 +60,9 @@ vim.pack.add({
 
   -- Ruby
   "https://github.com/markscholtz/vim-folding-rspec",
+
+  -- Formatting
+  "https://github.com/stevearc/conform.nvim",
 })
 
 -- Colorscheme (before lualine so theme auto-detection works).
@@ -183,3 +186,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
     })
   end,
 })
+
+-- Formatting (conform.nvim).
+require("conform").setup({
+  formatters_by_ft = {
+    markdown = { "prettierd", "prettier", stop_after_first = true },
+  },
+  format_on_save = {
+    timeout_ms = 2000,
+    lsp_format = "fallback",
+  },
+})
+
+vim.keymap.set("n", "<leader>zb", function()
+  require("conform").format({ lsp_format = "fallback" })
+end, { desc = "Format buffer" })

@@ -137,10 +137,10 @@ Configure automatic formatting for markdown files in the Lua-based nvim config.
 
 #### Tasks
 
-- [ ] Research formatter options (conform.nvim + prettier/prettierd, or similar)
-- [ ] Add formatter plugin and configuration to `config/plugins.lua`
-- [ ] Configure format-on-save for markdown filetypes
-- [ ] Test with markdown files (prose, code blocks, tables, frontmatter)
+- [x] Research formatter options (conform.nvim + prettier/prettierd, or similar)
+- [x] Add formatter plugin and configuration to `config/plugins.lua`
+- [x] Configure format-on-save for markdown filetypes
+- [x] Test with markdown files (prose, code blocks, tables, frontmatter)
 
 ## Move `homebrew/path.zsh` to `dotfiles-local`
 
@@ -368,3 +368,13 @@ doesn't work for markdown because Vim's built-in markdown syntax file doesn't de
 regions. The fix is `foldmethod=expr` with `foldexpr=v:lua.vim.treesitter.foldexpr()`, which
 works because the markdown treesitter parser is already installed. Added `foldlevelstart=99`
 so buffers open with all folds expanded by default.
+
+### 2026-04-22
+
+Completed step 8: added conform.nvim for markdown format-on-save. Chose prettierd
+(with prettier as fallback) — prettierd runs as a daemon so there's no cold start
+penalty on save. Added `conform.nvim` to `vim.pack.add()` in `config/plugins.lua`
+with `format_on_save` using `lsp_format = "fallback"`, so non-markdown filetypes can
+still use LSP formatting without extra config. Also added `,zb` keymap for manual
+formatting via `require("conform").format()`. prettierd is installed via
+`:MasonInstall prettierd` (one-time, mason already manages the tool registry).
