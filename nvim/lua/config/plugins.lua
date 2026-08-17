@@ -71,8 +71,8 @@ vim.cmd.colorscheme("solarized")
 
 -- Treesitter (install parsers — highlighting enabled via FileType autocmd below).
 require("nvim-treesitter").install({
-  "bash", "css", "html", "javascript", "json", "lua",
-  "markdown", "markdown_inline", "ruby", "tsx", "typescript",
+  "bash", "css", "go", "html", "java", "javascript", "json", "lua",
+  "markdown", "markdown_inline", "proto", "python", "ruby", "tsx", "typescript",
   "vim", "vimdoc", "yaml",
 })
 
@@ -177,13 +177,20 @@ vim.lsp.config("lua_ls", {
 
 vim.lsp.enable({ "lua_ls", "ts_ls", "ruby_lsp" })
 
--- LSP keymaps (gd only — grn/gra/grr/K are nvim 0.11+ defaults).
+-- LSP keymaps & buffer settings (gd only — grn/gra/grr/K are nvim 0.11+ defaults).
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
       buffer = ev.buf,
       desc = "Go to definition",
     })
+
+    if client and client:supports_method("textDocument/foldingRange", ev.buf) then
+      vim.wo[0][0].foldmethod = "expr"
+      vim.wo[0][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    end
   end,
 })
 
