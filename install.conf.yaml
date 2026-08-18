@@ -18,6 +18,7 @@
     ~/.pryrc: pry/pryrc
     ~/.rspec: ruby/rspec
     ~/.tigrc: tig/tigrc
+    ~/.tmux: tmux
     ~/.tmux.conf: tmux/tmux.conf
     ~/.toprc: top/toprc
     ~/.tripboard: bin/tripboard

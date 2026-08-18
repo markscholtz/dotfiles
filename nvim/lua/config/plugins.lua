@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 -- Install plugins.
 vim.pack.add({
   -- Colorscheme
-  "https://github.com/maxmx03/solarized.nvim",
+  "https://github.com/folke/tokyonight.nvim",
 
   -- Tpope essentials
   "https://github.com/tpope/vim-repeat",
@@ -66,8 +66,10 @@ vim.pack.add({
 })
 
 -- Colorscheme (before lualine so theme auto-detection works).
-require("solarized").setup({})
-vim.cmd.colorscheme("solarized")
+require("tokyonight").setup({
+  style = "moon",
+})
+vim.cmd.colorscheme("tokyonight-moon")
 
 -- Treesitter (install parsers — highlighting enabled via FileType autocmd below).
 require("nvim-treesitter").install({

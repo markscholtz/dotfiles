@@ -77,6 +77,6 @@ git submodule foreach git pull origin master  # Update all.
 
 - **No build/test/lint system** — this is a config-only repo managed by Dotbot.
 - **`$ZSH`** is set to this dotfiles repo root (e.g. `~/code/personal/dotfiles`), not Oh My Zsh. All zsh module sourcing is relative to this variable.
-- **Solarized Dark** is the color scheme everywhere (vim, tmux, terminal).
+- **Tokyo Night Moon** is the color scheme everywhere (Neovim, Tmux, iTerm2).
 - **Vi keybindings** in both Zsh (`bindkey -v`) and Tmux (`mode-keys vi`).
 - **Tmux prefix** is `C-a` (Screen-style), not the default `C-b`.

@@ -87,8 +87,24 @@ git config --global core.excludesfile '~/.cvsignore'
 echo tags >> ~/.cvsignore
 ```
 
+## Color scheme & typography
+
+**Tokyo Night Moon** is the standard color scheme across all tools.
+
+### Managed by this repo
+
+- **Neovim**: `nvim/lua/config/plugins.lua` loads `folke/tokyonight.nvim` with `style = "moon"`. `lualine` auto-detects the matching theme.
+- **Tmux**: `tmux/tmux.conf` sources `tmux/tokyonight_moon.tmux` (via `~/.tmux/tokyonight_moon.tmux`) for statusline tabs, powerline chevrons, and pane borders. This file is copied from the upstream `folke/tokyonight.nvim` extras directory (`extras/tmux/tokyonight_moon.tmux`).
+
+### Client terminal setup (iTerm2)
+
+When configuring a terminal client on macOS:
+
+1. **Color preset**: Import `iterm/tokyonight_moon.itermcolors` (copied from `folke/tokyonight.nvim`'s `extras/iterm/tokyonight_moon.itermcolors`) under **Settings > Profiles > Colors > Color Presets... > Import...**.
+2. **Font**: Set font to **JetBrainsMono Nerd Font Mono** (or any patched Nerd Font) under **Settings > Profiles > Text > Font** to render Devicon filetype icons and Powerline glyphs cleanly.
+
 ## Key conventions
 
-- **Solarized Dark** color scheme everywhere (vim, tmux, terminal)
+- **Tokyo Night Moon** color scheme everywhere (Neovim, Tmux, iTerm2)
 - **Vi keybindings** in Zsh (`bindkey -v`) and Tmux (`mode-keys vi`)
 - **Tmux prefix** is `C-a` (Screen-style)
