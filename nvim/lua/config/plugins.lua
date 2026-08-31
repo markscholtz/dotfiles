@@ -41,6 +41,7 @@ vim.pack.add({
   -- Editing
   "https://github.com/kylechui/nvim-surround",
   "https://github.com/numToStr/Comment.nvim",
+  "https://github.com/folke/zen-mode.nvim",
 
   -- Treesitter
   "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -210,3 +211,46 @@ require("conform").setup({
 vim.keymap.set("n", "<leader>zb", function()
   require("conform").format({ lsp_format = "fallback" })
 end, { desc = "Format buffer" })
+
+-- Zen mode (distraction-free editing).
+require("zen-mode").setup({
+  window = {
+    backdrop = 0.95,
+    width = 85,
+    height = 1,
+    options = {
+      signcolumn = "no",
+      number = false,
+      relativenumber = false,
+      cursorline = false,
+      cursorcolumn = false,
+      foldcolumn = "0",
+      list = false,
+      wrap = true,
+      linebreak = true,
+      breakindent = true,
+    },
+  },
+  plugins = {
+    options = {
+      enabled = true,
+      ruler = false,
+      showcmd = false,
+      laststatus = 0,
+    },
+    twilight = { enabled = false },
+    gitsigns = { enabled = false },
+    tmux = { enabled = true },
+  },
+})
+
+vim.keymap.set("n", "<leader>zm", "<cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
+
+vim.api.nvim_create_user_command("Zen", function(opts)
+  local width = tonumber(opts.args)
+  if width and width > 0 then
+    require("zen-mode").toggle({ window = { width = width } })
+  else
+    require("zen-mode").toggle()
+  end
+end, { nargs = "?", desc = "Toggle Zen Mode with optional width" })

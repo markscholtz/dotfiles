@@ -103,6 +103,10 @@
     "vim-vinegar": {
       "rev": "bb1bcddf43cfebe05eb565a84ab069b357d0b3d6",
       "src": "https://github.com/tpope/vim-vinegar"
+    },
+    "zen-mode.nvim": {
+      "rev": "8564ce6d29ec7554eb9df578efa882d33b3c23a7",
+      "src": "https://github.com/folke/zen-mode.nvim"
     }
   }
 }
