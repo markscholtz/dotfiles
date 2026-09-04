@@ -25,6 +25,7 @@ Almost every major config sources a local override file at the end:
 | `~/.zshrc` | `~/.zshrc_local` |
 | `~/.zshenv` | `~/.zshenv_local` |
 | `~/.vimrc` | `~/.vimrc_local` |
+| `nvim/init.lua` | `~/.config/nvim-local/init.lua` |
 | `~/.gitconfig` | `~/.gitconfig_local` |
 | `~/.tmux.conf` | `~/.tmux_local.conf` |
 
@@ -44,15 +45,23 @@ Custom shell functions live in `zsh/functions/` and are autoloaded via `fpath`.
 
 ## Vim / Neovim
 
-Plugins are managed by [minpac](https://github.com/k-takata/minpac) (Vim 8+ native packages), declared in `PackInit()` in `vim/vimrc`.
+- **Vim**: Configured via `vim/vimrc` with plugins managed by [minpac](https://github.com/k-takata/minpac) (Vim 8+ native packages), declared in `PackInit()` in `vim/vimrc`.
 
-```vim
-:PackUpdateAll    " Update all plugins.
-:PackClean        " Remove plugins no longer in PackInit().
-:PackStatus       " Show plugin status.
-```
+  ```vim
+  :PackUpdateAll    " Update all plugins.
+  :PackClean        " Remove plugins no longer in PackInit().
+  :PackStatus       " Show plugin status.
+  ```
 
-`nvim/init.vim` sources `~/.vimrc` and adds nvim-specific settings. Both `vim` and `vi` are aliased to `nvim`.
+- **Neovim**: Configured in Lua via `nvim/init.lua` with plugins managed by Neovim's built-in `vim.pack` (`nvim/lua/config/plugins.lua`). Machine-specific overrides are sourced from `~/.config/nvim-local/init.lua`. Both `vim` and `vi` are aliased to `nvim`.
+
+### Symbol Highlighting (Symbol Under Cursor)
+
+Symbol highlighting is handled natively via `nvim/lua/config/highlight.lua` without third-party plugins:
+
+1. **LSP Document Highlight (Tier 1)**: If an active LSP server on the buffer supports `textDocument/documentHighlight`, Neovim's native `vim.lsp.buf.document_highlight()` is invoked.
+2. **Tree-sitter Scope Highlighting (Tier 2)**: If no LSP highlighter is active, but Tree-sitter provides a `locals.scm` query for the buffer's language (e.g., TypeScript, JavaScript, Lua), it resolves the symbol to the enclosing lexical scope (`@local.scope`) containing its definition. It highlights definitions (`LspReferenceWrite`) and usages (`LspReferenceText`) strictly within that scope, preventing argument/variable shadowing across functions from cross-contaminating.
+3. **Unsupported / Text Files**: Files without LSP or Tree-sitter locals support (e.g., `.proto`, `.md`, `.bzl`) produce no highlights, avoiding visual noise when pausing over common words.
 
 ## Submodules
 

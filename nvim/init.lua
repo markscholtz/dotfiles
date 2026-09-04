@@ -5,6 +5,7 @@ require("config.options")
 require("config.keymaps")
 require("config.autocmds")
 require("config.plugins")
+require("config.highlight")
 
 -- Local machine-specific overrides (matches ~/.vimrc_local pattern).
 local local_init = vim.fn.expand("~/.config/nvim-local/init.lua")

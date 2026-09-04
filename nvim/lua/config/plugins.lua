@@ -96,6 +96,11 @@ require("tokyonight").setup({
 })
 vim.cmd.colorscheme("tokyonight-moon")
 
+-- Distinct LSP & symbol reference highlights for symbol-under-cursor highlighting.
+vim.api.nvim_set_hl(0, "LspReferenceText", { underline = true, bg = "#3b4261" })
+vim.api.nvim_set_hl(0, "LspReferenceRead", { underline = true, bg = "#3b4261" })
+vim.api.nvim_set_hl(0, "LspReferenceWrite", { underline = true, bold = true, bg = "#3b4261" })
+
 -- Treesitter (install parsers — highlighting enabled via FileType autocmd below).
 require("nvim-treesitter").install({
   "bash", "css", "go", "html", "java", "javascript", "json", "lua",
@@ -206,6 +211,7 @@ vim.lsp.enable({ "lua_ls", "ts_ls", "ruby_lsp" })
 
 -- LSP keymaps & buffer settings (gd only — grn/gra/grr/K are nvim 0.11+ defaults).
 vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("lsp_attach_common", { clear = false }),
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
 

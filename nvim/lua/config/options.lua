@@ -20,6 +20,7 @@ opt.clipboard = "unnamedplus"
 opt.termguicolors = true
 opt.background = "dark"
 opt.cursorline = true
+opt.updatetime = 250
 opt.laststatus = 3
 opt.winbar = "%{%fnamemodify(bufname(), ':~:.')%}"
 opt.number = true
