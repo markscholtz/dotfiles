@@ -69,6 +69,30 @@ vim.pack.add({
 -- Colorscheme (before lualine so theme auto-detection works).
 require("tokyonight").setup({
   style = "moon",
+  on_highlights = function(hl, c)
+    -- Gutter line numbers (high contrast without changing global fg_gutter / lualine)
+    hl.LineNr = { fg = c.dark5 }
+    hl.LineNrAbove = { fg = c.dark5 }
+    hl.LineNrBelow = { fg = c.dark5 }
+
+    -- Window titles (winbar)
+    hl.WinBar = { fg = c.fg, bold = true }
+    hl.WinBarNC = { fg = c.fg_dark }
+
+    -- Unfocused tabs in tabline (brightened from fg_gutter to fg_dark)
+    hl.TabLine = { fg = c.fg_dark, bg = c.bg_statusline }
+
+    -- Inline code backticks (teal from moon palette, no background box)
+    hl["@markup.raw.markdown_inline"] = { fg = c.teal, bg = "NONE" }
+    hl.markdownCode = { fg = c.teal, bg = "NONE" }
+
+    -- Level 4 markdown headings (cyan to avoid clashing with teal backticks)
+    hl["@markup.heading.4.markdown"] = {
+      fg = c.cyan,
+      bold = true,
+      bg = require("tokyonight.util").blend_bg(c.cyan, 0.1),
+    }
+  end,
 })
 vim.cmd.colorscheme("tokyonight-moon")
 
