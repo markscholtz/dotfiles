@@ -103,7 +103,7 @@ vim.api.nvim_set_hl(0, "LspReferenceWrite", { underline = true, bold = true, bg 
 
 -- Treesitter (install parsers — highlighting enabled via FileType autocmd below).
 require("nvim-treesitter").install({
-  "bash", "css", "go", "html", "java", "javascript", "json", "lua",
+  "bash", "css", "go", "html", "java", "javascript", "json", "kotlin", "lua",
   "markdown", "markdown_inline", "proto", "python", "ruby", "tsx", "typescript",
   "vim", "vimdoc", "yaml",
 })
